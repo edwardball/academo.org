@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{page.title}} | {{ site.name }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% if page.url == "/" %}<meta name="google-site-verification" content="e-G7_FBQBrCiTbxovimqQQxUkQ3sc5s1oYrSOCKUZPM" />{% endif %}
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/scss/main.css?v={{ site.time | date: "%s" }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	{% strip %}
+		{% if page.layout == 'demo' %}
+			{% if page.twitterCard == true %}
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@AcademoOrg">
+				<meta name="twitter:title" content="{{page.title}}">
+				<meta name="twitter:description" content="{{page.blurb | strip_html}}">
+				<meta name="twitter:image" content="https://academo.org{{page.url}}twitter-card.png">
+			{% endif %}
+			{% if page.facebookOG == true %}
+				<meta property="og:url"	content="https://academo.org{{page.url}}" />
+				<meta property="og:site_name" content="Academo.org"/>
+				<meta property="og:title" content="{{page.title}}"/>
+				<meta property="og:description" content="{{page.blurb | strip_html}}"/>
+				<meta property="og:image" content="https://academo.org{{page.url}}facebook-og.png" />
+				<meta property="og:image:width" content="1200" /> 
+				<meta property="og:image:height" content="630" />
+			{% endif %}
+			{% for stylesheet in page.stylesheets %}
+				{% capture my_variable %}{{page.url | remove_first:'/' }}{{stylesheet}}{% endcapture %}
+				<style type="text/css" class='demo-specific-styles'>
+{% render {{my_variable}} %}
+				</style>
+			{% endfor %}
+		{% endif %}
+	{% endstrip %}
+ 
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+
+<body class='body--shaded {% if page.url == "/" %}home{% endif %}'>
+
+	<div class="header">
+		<div class="header-upper">
+			<div class="header-inner">
+				<a class="logo" href="/">Academo</a>
+				<ul class="nav nav--primary">
+					<li><a class="{% if page.url == '/about/' %} current {% endif %}" href="/about/">About</a></li>
+					<li><a class="{% if page.url == '/search/' %} current {% endif %}" href="/search/">Search</a></li>
+					<li><a class="{% if page.url == '/contact/' %} current {% endif %}" href="/contact/">Contact</a></li>
+					</li>
+					<li class="social--twitter"><a target='_blank' href="https://twitter.com/AcademoOrg"><i class="fa fa-twitter"></i></a></li>
+					<li class="social--facebook"><a target='_blank' href="https://facebook.com/academo.org"><i class="fa fa-facebook"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-lower">
+			<div class="header-inner">
+				<ul class="nav nav--secondary">
+					<li><a class="mobile-show {% if page.url == '/demos/' %} current {% endif %}" href="/demos/">Browse all demos</a></li>
+					<li><a class="mobile-hide {% if page.url == '/demos/' %} current {% endif %}" href="/demos/">All</a></li>
+					<li><a class="mobile-hide {% if page.url == '/engineering/' %} current {% endif %}" href="/engineering/">Engineering</a></li>
+					<li><a class="mobile-hide {% if page.url == '/geography/' %} current {% endif %}" href="/geography/">Geography</a></li>
+					<li><a class="mobile-hide {% if page.url == '/maths/' %} current {% endif %}" href="/maths/">Maths</a></li>
+					<li><a class="mobile-hide {% if page.url == '/music/' %} current {% endif %}" href="/music/">Music</a></li>
+					<li><a class="mobile-hide {% if page.url == '/physics/' %} current {% endif %}" href="/physics/">Physics</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper">
+	<div class="main">

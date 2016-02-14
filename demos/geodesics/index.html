@@ -1,0 +1,30 @@
+---
+title: Geodesics on the Earth
+categories: [Maths, Geography]
+subcategories: [Geometry, Maps]
+tags: [Geodesic]
+blurb: Demonstrating how geodesics appear to curve on a 2D representation of 3D space
+cdn: []
+#stylesheets: [styles.css]
+#scripts: [googleearth.js, animation.js]
+scripts: [animation.js]
+cdn: ["//maps.googleapis.com/maps/api/js?key=AIzaSyCoFlR16Ohnl6uSCw3Xn6RL8v9pzx3gJDE&sensor=false&libraries=geometry", "https://www.google.com/jsapi"]
+#noUi: true
+---
+
+<p>
+	A geodesic is a line representing the shortest route between two points. In simple terms, it might help to think of this as the route a crow (or aeroplane) would fly to get from one point to to another (ignoring any effects for wind).
+</p>
+
+<p>
+	The demo above demonstrates how confusing geodesics can appear when displayed on a standard 2D map of the world. The red line
+	is what many people might assume would be the shortest path between the two markers. However, this is not the case and it is actually the purple line that is the geodesic. It really is true that the shortest way to get from the western America, to Madagascar is via Scotland! If your browser, supports it you can click the "Earth" tab to load a 3D globe which will make it clear that the purple line is indeed the shortest route.
+</p>
+
+<p>
+	The discrepency between the red and purple lines arises because it is not possible to represent the 3D surface of the earth (spherical) on a flat 2D map without distorting its features.
+</p>
+
+<p>
+	Both markers can be dragged around the map which will in turn update the geodesic.
+</p>

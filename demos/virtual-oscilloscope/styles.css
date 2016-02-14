@@ -1,0 +1,19 @@
+
+
+#demo{
+  position:relative;
+}
+
+canvas{
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  border:solid 5px #E3E3E3;
+  /*border-radius: 10px;*/
+  /*background: #E3E3E3;*/
+}
+
+.preamble{
+	margin-bottom: 20px;
+}

@@ -1,0 +1,23 @@
+table{
+  border-collapse:collapse;
+  margin:0 auto;
+}
+table, td{
+  border:none;
+  border:solid 1px rgb(220,220,220);
+}
+td{
+  height:20px;
+  width: 20px;
+}
+tr{
+  height:20px;
+}
+td{
+  border-radius: 2px;
+  margin: 1px;
+}
+.conway-on, td.cell:hover{
+  transition: all 0s;
+  background-color: rgba(81, 203, 238, 0.5);
+}

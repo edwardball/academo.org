@@ -1,0 +1,99 @@
+---
+title: 19 TET Keyboard
+categories: [Music]
+subcategories: [Pitch]
+tags: [Temperament, audio]
+blurb: An online interactive and playable 19 tone equal temperament keyboard.
+stylesheets: [styles.css]
+libraries: [AudioContextMonkeyPatch.js]
+scripts: [demo.js]
+noUi: true
+---
+
+<svg class="modified-layout" width="100%" viewBox='0 0 184 120'>
+<!--
+ 
+     Copyright (c)  2005 Lauri Kaila.
+     Permission is granted to copy, distribute and/or modify this document
+     under the terms of the GNU Free Documentation License, Version 1.2
+     or any later version published by the Free Software Foundation;
+     with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+     A copy of the license is included in the section entitled "GNU
+     Free Documentation License".
+     
+     
+     
+     Intented to create a keyboard where key widths are
+     accurately in position. 
+     
+     See http://www.mathpages.com/home/kmath043.htm
+     for the math.
+     
+     This keyboard has following properties (x=octave width).
+     1. All white keys have equal width in front (W=x/7).
+     2. All black keys have equal width (B=x/12).
+     3. The narrow part of white keys C, D and E is W - B*2/3
+     4. The narrow part of white keys F, G, A, and B is W - B*3/4
+     
+-->
+<!--  White keys   -->
+<rect data-key='0' style="" x="0" y="0" width="23" height="120"/>
+<rect data-key='3' style="" x="23" y="0" width="23" height="120"/>
+<rect data-key='6' style="" x="46" y="0" width="23" height="120"/>
+<rect data-key='8' style="" x="69" y="0" width="23" height="120"/>
+<rect data-key='11' style="" x="92" y="0" width="23" height="120"/>
+<rect data-key='14' style="" x="115" y="0" width="23" height="120"/>
+<rect data-key='17' style="" x="138" y="0" width="23" height="120"/>
+<rect data-key='19' style="" x="161" y="0" width="23" height="120"/>
+<!--  Black keys (overlap with the white keys)  -->
+<rect data-key='1' data-colour="black" x="14.33333" y="0" width="13" height="80"/>
+<rect data-key='4' data-colour="black" x="41.66666" y="0" width="13" height="80"/>
+<rect data-key='7' data-colour="black" x="64.25" y="0" width="13" height="80"/>
+<rect data-key='9' data-colour="black" x="82.25" y="0" width="13" height="80"/>
+<rect data-key='12' data-colour="black" x="108.25" y="0" width="13" height="80"/>
+<rect data-key='15' data-colour="black" x="134.75" y="0" width="13" height="80"/>
+<rect data-key='18' data-colour="black" x="154.75" y="0" width="13" height="80"/>
+
+<rect transform='translate(3 0)' data-key='2' data-colour="grey" x="14.33333" y="0" width="13" height="50"/>
+<rect transform='translate(3 0)' data-key='5' data-colour="grey" x="41.66666" y="0" width="13" height="50"/>
+<rect transform='translate(3 0)' data-key='10' data-colour="grey" x="82.25" y="0" width="13" height="50"/>
+<rect transform='translate(3 0)' data-key='13' data-colour="grey" x="108.25" y="0" width="13" height="50"/>
+<rect transform='translate(3 0)' data-key='16' data-colour="grey" x="134.75" y="0" width="13" height="50"/>
+
+
+</svg>
+
+<p>
+     On a standard piano keyboard, one octave is divided into 7 whole tones: A, B, C, D, E, F and G. In between these tones
+     are 5 further notes which can be called either sharps or flats: A# (Bb), C# (Db), D# (Eb), F# (Gb), G# (Ab).
+     (whether it's a sharp of a flat doesn't really matter, the note has the same frequency, just a different name).
+     This gives us a grand total of 12 notes in one octave.
+</p>
+
+<p>
+     If you were to measure the frequency of a note, then measure the frequency of a note exactly one octave higher, you would see that the
+     higher note has exactly twice the frequency of the lower note. For example, middle C has a frequency of 261.626Hz, and the C above it has a frequency
+     of 523.251Hz.
+</p>
+
+<p>
+     Additionally, if you were to measure the frequency of a note, and then divide it by the frequency of the next lowest note, you would always get
+     the same result: 1.05946. For example, if we divide the frequency of middle C (261.626Hz) by the next lowest note, a B with frequency 246.942Hz, we get 1.05946. In other words, the ratio between all adjacent notes is always the same. The number 1.05946 is special because it is the twelfth root of 2.
+     This means that if you were to multiply it by itself 12 times, the answer would be 2. If you began at middle C, and multiplied 261.626Hz by 1.05946 12 times in a row, you would end up with 523.251Hz, which is exactly one octave higher as we found out in the paragraph above!
+</p>
+
+<p>
+     Dividing octaves up in this fashion, with equal ratios between notes, is called equal temperament. And when there are 12 notes in the octave, it is called 12 tone equal temperament, or 12-TET for short. But there is no law saying you have to do this. In the demo above, we have divided the octave up into 19 notes. This means the ratio between each note is now the nineteenth root of 2, which is 1.0371.
+</p>
+
+<p>
+     In 19 TET, we have to come up with a new layout for the keyboard because we have 7 new notes to fit it. In the first paragraph we said that sharps and flats sound the same. Well in 19 TET, they are different notes. In our demo, we have coloured the flats grey and made them slightly shorter than the sharps. That still leaves us 2 notes short, so we add in an E# and a B#, to complete the 19 note scale.
+</p>
+
+<p>
+     The keyboard above can be played by either clicking the notes with your mouse or by pressing keys on your computer keyboard.
+     The lowest note, a C, corresponds to the 'Z' on the keyboard, and all other white notes, follow along on the bottom row.
+     Black notes, (sharps) are on the row above, and grey notes, (flats) on the row above that. The picture below shows exactly which keys to press.
+</p>
+
+<img src="keyboard.png" alt="">

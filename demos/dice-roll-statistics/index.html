@@ -1,0 +1,32 @@
+---
+title: Statistics of rolling dice
+categories: [Maths]
+subcategories: [Statistics]
+tags: [Binomial]
+blurb: An interactive demonstration of the binomial behaviour of rolling dice
+stylesheets: [styles.css]
+scripts: [jquery.dice.js, demo.js]
+libraries: ["d3.v3.min.js"]
+credits:
+  - The dice images are generated using the <a href='https://github.com/avianey/jqDice'>jqDice library</a>
+---
+
+
+<p>
+	If you roll a fair, 6-sided die, there is an equal probability that the die will land on any given side. That probability
+	is 1/6. This means that if you roll the die 600 times, each face would be expected to appear 100 times. You can simulate
+	this experiment by ticking the "roll automatically" button above.
+</p>
+
+<p>
+	Now imagine you have two dice. The combined result from a 2-dice roll can range from 2 (1+1) to 12 (6+6).
+	However, the probability of rolling a particular result is no longer equal. This is because there are multiple ways
+	to obtain certain results. Let's use 7 as an example. There are 6 different ways: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1, whereas the result 2
+	can only be obtained in a single way, 1+1. This means you are 6 times more likely to achieve a 7 than you are to achieve a 2.
+</p>
+
+<p>
+	As the number of dice increases, the difference in probability between the most likely and least likely gets larger. 
+	The probability of rolling six sixes is 1 in 46,656! If you leave
+	the experiment running for a while, you begin to see the bar chart take on a unmistakable shape - that of the binomial distribution.
+</p>

@@ -1,0 +1,49 @@
+---
+title: 1D Wave Equation
+categories: [Physics]
+subcategories: [Waves]
+tags: []
+blurb: A demonstration of solutions to the one dimensional wave equation with fixed boundary conditions.
+#stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+credits:
+  - This demo was inspired by Christopher Horvath's excellent <a href='http://encinographic.blogspot.co.uk/'>simulation blog</a>.
+---
+
+
+<svg class="js-wave-demo" width='400' height='400' style='background: url(/img/graph-paper-centered.png) center center; display:block; margin:0 auto'>
+	<path id='height' transform='translate(0 200)' d='' fill='none' stroke='#2c3e50'/>
+	<path id='velocity' stroke='red' transform='translate(0 200)' fill='none' />
+	<path id='acc' stroke='green' transform='translate(0 200)' fill='none' />
+</svg>
+
+<p>
+	The one dimensional wave equation is a partial differential equation which tells us how a wave propagates over time. It might be useful to imagine a string tied between two fixed points. Each point on the string has a displacement, \( y(x,t) \),  which varies depending on its horizontal position, \( x \) and the time, \( t \). A wave must obey the following equation:
+</p>
+
+\[ \frac{\partial^2y}{\partial t^2} = c^2 \frac{\partial^2 y}{\partial x^2} \]
+
+<p>
+	where \( c \) determines how fast the wave travels along the string. In physical terms, this equation tells us that the vertical acceleration of a point is proportional to how curved the string is at that point.
+</p>
+
+<p>
+	Solutions to the wave equation depend heavily on the shape and velocity of the string at time \( t = 0 \). The demo above allows you to select several different initial conditions including stationary and moving waves.
+</p>
+
+<p>
+	It's interesting to notice that when the initial conditions are stationary, as soon as the animation begins, the solution decomposes into two distinct waves each travelling in opposite directions.
+</p>
+
+<p>
+	Equally interesting is the fact that fixing the end points of the string causes the wave to turn upside down and bounce back in the opposite direction when it reaches the boundary.
+</p>
+
+<p>
+	The wave animations also demonstrate the effect of interference, which happens when two waves pass through each other. The displacements are added together to get the resultant wave. The effect is particularly noticeable in the two moving Gaussian pulses: because these two pulses are exactly equal and opposite, there is a time when the string is perfectly flat which happens when the pulses are directly on top of each other.
+</p>
+
+<p>
+	This demo uses numerical methods to find solutions to the partial differential equation which means that if the simulation is left running for a while, tiny errors in the computation begin to accumulate making the wave look slightly misshapen. If you notice this, restarting the simulation will solve the problem.
+</p>

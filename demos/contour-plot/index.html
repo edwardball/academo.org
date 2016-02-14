@@ -1,0 +1,59 @@
+---
+title: Contour Plotter
+categories: [Maths]
+subcategories: [Geometry]
+tags: [Contour]
+blurb: You can use this tool to create contour lines for any function you input
+stylesheets: [styles.css]
+scripts: [conrec.js, demo.js]
+libraries: [d3.v3.min.js, graph.js, parser.js]
+twitterCard: true
+facebookOG: true
+---
+
+
+<div id="svg-container">
+<svg width='500px' height='500px'>
+	<g></g>
+</svg>
+<canvas id="c" width='500' height='500' style='display:none;background:lightgrey'></canvas>
+<canvas id="js-demo-axes" width='500' height='500'></canvas>
+</div>
+
+<p>Contour Lines Key:</p>
+<canvas id='js-key' width='500' height='30'></canvas>
+
+<p>
+	If you've ever looked at a map, particularly of a hilly or mountainous region, you may have noticed groups of lines like this:
+</p>
+
+<p>
+	These are known as contour lines, and every point on the line is at the same height. Contour lines aren't just limited to giving us info about mountains though, they can help us visualise a surface described by a mathematical function.
+</p>
+
+<p>
+	In the demo above, every point in the graph has an x and y value. Each point also has a z value which is calculated by plugging the x and y values in to the expression shown in the box. By default this expression is x^2 - y^2. So if x = 2, and y = 2, z will equal 4 - 4 = 0. Try hovering over the point (2,2) above. You should see in the sidebar that the (x,y,z) indicator displays (2,2,0).
+</p>
+
+<p>
+	So, that explains why we see a contour line along the line x = y. Because along this line, z always equals zero. Try picking another contour line and follow it with your mouse. See how the z value always stays the same.
+</p>
+
+<p>
+	You might also notice that when you have many contour lines close together, if you go slightly off the line, the z value quickly deviates from the line's z value. This is because you are looking at part of the graph that is very steep and a small change in x or y will have a big effect on the value of z.
+</p>
+
+<p>
+	There's nothing special about which contour lines are displayed, it's just a matter of choice. You can change which values the contour lines should display by tweaking the "Range of contour levels" and "Number of contour levels" sliders. By default they are set to (-100,100) and 21 respectively, so this means that the displayed contour levels will start at -100 and go up to and including +100 in intervals of 20. You can see how the contour lines equate to the colors in the key just below the graph.
+</p>
+
+<p>
+	To update the function that the graph is showing, enter the new function in the input box, and click "update".
+</p>
+
+{% include expression_table.html %}
+
+<p>
+	Contour lines can be a bit difficult to understand, so if you are having trouble, you may find the <a href="/demos/3d-surface-plotter/">3D surface plotter</a> useful to help visualise the actual shape of the 3D surface.
+</p>
+

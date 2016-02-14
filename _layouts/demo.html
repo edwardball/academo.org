@@ -1,0 +1,85 @@
+{% include header.html %}
+
+<div class="preamble">
+	<h1>{{page.title}}</h1>
+	<hr>
+	<p class="blurb">
+		{{ page.blurb }}
+	</p>
+	<p class="tags">
+		{% strip %}
+			{% for cat in page.categories %}
+				<a href='/{{ cat | downcase }}'>{{ cat }}</a>
+			{% endfor %}
+
+	        {% for demo_subcat in page.subcategories %}
+		        {% for site_subcat in site.pages %}
+			        {% if demo_subcat == site_subcat.title %}
+				        <a href='{{site_subcat.url}}'>{{site_subcat.title}}</a>
+			        {% endif %}
+		        {% endfor %}
+	        {% endfor %}
+
+	        {% for tag in page.tags %}
+		        <a href='/search/?q={{ tag | downcase }}'>{{ tag }}</a>
+	        {% endfor %}
+        {% endstrip %}
+    </p>
+    <hr>
+</div>
+
+<div id="demo" {% if page.background %} style='background:{{page.background}}' {% endif %} class="{% if page.noUi == true %} demo--wide {% endif %}">
+	
+</div>
+
+{% if page.noUi != true %}
+<div class="clearfix" id='ui-container'>
+</div>
+{% endif %}
+
+
+<div class="demo-description">
+
+    <hr>
+
+    {{ content }}
+			
+	{% if page.credits %}
+
+		<hr>
+
+		<h4>Credits</h4>
+
+		<ul class="credits">
+	        {% for credit in page.credits %}
+		        <li>{{ credit }}</li>
+	        {% endfor %}
+        </ul>
+
+    {% endif %}
+
+	{% if site.dev_mode != true %}
+	    <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'academo'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% endif %}
+    	        
+ </div>
+
+ <div class="sidebar">
+	<h3>You might also be interested in</h3>
+ 	<hr>
+ </div>
+
+
+{% include footer.html %}

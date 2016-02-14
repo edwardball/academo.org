@@ -1,0 +1,59 @@
+---
+title: Orbit Simulator
+categories: [Physics]
+subcategories: [Classical Mechanics, Astronomy]
+tags: [Orbit, Newton]
+blurb: An interactive demonstration of an orbit.
+stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+credits:
+  - "The starry background is based on this image: <a href='http://commons.wikimedia.org/wiki/File:Vermont_night_sky_stargazing.JPG#mediaviewer/File:Vermont_night_sky_stargazing.JPG'>Vermont night sky stargazing</a> by Chensiyuan."
+  - Collision animation uses artwork from <a href='https://mrbubblewand.wordpress.com'>https://mrbubblewand.wordpress.com</a>
+---
+
+<p>
+	The above demo shows how a body behaves when under the influence of the gravity of a much more massive object. In our example, we have chosen this to be a moon
+	orbiting a planet, but it could equally be a planet orbiting a star.
+</p>
+
+<p>
+	You can click anywhere on the demo to reposition the moon. And clicking and dragging from within the moon will display an arrow. The length and direction of this arrow gives the moon an initial velocity, which affects the overall shape of the orbit.
+</p>
+
+<p>
+	Newton's law of gravitation tells us that the force acting on the moon will be
+
+	\[ F = \frac{GMm\hat{r}}{r^2} \]
+</p>
+
+<p>
+	Where \( M \) and \( m \) are the masses of the planet and moon respectively; \( G \) is the universal gravitational constant, which has a value
+	of \( 6.67384 \times \mathrm{10^{-11} m^3 kg^{-1} s^{-2}} \); \( r \) is the distance between the centers of each body, and \( \hat{r} \) is the unit vector
+	pointing along the direction or \( r \).
+</p>
+
+<p>
+	The planet will also experience a force equal in magnitude but opposite in direction to the one the moon experiences. However, because the planet
+	is much more massive than the moon, the acceleration will be much lower, and for the sake of simplicity, is ignored in this demonstration.
+</p>
+
+
+
+<svg class="js-orbit-demo">
+	<filter id="blurMe">
+	   <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+	 </filter>
+	 <filter id="blurMeLess">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+	  </filter>
+	 <g class='js-system-wrapper'>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='white' filter="url(#blurMe)"/>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='lightblue' />
+	 	<circle class='js-planet-shadow' cx='0' cy='0' r='10' fill='beige' filter="url(#blurMeLess)"/>
+	 	<circle class='js-planet' cx='0' cy='0' r='10' fill='beige'/>
+	 	<path stroke-width='5' stroke='#1abc9c' fill='#1abc9c' class='js-drag-line' stroke-linecap='round' />
+	 	<path class='js-trail' stroke-width='1' stroke='white' path='' fill='none'/>
+	 </g>
+</svg>
+<div class='explosion js-explosion'></div>

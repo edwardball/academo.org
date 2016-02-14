@@ -1,0 +1,20 @@
+.clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.mobile-show{
+	display:none;
+}
+
+@media (max-width: 400px) {
+	.mobile-show{
+		display:block;
+	}
+	.mobile-hide{
+		display:none;
+	}
+}

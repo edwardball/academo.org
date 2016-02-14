@@ -1,0 +1,26 @@
+name: "Academo.org - Free, interactive, education."
+description: "Education through demonstration"
+
+url: "https://academo.org"
+
+jquery_path: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+
+assets_server: "https://s3-us-west-2.amazonaws.com/academo-assets"
+dev_mode: false
+
+
+defaults:
+  -
+    scope:
+      path: "demos"
+    values:
+      layout: "demo"
+
+markdown: rdiscount
+permalink: pretty
+
+exclude: ['README.md', 'rakefile', 'RakeHelpers.rb']
+
+sass:
+  sass_dir: scss
+  style: :compressed

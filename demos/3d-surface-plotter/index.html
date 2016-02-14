@@ -1,0 +1,20 @@
+---
+title: 3D Surface Plotter
+categories: [Maths]
+subcategories: [Geometry]
+tags: [Graph, plot, surface]
+blurb: An online tool to create 3D plots of surfaces.
+stylesheets: [vis.css, styles.css]
+scripts: [parser.js, vis.min.js, demo.js]
+---
+
+<div id="visualization"></div>
+
+<p>
+	This demo allows you to enter a mathematical expression in terms of x and y. When you hit the calculate button, the demo will
+	calculate the value of the expression over the x and y ranges provided and then plot the result as a surface.
+	The graph can be zoomed in by scrolling with your mouse, and rotated by dragging around. Clicking on the graph will reveal the x, y and z values at that particular point.
+</p>
+
+{% include expression_table.html %}
+

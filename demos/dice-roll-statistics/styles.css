@@ -1,0 +1,70 @@
+/*
+ *  This file is part of jqDice.
+ *  <https://github.com/avianey/jqDice>
+ *  
+ *  Copyright (C) 2012 Antoine Vianey
+ *  
+ *  jqDice is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  jqDice is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with jqDice. If not, see <http://www.gnu.org/licenses/>
+ */
+
+div.dice-container, div.dice {
+	color: white;
+	background: white;
+	border: none;
+}
+
+div.dice div.dice-indicator {
+	-webkit-box-shadow: inset 0 0 1px 1px #111111;
+	-moz-box-shadow: inset 0 0 1px 1px #111111;
+	box-shadow: inset 0 0 1px 1px #111111;
+	background: #111111;
+	position: relative;
+}
+
+
+/* academo custom styles */
+
+.dice-wrapper{
+	max-width:360px;
+	margin:0 auto;
+	/*overflow: hidden;*/
+}
+
+.dice-wrapper:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+.dice-container{
+	float:left;
+	/* padding: 20px; */
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+
+
+/* d3 */
+
+.x-axis path, .y-axis path,
+.x-axis line, .y-axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.x-axis text, .y-axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}

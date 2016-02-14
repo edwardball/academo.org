@@ -1,0 +1,132 @@
+.tags a{
+	text-decoration:none;
+	padding:5px 10px;
+	display:inline-block;
+	margin:0 10px 10px 0;
+	background:$grey;
+	color:$grey--x-dark;
+	transition: background 0.3s;
+	font-size:16px;
+	text-transform: capitalize;
+
+	&:hover{
+		background: mix($green, $white, 50%);
+		transition-duration: 0s;
+	}
+}
+
+#demo{
+	margin-bottom:20px;
+}
+
+#demo, .demo-description{
+	float:left;
+	width:800px;
+	width:calc(100% - 260px);
+}
+
+.demo--wide{
+	width:100%!important;
+}
+
+.demo-description{
+	margin-bottom: 60px;
+	max-width: 640px;
+	margin-left: 100px;
+	margin-top:60px;
+}
+
+@media (max-width: 1120px) {
+    .demo-description{
+        margin-left:0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #demo, .demo-description{
+        width:100%;
+        margin:0 0 20px;
+    }
+}
+
+.demo-description h3{
+	margin: 40px 0 0;
+}
+
+#ui-container, .sidebar{
+	float:right;
+	width:240px;
+	background:$grey;
+	padding:20px;
+	margin-bottom:20px;
+	box-sizing:border-box;
+}
+
+
+.sidebar{
+	margin-top:60px;
+}
+
+.sidebar h3{
+	margin-top:0;
+}
+
+.preamble hr{
+	margin-top:0;
+}
+
+.credits li{
+	font-size:16px;
+}
+
+.sidebar .thumbnails li{
+	width:100%;
+	margin:0;
+	&:nth-child(4n+1){
+		clear:none;
+	}
+}
+
+@media (max-width: 1020px) {
+	.sidebar{
+		width:100%;
+		margin:0 0 20px;	
+	}
+
+	.sidebar .thumbnails li{
+		margin: 20px;
+		width: calc(33% - 40px);
+		
+
+		&:nth-child(3n+1){
+			clear:both;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+
+	.sidebar .thumbnails li{
+		width: calc(50% - 40px);
+
+		&:nth-child(3n+1){
+			clear:none;
+		}
+
+		&:nth-child(2n+1){
+			clear:both;
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.sidebar .thumbnails li{
+		width:100%;
+		margin-left:0;
+
+		img{
+			width:99%;//sub pixel rendering bug causes right hand border to be cut off without this
+		}
+	}
+}

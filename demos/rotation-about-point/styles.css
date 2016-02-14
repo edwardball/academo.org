@@ -1,0 +1,10 @@
+#demo{
+/*  position:relative;
+  height: 400px;*/
+  background: url(/img/graph-paper-centered.png);
+  background-position: center center;
+}
+
+#marker, #origin{
+	cursor: move;
+}

@@ -1,0 +1,47 @@
+---
+title: Spherical Waves
+categories: [Physics]
+subcategories: [Waves]
+tags: [Spherical]
+blurb: An interactive plot of spherical waves. See how wavenumber, frequency and amplitude affect the behaviour.
+#stylesheets: [vis.css, styles.css]
+stylesheets: [styles.css]
+#scripts: [vis.min.js, demo.js]
+scripts: [demo.js]
+latex: true
+---
+
+<div id="visualization"></div>
+
+<p>
+	When writing equations of waves, you will often see them written in complex exponential form, because this can  make it easier to perform algebraic manipulations on the wave. The equation for a spherical wave is the following:
+</p>
+
+\[ u(r,t) = \frac{A}{r}e^{i(\omega t \pm kr)} \]
+
+\( u(r,t) \) is the value of the wave at a particular point in space, \( r \) and time, \( t\). \( A \) is the amplitude of the wave, \(\omega \) is the angular frequency and \( k \) is the wavenumber.
+
+<p>
+	When the time comes to plot the equation, we use only the Real part of the equation.
+	Rewriting the above equation with Euler's formula gives us:
+</p>
+
+\[ u(r,t) = \frac{A}{r}\big( \cos{(\omega t \pm kr}) + i \sin{(\omega t \pm kr)} \big) \]
+
+\[ \Re[u(r,t)] = \frac{A}{r}\cos{(\omega t \pm kr}) \]
+
+<p>
+	To convert this from spherical coordinates to Cartesian coordinates, use the following relationship:
+</p>
+
+\[ r = \sqrt{x^2 + y^2 + z^2} \]
+
+<p>
+	The demonstration at the top of the page shows a plot of the spherical wave along the \(x\) and \(y\) axes, fixing \(z\) at 0. Red areas correspond to positive values, and blue areas negative. The brighter colors indicate larger magnitudes, and the darker colors represent smaller magnitudes. Pure black indicates a value of zero.
+</p>
+<p>
+	You can change wavenumber, angular frequency and amplitude to observe how the shape of the wave depends on these quantities. Additionally, by ticking the "animate", box, the demo will begin progressing through time. Since the wave has two forms (represented by the \( \pm \) symbol) the drop-down box allows to you choose which version you want to display. You should notice that	they are very similar indeed, but one version creates waves moving outwards from a point, whereas the other shows waves moving in and converging on a point.
+</p>
+<p>
+	The demo also contains an option to select a resolution from 1 (the highest quality) to 3 (the lowest quality). This is because calculating every pixel in the image at high resolution can take a number of milliseconds that would cause the animation to have a low frame-rate. Decreasing the resolution decreases the number of calculations needed, so the smoothness of the animation improves.
+</p>

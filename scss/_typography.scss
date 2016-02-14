@@ -1,0 +1,42 @@
+h1{
+	font-weight:700;
+	color:$navy--light;
+	font-size: 48px;
+	line-height:1;
+	margin:80px 0 20px;
+}
+
+h2{
+	color:$navy--light;
+}
+
+@media (max-width: 600px){
+	h1{
+		font-size:30px;
+		margin-top:30px;
+	}
+}
+
+a{
+	color:$green;
+	transition: color 0.3s;
+
+	&:hover{
+		color:$orange;
+		transition-duration:0s; 
+	}
+}
+
+p, li{
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+p{
+	margin-top:0;
+	margin-bottom:20px;
+}
+
+.small {
+	font-size:12px;
+}

@@ -1,0 +1,17 @@
+/*#demo label{
+  float:right;
+  display: block;
+  width:100%;
+}*/
+table{
+  margin:0 auto;
+  width:100%;
+}
+
+.label{
+  text-align: right;
+}
+
+td{
+  padding:5px;
+}

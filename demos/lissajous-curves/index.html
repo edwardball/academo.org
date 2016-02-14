@@ -1,0 +1,32 @@
+---
+title: Lissajous Curves
+categories: [Maths]
+subcategories: [Geometry]
+tags: [Polar, plot, parametric]
+blurb: An interactive demonstration of Lissajous curves.
+#stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+---
+
+<svg width='300px' height='300px' class='js-curve' style='background:url("/img/graph-paper-centered-hi-res.png");background-position: center center;'>
+	<path transform='' fill='none' class='js-curve-path' stroke='black' width='1' d=''/>
+</svg>
+
+<p>
+	A Lissajous curve, named after Jules Antoine Lissajous is a graph of the following two parametric equations:
+</p>
+
+
+\begin{align}
+x  &=  A sin (at + \phi) \\
+y  &=  B sin (bt)
+\end{align}
+
+<p>
+	\( A \) and \( B \) represent amplitudes in the \( x \) and \( y \) directions, \( a \) and \( b \) are constants, and \( \phi \) is an phase angle. The user interface above allows you to modify each of these five parameters and see how the graph is affected. The values of \( a \) and \( b \) have a particularly strong effect on the shape of the curve. 
+</p>
+
+<p>
+	\( a \) determines the number of horizontally aligned "lobes" and \( b \) determines the number of vertically aligned lobes. For example for \( a = 3\) and \( b = 2 \) you should see 3 horizontal lobes and 2 vertical. You may need to adjust \( \phi \) to clearly see the lobes as they sometimes overlap for certain values of \( \phi \). Also note, that the graph with, say,  \( a = 6 \) and \( b = 4 \) will be identical to the graph of \( a = 3 \) and \( b = 2 \) as it is specifically the ratio which affects the shape of the graph.
+</p>

@@ -1,0 +1,21 @@
+.footer{
+	color:$white;
+	background:$navy;
+	width:100%;
+	text-align:right;
+	max-width:1200px;
+	margin:0 auto;
+
+	//required for sticky footer
+	height:62px;
+
+}
+
+.footer-inner{
+	padding:20px;
+}
+
+//required for sticky footer
+.push {
+	height:62px;
+}

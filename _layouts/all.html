@@ -1,0 +1,35 @@
+{% include header.html %}
+
+<h1>{{page.title}}</h1>
+<hr>
+<div class="subcategory-description">
+	<p>
+		Below is a list of all the demos currently available on academo.org, arranged in alphabetical order. If you would like to browse demos by a specific subject,
+		please click one of the category links to be taken to the page for your chosen category. We are always adding new demos, so please check back often to see the latest updates.
+	</p>
+	<p class="tags">
+		<a href="/engineering/">Engineering</a>
+		<a href="/geography/">Geography</a>
+		<a href="/maths/">Maths</a>
+		<a href="/music/">Music</a> 
+		<a href="/physics/">Physics</a>
+	</p>
+</div>
+<hr>
+
+<ul class="thumbnails">
+	{% assign sorted_pages = (site.pages | sort: 'title') %}
+	{% for demo in sorted_pages %}
+		{% if demo.layout == 'demo'%}
+			<li>
+				<a href="{{ demo.url }}" class="thumbnail">
+					<img src="{{ demo.url }}thumbnail.png" alt="">
+					<p class="thumbnail-title">{{ demo.title }}</p>
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+
+{% include footer.html %}

@@ -1,0 +1,22 @@
+---
+title: Speed of Light Visualizer
+categories: [Physics]
+subcategories: [Light]
+tags: [speed, geodesic]
+blurb: An interactive demo showing how long a signal travelling at the speed of light takes to get across the world
+#stylesheets: [styles.css]
+cdn: ["//maps.googleapis.com/maps/api/js?key=AIzaSyCoFlR16Ohnl6uSCw3Xn6RL8v9pzx3gJDE&sensor=false&libraries=geometry"]
+scripts: [demo.js]
+---
+
+
+<p>
+	The demo above shows two markers on a map of the world. The markers are connected by a geodesic, which is the shortest path between the two locations.
+	If the Earth was flat, it would be a simple straight line, but since the Earth is round, the geodesic looks curved. <!-- (For more info on geodesics, you may be interested in our 
+	<a href="/demos/geodesics/">geodesics demo</a>.  -->The markers can be dragged to any location you wish.
+</p>
+
+<p>
+	The sidebar contains a button with the title "Send Pulse". This allows you to send a pulse (represented by a yellow circle) at the speed of light from one marker to the other. Below the button, there is some information revealing
+	the distance between the two markers, and the time taken for the pulse to arrive at it's destination, given that the pulse is travelling at 299,792,458 m/s. As you can see, the signals reach their destination in the blink of an eye, even when travelling from one side of the Earth to the other.
+</p>

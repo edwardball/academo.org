@@ -1,0 +1,128 @@
+---
+title: 3D Vector Plotter
+categories: [Maths]
+subcategories: [Geometry]
+tags: [Graph, plot, vector]
+blurb: An interactive plot of 3D vectors. See how two vectors are related to their resultant, difference and cross product.
+stylesheets: [vis.css, styles.css]
+scripts: [vis.custom.js, demo.js]
+latex: true
+---
+
+<div id="visualization"></div>
+
+<p>
+	The demo above allows you to enter two vectors in the form (x,y,z). Clicking the draw button will then display the vectors on the diagram (the scale
+	of the diagram will automatically adjust to fit the magnitude of the vectors). You can drag the diagram around and zoom in or out by scrolling with the mouse. Clicking on the end of a vector will also reveal its individual components.
+</p>
+
+<p>
+	The demo also has the ability to plot 3 other vectors which can be computed from the two input vectors. The first of these is the resultant, and this is obtained when
+	the components of each vector are added together. If the resultant is  \( \textbf{c} \), then 
+</p>
+
+\[ \textbf{c} = \textbf{a} + \textbf{b} \]
+
+\[ \left( \begin{array}{c}
+c_x \\
+c_y \\
+c_z \end{array} \right) =
+\left(
+\begin{array}{c}
+a_x \\
+a_y \\
+a_z
+\end{array} \right)
++
+\left(
+\begin{array}{c}
+b_x \\
+b_y \\
+b_z
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+a_x + b_x \\
+a_y + b_y \\
+a_z + b_z
+\end{array}
+\right)
+
+\]
+
+<p>
+	In a similar fashion, the difference is what you obtain when you subtract one vector from the other, in this case \( \textbf{d} \),
+</p>
+
+\[ \textbf{d} = \textbf{a} - \textbf{b} \]
+
+\[ \left( \begin{array}{c}
+d_x \\
+d_y \\
+d_z \end{array} \right) =
+\left(
+\begin{array}{c}
+a_x \\
+a_y \\
+a_z
+\end{array} \right)
+-
+\left(
+\begin{array}{c}
+b_x \\
+b_y \\
+b_z
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+a_x - b_x \\
+a_y - b_y \\
+a_z - b_z
+\end{array}
+\right)
+
+\]
+
+<p>
+	Finally, the vector product (also known as cross product) is defined as 
+</p>
+
+\[ \textbf{e} = \textbf{a} \times \textbf{b} = \lvert a \rvert\ \lvert b \rvert\ \sin(\theta)\hat{n} \]
+
+\[ \left( \begin{array}{c}
+e_x \\
+e_y \\
+e_z \end{array} \right) =
+\left(
+\begin{array}{c}
+a_x \\
+a_y \\
+a_z
+\end{array} \right)
+\times
+\left(
+\begin{array}{c}
+b_x \\
+b_y \\
+b_z
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+a_yb_z - a_zb_y \\
+a_zb_x - a_xb_z\\
+a_xb_y - a_yb_x
+
+\end{array}
+\right)
+
+\]
+
+<p>
+	Geometrically speaking, the cross product's length is equal to the product of the magnitudes of \( \textbf{a} \) and \( \textbf{b} \) multiplied by the sine of the angle between them. It points in the direction of \( \hat{n} \), which is the vector pointing directly out of the plane which \( \textbf{a} \) and \( \textbf{b} \) lie in. This means that if two vectors point in the same (or exactly opposite) direction, then their cross product will be zero. Try it out above!
+</p>

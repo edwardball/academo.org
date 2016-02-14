@@ -1,0 +1,51 @@
+---
+title: Hypocycloid animation
+categories: [Maths]
+subcategories: [Geometry]
+tags: [circle]
+blurb: Interactive demo of a smaller circle rolling inside of larger circle to create a hypocycloid
+stylesheets: [styles.css]
+scripts: [animation.js]
+#libraries: [flotr2.js]
+latex: true
+---
+
+
+<p>
+	Imagine attaching a pen to a certain point on a small circle. If you were to then roll that small circle around the inside of
+	a larger circle, the shape the pen would trace out would be a <em>hypercycloid</em>.
+</p>
+
+<p>
+	Mathematically speaking, the hypocycloid is defined by two parametric equations:
+</p>
+
+<p>
+	\[ x(\theta) = (R-r)\cos{\theta} + r \cos \left( \frac{R-r}{r}\theta \right) \]
+	\[ y(\theta) = (R-r)\sin{\theta} - r \sin \left( \frac{R-r}{r}\theta \right) \]
+
+</p>
+
+<p>
+	Where
+	<ul>
+		<li>\( R \) is the radius of the large circle</li>
+		<li>\( r \) is the radius of the small circle</li>
+	</ul>
+</p>
+
+<p>
+	The shape of the hypocycloid depends heavily on the ratio \( k = \frac{R}{r} \). If \( k \) is a whole number,
+	then the hypocycloid will have \( k \) sharp corners. For example, for \( k = 2 \) the shape will
+	be a straight line (this system is known as the Tusi-couple, and was first investigated by Nasir al-Din al-Tusi in 1247). For \( k = 3\), the hypocycloid will be a 3-pointed shape called a deltoid and for \( k = 4 \) it will
+	be a 4-pointed shape called an astroid.
+</p>
+
+<p>
+	If \( k \) is a fractional number, the number of corners is the numerator in simplest fractional representation of the ratio. So if the ratio is 1.67 recurring, the fraction will be
+	\( \frac{5}{3} \), so the hypocycloid has 5 corners.
+</p>
+
+<p>
+	This demo was inspired by http://en.wikipedia.org/wiki/File:Deltoid2.gif.
+</p>

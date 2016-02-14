@@ -1,0 +1,26 @@
+#demo{
+	position:relative;
+	height:500px;
+}
+
+#demo svg, #demo canvas{
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left: -250px;
+	z-index: 1;
+	/*width:100%;*/
+	max-width: 500px;
+}
+
+#demo canvas{
+	z-index: 0;
+}
+
+#js-key {
+	margin-bottom: 20px;
+}
+
+#demo svg path:hover{
+	stroke:black;
+}

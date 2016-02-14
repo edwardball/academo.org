@@ -1,0 +1,24 @@
+rect{
+	fill:white;
+	stroke: black;
+	cursor: pointer;
+}
+
+rect:hover, rect.hover{
+	fill:lightblue!important;
+	/*opacity: 0.5;*/
+}
+
+rect[data-colour="black"] {
+	fill:#333;
+}
+
+rect[data-colour="grey"] {
+	fill:grey;
+}
+
+svg{
+	max-width:600px;
+	margin: 40px auto;
+	display: block;
+}

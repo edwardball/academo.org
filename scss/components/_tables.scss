@@ -1,0 +1,66 @@
+//
+// Tables // based on twitter bootstrap
+// --------------------------------------------------
+
+
+// BASE TABLES
+// -----------------
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// BASELINE STYLES
+// ---------------
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  // Cells
+  th,
+  td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+  th {
+    font-weight: bold;
+  }
+  // Bottom align for column headings
+  thead th {
+    vertical-align: bottom;
+  }
+  // Remove top border from thead by default
+
+  thead:first-child tr:first-child th,
+  thead:first-child tr:first-child td {
+    border-top: 0;
+  }
+
+}
+
+
+// BORDERED VERSION
+// ----------------
+
+.table-bordered {
+  border: 1px solid #ddd;
+  border-left: 0;
+  
+  th,
+  td {
+    border-left: 1px solid #ddd;
+  }
+  // Prevent a double border
+
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+
+}

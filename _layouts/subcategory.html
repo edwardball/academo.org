@@ -1,0 +1,27 @@
+{% include header.html %}
+
+
+		<h1>{{page.title}}</h1>
+		<hr>
+		<div class="category-description">
+
+					{{content}}
+			<p><a href='/{{page.category | downcase }}'>&larr; Back to {{page.category}} overview</a></p>
+		</div>
+		<hr>
+
+		<ul class="thumbnails">
+			{% assign sorted_pages = (site.pages | sort: 'title') %}
+			{% for demo in sorted_pages %}
+				{% if demo.layout == 'demo' and demo.subcategories contains page.title %}
+					<li class="span3">
+						<a href="{{ demo.url }}" class="thumbnail">
+							<img src="{{ demo.url }}thumbnail.png" alt="">
+							<p class="thumbnail-title">{{ demo.title }}</p>
+						</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+
+{% include footer.html %}

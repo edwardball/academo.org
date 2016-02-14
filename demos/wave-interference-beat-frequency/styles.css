@@ -1,0 +1,29 @@
+.grid-background {
+  fill: #ddd;
+}
+
+.grid line, .axis line {
+  stroke: #333;
+  stroke-opacity: .15;
+}
+
+.grid .minor line {
+  stroke-opacity: .15;
+}
+
+.grid text {
+  display: none;
+}
+
+.axis line {
+  stroke: #000;
+}
+
+.axis path,
+.grid path {
+  display: none;
+}
+
+.axis text { 
+	font-size: 13px;
+}

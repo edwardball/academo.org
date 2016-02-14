@@ -1,0 +1,141 @@
+---
+layout: demo
+title: Logic Gate Simulator
+categories: [Engineering]
+subcategories: [Electronics]
+tags: [logic]
+blurb: A free, simple, online logic gate simulator. Investigate the behaviour of AND, OR, NOT, NAND, NOR and XOR gates. Select gates from the dropdown list and click "add node" to add more gates. Drag from the hollow circles to the solid circles to make connections. Right click connections to delete them. See below for more detailed instructions.
+stylesheets: [styles.css]
+scripts: ["dom.jsPlumb-1.7.2-min.js",animation.js]
+credits:
+  - All logic icons designed by <a href="http://www.thenounproject.com/olgio">Marco Olgio</a> from the <a href="http://www.thenounproject.com">Noun Project</a>
+---
+
+<p>
+	The demo above allows you to create sequences of logic gates to see how they behave when connected to various inputs and outputs. Initially, 
+	you are presented with a simple on/off input and an output. To connect them, click and drag from the hollow circle on the right side of the
+	on/off switch, and release the mouse when you are over the solid circle on the left side of the "output" block.
+</p>
+
+<p>
+	For each of the logic gates, outputs are hollow circles, and inputs are solid circles. Our "on/off" switch and "output block" aren't actually logic gates,
+	but they are required because they give us the 1s and 0s needed to see how the gates behave. Click the on\off switch and see what happens. It turns yellow.
+	This is our way of differentiating between 0 (off) and 1 (on).
+</p>
+
+<p>
+	To add a new logic gate, or an additional input block, choose from the dropdown menu and then click "add node". The new node will be placed in the top left hand corner, and
+	you can drag it to your desired position. To delete nodes, click the small cross in the top right corner of its enclosing box. To remove connections, you can click on the
+	input (solid circle) and drag away and release, or alternatively you can right click anywhere on the connection.
+</p>
+
+
+<h4>NOT Gate</h4>
+
+<img src="symbols/not.svg" alt="NOT gate" width='100px'>
+
+<p>
+	The NOT gate is also known as an inverter because the output is the exact opposite of the input. It has one input and one output.
+	The two possibilities are written out in the table below. Tables listing all logical possibilities like this are known as <em>truth tables</em>.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>1</td></tr>
+	<tr><td>1</td><td>0</td></tr>
+</table>
+
+<h4>AND Gate</h4>
+
+<img src="symbols/and.svg" alt="NOT gate" width='100px'>
+
+<p>
+	The AND gate has two inputs and one output. The output is 1 if <em>both</em> inputs are 1, and for all other cases the output is 0.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input 1</th><th>Input 2</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>1</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td></tr>
+	<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h4>NAND Gate</h4>
+
+<img src="symbols/nand.svg" alt="NAND gate" width='100px'>
+
+<p>
+	The NAND gate behaves in the opposite fashion to and AND gate. You can think of it as an AND gate followed immediately by a NOT gate.
+	Its output is 0 when the two inputs are 1, and for all other cases, its output is 0.
+	The name NAND comes from joining NOT and AND. The symbol for NAND is the same as that for AND except for the addition of a small circle on the right side.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input 1</th><th>Input 2</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>0</td><td>1</td></tr>
+	<tr><td>1</td><td>0</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<h4>OR Gate</h4>
+
+<img src="symbols/or.svg" alt="OR gate" width='100px'>
+
+<p>
+	The OR gate has two inputs and one output. If at least one of the inputs is 1, then the output will be 1. If neither input is 1, the output will be 0.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input 1</th><th>Input 2</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>1</td><td>0</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h4>NOR Gate</h4>
+
+<img src="symbols/nor.svg" alt="NOR gate" width='100px'>
+
+<p>
+	Just as the NAND gate could be thought of as an AND followed by a NOT, a NOR can be thought of as an OR also followed by a NOT.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input 1</th><th>Input 2</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>0</td><td>1</td></tr>
+	<tr><td>1</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td></tr>
+	<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<h4>XOR Gate</h4>
+
+<img src="symbols/xor.svg" alt="XOR gate" width='100px'>
+
+<p>
+	With an OR gate, if both inputs were 1, the output was 1. However, with an XOR, (exclusive OR), if both inputs are 1, the output is 0. For all
+	other scenarios, the XOR behaves the same as the OR.
+</p>
+
+<table class="table table-bordered truth-table">
+	<thead>
+		<tr><th>Input 1</th><th>Input 2</th><th>Output</th></tr>
+	</thead>
+	<tr><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>1</td><td>0</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>

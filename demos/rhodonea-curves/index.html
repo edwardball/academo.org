@@ -1,0 +1,44 @@
+---
+title: Rhodonea Curves (Roses)
+categories: [Maths]
+subcategories: [Geometry]
+tags: [Polar, plot, parametric]
+blurb: An interactive demonstration of Rhodonea curves, also known as Roses.
+#stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+credits:
+  - "This demo was inspired by the work of <a href='https://www.jasondavies.com/rhodonea/'>Jason Davies</a>."
+---
+
+<svg width='300px' height='300px' class='js-rose' style='background:url("/img/graph-paper-centered-hi-res.png");background-position: center center;'>
+	<path transform='' fill='none' class='js-rose-path' stroke='black' width='1' d=''/>
+</svg>
+
+<p>
+	A rhodonea curve is a graph of the following polar equation:
+</p>
+
+\[ r = A cos (k \theta) \]
+
+<p>
+	where \( k = \frac{m}{n} \). The polar equation can also be written as two Cartesian parametric equations:
+</p>
+
+\begin{align}
+x  &=  A cos (kt) cos(t) \\
+y  &=  A cos (kt) sin(t)
+\end{align}
+
+<p>
+	The shape of the graph is strongly dependent on the value of \( k \), and the values of \( m \) and \( n \) can give clues as to what the shape will be.
+	For example, if \( k \) is an integer, the graph will look like a classic flower and have \( 2k \) petals if \( k \) is even, and \( k \) petals if \( k \) is odd.
+</p>
+
+<p>
+	If \( k \) is half an integer, such as 1.5, 2.5 and so on, the graph will  \( 4k \) petals but they will overlap which does not occur for integer \( k \). If \( m = n \) then we will get a perfect circle.
+</p>
+
+<p>
+	The user interface above allows you to adjust the values of \( m \) and \( n \) so you can see how they affect the graph and see if you can figure out the patterns.
+</p>

@@ -1,0 +1,22 @@
+#demo{
+	position: relative;
+	background: url("/img/loader.gif");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+#demo img{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+
+#night{
+	opacity:1;
+}
+
+#bortle span{
+	font-weight: bold;
+}

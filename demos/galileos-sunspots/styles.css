@@ -1,0 +1,40 @@
+#demo{
+  /*width:100%;*/
+  position: relative;
+  background: url("/img/loader.gif");
+  background-repeat: no-repeat;
+  background-position: center center;
+  /*width:100%;*/
+}
+
+.image-wrapper{
+	position: relative;
+	width:100%;
+}
+
+#demo img{
+  position:absolute;
+  top:0;
+  left:0;
+  left:50%;
+  margin-left: -200px;
+  /*margin:0 auto;*/
+  /*height:500px;*/
+  /*width:100%;*/
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: url("/img/loader.gif");
+}
+
+#night{
+  opacity:1;
+}
+
+
+@media (max-width: 400px) {
+	#demo img{
+		width:100%;
+		margin-left: 0;
+		left:0;
+
+  }
+}

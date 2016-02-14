@@ -1,0 +1,7 @@
+_site
+_bucket-policy
+deployment.md
+s3_website.yml
+.DS_Store
+pinterest-acff7.html
+robots.txt

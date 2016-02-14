@@ -1,0 +1,50 @@
+---
+title: Electric field line simulator
+categories: [Physics]
+subcategories: [Electricity]
+tags: [fields, Coulomb]
+blurb: An interactive demo showing the behaviour of electric field lines around positive and negative point charges.
+stylesheets: [styles.css]
+scripts: [utils.js, demo.js]
+latex: true
+---
+
+<canvas id="js-point-charge-demo" width='500' height='500' style='background:#ededed'>
+
+</canvas>
+
+<p>
+	Coulomb's Law tells us that the force, \( F \),  between two point charges is
+</p>
+
+\[ \vec{F} = k_e \frac{q_1 q_2}{r_{21}^2} \hat{r}_{21} \]
+
+<p>
+	Where, \( q_1 \) and \( q_2 \) are the values of each charge, \( k_e \) is Coulomb's constant, \( 8.987 \times 10^9 \textrm{N} \textrm{m}^2 \textrm{C}^{-2}\), \( r_{21} \) is the magnitude of the vector pointing from charge 2 to charge 1, and \( \hat{r}_{21} \) is the unit vector along that direction.
+</p>
+
+<p>
+	The important principle to help you remember which way the force points is that opposite charges attract and like charges repel.
+</p>
+
+<p>
+	Once we know the force, we can compute the electric field. This is the force per unit charge.
+</p>
+
+\[ \vec{E} = \vec{F} / q \]
+
+<p>
+	The electric field is often visualised using field lines, which are what you can see in the interactive demo at the top of the page. Electric field lines follow a number of rules
+</p>
+
+<ul>
+	<li>They always point in the direction of the electric field at a given point. This direction is represented by an arrow.</li>
+	<li>They never cross, because this would mean the electric field would be pointing in two different directions at the same location, which is impossible.</li>
+	<li>They always start at positive charges (also known as a source) or at infinity.</li>
+	<li>They always end at negative charges or at infinity. </li>
+	<li>The number of lines in a given area is proportional to the field strength. In the simulation, a charge with +2 will have twice as many lines coming out of it as one with +1.</li>
+</ul>
+
+<p>
+	The demo above allows you to alter the charge of each point charge. You can also drag and drop the right hand point charge to see how the lines behave when the positions are changed.
+</p>

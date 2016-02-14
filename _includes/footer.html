@@ -1,0 +1,111 @@
+
+
+		<script src="{{site.jquery_path}}"></script>
+		<script src="/js/all.js?v={{ site.time | date: "%s" }}"></script> 
+
+
+		{% if page.layout == 'demo' %}
+
+			{% strip %}
+
+				{% if page.latex %}
+				
+					<script type="text/x-mathjax-config">
+						MathJax.Hub.Config({
+							TeX: {
+								equationNumbers: {
+									autoNumber: "AMS"
+								},
+							},
+							"HTML-CSS": {
+								styles: {
+									".MathJax_Display": {
+										"margin": "2.5em 0em",
+										// "width": "auto",
+										// "overflow-x": "scroll",
+										// "overflow-y": "hidden"
+									},
+									".MathJax a": {
+										"color": "#2C3E50",
+										"font-size": "80%"
+									}
+								}
+							}
+						});
+					</script>
+
+					<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" class='js-demo-external-library'></script>
+				{% endif %}
+
+				{% for script in page.cdn %}
+					<script src="{{script}}"></script>
+				{% endfor %}
+
+				{% for library in page.libraries %}
+					<script src="/js/lib/{{library}}" class='js-demo-library'></script>
+				{% endfor %}
+
+				{% if page.codepen != true %}
+
+					{% for script in page.scripts %}
+
+						{% capture demo_script %}{{page.url}}{{script}}{% endcapture %}
+							
+						    {% for file in site.static_files %}
+							    {% if demo_script == file.path %}
+									<script src="{{demo_script}}?v={{file.modified_time | date: "%s" }}"></script>
+								{% endif %}
+						    {% endfor %}
+
+					{% endfor %}
+
+				{% else %}
+
+					{% capture my_variable %}{{page.url | remove_first:'/' }}demo.js{% endcapture %}
+					<script id='codepen-script'>
+/* This code comes from Academo.org */
+{% render {{my_variable}} raw %}
+					</script>
+
+				{% endif %}
+				
+		    {% endstrip %}
+
+			<script>
+			    //ASSET SERVING
+			    var assetPath = "{{ site.assets_server }}";
+
+			    $(document).trigger({
+			    	type: "scriptLoaded"
+			    });
+		    </script>
+
+	    {% endif %}
+
+	    {% comment %}<!--Include javascript for search page -->{% endcomment %}
+	    {% if page.title == 'Search' %}
+		    {% comment %}{% bundle %} [/js/lunr.js, /js/mustache.js, /js/URI.js, /js/jquery.lunr.search.js, /js/search.js]{% endbundle %}{% endcomment %}
+		    <script src='/js/search.min.js'></script>
+	    {% endif %}
+
+	    <script>
+		    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		    	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		    if (window.location.host == 'academo.org') {
+		    	ga('create', 'UA-17960919-9', 'academo.org');
+		    	ga('send', 'pageview');
+		    }
+	    </script>
+		</div>
+	    <div class="push"></div>
+	    </div>
+	    <div class="footer">
+	    	<div class="footer-inner">
+		    	Academo.org 2016
+	    	</div>
+	    </div> <!-- End of content -->
+	</body>
+</html>

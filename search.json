@@ -1,0 +1,22 @@
+---
+---
+{
+	"entries" : [
+		{% strip %}
+		{% assign first_demo = "true" %}
+		{% for demo in site.pages %}
+		{% if demo.layout == "demo" %}
+				{% unless first_demo == "true" %},{% endunless %}
+				{
+					"type":  "{{ demo.layout }}",
+					"title": "{{ demo.title }}",
+					"categories": "{{ demo.categories | join: ', ' }}",
+					"subcategories": "{{ demo.subcategories | join: ', ' }}",
+					"tags"     : "{{ demo.tags | join: ', ' }}",
+					"url"      : "{{ site.baseurl }}{{ demo.url }}"
+				} {% assign first_demo = "false" %}
+		{% endif %}
+		{% endfor %}
+		{% endstrip %}
+	]
+}

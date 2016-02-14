@@ -1,0 +1,106 @@
+---
+title: One Dimensional Elastic Collisions
+categories: [Physics, Maths]
+subcategories: [Classical Mechanics]
+tags: [Elastic, Collision, Momentum]
+blurb: A demonstration of one dimensional elastic collisions highlighting the conservation of both momentum and energy
+scripts: [demo.js]
+latex: true
+background: "url(/img/graph-paper-centered.png) center center"
+---
+
+<p>
+	Imagine two billiard balls of mass \( m_1\) and \( m_2 \), travelling at velocities \( \vec{v_{1i}} \) and \( \vec{v_{2i}} \)
+	respectively (the \(_{i}\) stands for initial). They collide and bounce off each other with velocities \( \vec{v_{1f}} \) and \( \vec{v_{2f}} \) (
+	the \(_{f}\) stands for final).
+</p>
+<p>
+	Assuming we know the masses and initial velocities, we can calculate the final velocities by making use of two key conservation principles: the conservation of
+	momentum, and the conservation of energy.
+</p>
+
+<p>
+	The conservation of momentum (ie total momentum before the collision equals total momentum after) gives us equation 1. Note that because we are dealing with
+	one dimension we only require the magnitude of the vecotrs the so vector notation is not needed.
+</p>
+
+\begin{equation} \label{eq:momentum-conservation}
+m_1v_{1i} + m_2v_{2i} = m_1v_{1f} + m_2v_{2f}
+\end{equation}
+
+<p>
+	The conservation of energy (ie the total energy before the collision equals the total energy afterwards) gives us equation \( \eqref{eq:kinetic-energy} \). The scenario we are dealing with is perfectly elastic so no energy is lost in the collision itself allowing us to deal purely in terms of kinetic energy.
+</p>
+
+\begin{equation} \label{eq:kinetic-energy}
+\frac{1}{2}m_1v_{1i}{}^2 + \frac{1}{2}m_2v_{2i}{}^2  =  \frac{1}{2}m_1v_{1f}{}^2 + \frac{1}{2}m_2v_{2f}{}^2
+\end{equation}
+
+<p>
+	And we can factor out the \( \frac{1}{2} \) from both sides of this equation to give equation \( \eqref{eq:kinetic-half-factored} \).
+</p>
+
+\begin{equation} \label{eq:kinetic-half-factored}
+m_1v_{1i}{}^2 + m_2v_{2i}{}^2  =  m_1v_{1f}{}^2 + m_2v_{2f}{}^2
+\end{equation}
+
+<p>
+	Rearranging equation \( \eqref{eq:kinetic-half-factored} \) gives us
+</p>
+
+\begin{align}
+m_1v_{1i}{}^2  - m_1v_{1f}{}^2  &=  m_2v_{2f}{}^2 - m_2v_{2i}{}^2 \label{eq:kinetic-rearranged} \\
+m_1 (v_{1i}{}^2  - v_{1f}{}^2)  &=  m_2(v_{2f}{}^2 - v_{2i}{}^2)
+\end{align}
+
+<p>
+	The difference of two squares on each side (the term in the bracket) can now be factored out.
+</p>
+
+\begin{equation} \label{eq:kinetic-factored}
+m_1 (v_{1i}  + v_{1f})(v_{1i}  - v_{1f})  =  m_2(v_{2f} + v_{2i})(v_{2f}  - v_{2i})
+\end{equation}
+
+<p>
+	Now, going back to equation \( \eqref{eq:momentum-conservation} \), we group all terms involving the same mass.
+</p>
+
+\begin{align}
+m_1v_{1i} - m_1v_{1f} &= m_2v_{2f} - m_2v_{2i} \\
+m_1(v_{1i} - v_{1f}) &= m_2(v_{2f} - v_{2i}) \label{eq:momentum-rearranged}
+\end{align}
+
+<p>
+	We can now divide equation \( \eqref{eq:kinetic-factored} \) by equation \( \eqref{eq:momentum-rearranged} \) to give us
+</p>
+
+\begin{align} \label{eq:divided}
+v_{1i}  + v_{1f}  &=  v_{2f} + v_{2i} \\
+v_{1f}  &=  v_{2f} + v_{2i} - v_{1i} \label{eq:velocities}
+\end{align}
+
+<p>
+	From here, plug equation \( \eqref{eq:velocities} \) into \( \eqref{eq:momentum-conservation} \)
+</p>
+
+\begin{align}
+m_1v_{1i} + m_2v_{2i} &= m_1(v_{2f} + v_{2i} - v_{1i}) + m_2v_{2f} \\
+m_1v_{1i} + m_2v_{2i} &= m_1v_{2f} + m_1v_{2i} - m_1v_{1i} + m_2v_{2f} \\
+m_1v_{1i} + m_2v_{2i} &= (m_1 + m_2)v_{2f} + m_1v_{2i} - m_1v_{1i} \\
+\end{align}
+
+\begin{gather}
+2m_1v_{1i} + m_2v_{2i} - m_1v_{2i} = (m_1 + m_2)v_{2f} \\
+2m_1v_{1i} + v_{2i}(m_2 - m_1) = (m_1 + m_2)v_{2f} \\
+v_{2f} = \frac{2m_1v_{1i} + v_{2i}(m_2 - m_1)}{m_1 + m_2}
+\end{gather}
+
+<p>
+	This is the solution for \( v_{2f} \), and we can now plug the result into \( \eqref{eq:velocities} \) to get our final solution for \( v_{1f} \)
+</p>
+
+\begin{align}
+v_{1f}  &=  \frac{2m_1v_{1i} + v_{2i}(m_2 - m_1)}{m_1 + m_2} + v_{2i} - v_{1i} \\
+v_{1f}  &=  \frac{2m_1v_{1i} + v_{2i}(m_2 - m_1) + v_{2i}(m_1 + m_2) - v_{1i}(m_1 + m_2)}{m_1 + m_2} \\
+v_{1f}  &=  \frac{2m_2v_{2i} + v_{1i}(m_1 - m_2)}{m_1 + m_2}
+\end{align}

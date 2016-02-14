@@ -1,0 +1,71 @@
+---
+title: Standard Deviation Calculator
+categories: [Maths]
+subcategories: [Statistics]
+tags: []
+blurb: An interactive tool to calculate the standard deviation of a set of numbers.
+stylesheets: [styles.css]
+scripts: [decimal.min.js, demo.js]
+#cdn: ["//cdn.jsdelivr.net/jstat/1.0.6/jstat.min.js"]
+latex: true
+---
+
+<div id="results">
+	<p>
+		<label>Please enter your numbers, separated by commas, then click the calculate button.</label>
+	</p>
+
+	<textarea></textarea>
+
+	<p>
+		Number of numbers, \( N \)  <input readonly id="number-of-numbers"></input>
+	</p>
+	<p>
+		Mean, \( \mu \) <input readonly id="mean"></input>
+	</p>
+
+	<p>
+		Variance, \( \sigma^2 \) <input readonly id="variance"></input>
+	</p>
+
+	<p>
+		Standard deviation, \( \sigma \) <input readonly id="stdev"></input>
+	</p>
+</div>
+
+<p>
+	The standard deviation, denoted by the greek letter sigma, \( \sigma \), is a measure of how much a set of numbers varies from the mean, \( \mu \).
+</p>
+
+<p>
+	It is calculated using the following equation, which can look intimidating but can be broken up into smaller steps that are easier to understand.
+</p>
+
+\[ \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 }\]
+
+<p>
+	Step 1<br />
+	First of all, you need to calculate the mean, \( \mu \). This is done by adding up all of the numbers and then dividing by the number of numbers, \( N \). 
+</p>
+
+<p>
+	Step 2<br />
+	You now need to go through all of the numbers and subtract the mean from them. Square the differences, and add all them all together. This step is represented by the following part of the equation:
+</p>
+
+\[ \sum_{i=1}^{N} (x_i - \mu)^2 \]
+
+<p>
+	Step 3<br />
+	Next, you need to divide the result from part 2 by the number of numbers, \( N \). This result gives you the variance, \( \sigma^2 \) (pronounced sigma squared) which is the square of the standard deviation.
+</p>
+
+\[ \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 \]
+
+<p>
+	Step 4<br />
+	Finally, take the square root of this result to give you the standard deviation.
+</p>
+
+\[ \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2 }\]
+

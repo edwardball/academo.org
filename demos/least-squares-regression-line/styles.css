@@ -1,0 +1,20 @@
+#demo .axis path,
+#demo .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+#demo .axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+#demo .tick line{
+	stroke:#ccc;
+}
+
+#demo svg{
+	margin: 0 auto;
+	display: block;
+}

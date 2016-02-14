@@ -1,0 +1,54 @@
+---
+title: Least Squares Regression Line
+categories: [Maths]
+subcategories: [Statistics]
+tags: [regression]
+blurb: An interactive demo of fitting a straight line to a scatter plot using the least squares method
+stylesheets: [styles.css]
+scripts: [demo.js]
+libraries: [d3.js]
+latex: true
+codepen: true
+---
+
+
+<p>
+	If you have a set of data consisting of x and y values, you will often want to determine if there is a relationship between the two variables.
+	Plotting the data on a scatter plot can give you an idea of how x and y are related. If you can draw a straight line on the graph that passes through (or at least close to)
+	most of the data points, then x and y have a linear relationship.
+</p>
+
+<p>
+	The simplest way to draw a linear trendline is to do it by eye, but this is not the most accurate. Instead, we use an approach called <em>linear regression</em>. This involves coming up with a mathematical formula that tells us exactly how well the trendline matches the data. As with all straight lines, the trendline will have a formula of
+</p>
+
+\[ y = mx + c \]
+
+<p>
+	Where \( m \) is the gradient and \( c \) is the y-intercept. If we label our data points with a number, like \( (x_1, y_1), (x_2, y_2) ... (x_n, y_n) \). At each of these points, we can calculate how far away the trendline value is from the actual value, and we call this value the <em>error</em>. 
+</p>
+
+\[ y_n  - (mx_n + c) \]
+
+<p>
+	Now, for a number of reasons which are a bit beyond the scope of this article, we are really interested in the squared error. You can read about the reasons <a href='http://www.benkuhn.net/squared'>here</a>.
+</p>
+
+\[ (y_n  - (mx_n + c))^2 \]
+
+<p>
+	We do this for all our data points, add all the results together and this gives us the squared error of the line. The best trendline is the straight line which has the smallest squared error.
+	Instead of trying lots of different trendlines in a trial and error fashion, we can use the technique of differentiation to find the values of  \( m \) and \( c \) which minimise the squared error, and this results in the gradient being
+</p>
+
+\[ m = \frac{\bar{x}\bar{y} - \bar{xy}}{(\bar{x})^2 - \bar{x^2}} \]
+
+<p>
+	Where \( \bar{x}\bar{y} \) is the mean of \(x\) multiplied by the mean of \(y\), \( \bar{xy} \) is the mean of x multiplied by y, \( \bar{x}^2 \) is the square of the mean of \(x\), and \(\bar{x^2}\) is the mean of \( x^2 \). The y-intercept is given by
+</p>
+
+\[ c = \bar{y} - m\bar{x} \]
+
+<p>
+	The demo above allows you to enter a list of \( (x, y) \) data points (each new point should be on a new line), and once the calculate button is pressed, the demo will draw a scatter plot of the data and compute the gradient and y-intercept of the best fit line. One additional number calculated is that of \( R^2 \) which is a measure of how much the change in y is related to the change in x. If all the data lies on a straight line \( R^2 \) will have a value of exactly 1. If however, there does not appear to be any correlation between x and y and the data points are scattered randomly, then \( R^2 \) will be close to 0.
+</p>

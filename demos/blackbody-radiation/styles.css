@@ -1,0 +1,8 @@
+.fullscreen #demo{
+	padding:20px;
+	/*box-sizing: border-box;*/
+}
+
+.demo_description img{
+	margin-bottom: 20px;
+}

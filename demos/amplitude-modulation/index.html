@@ -1,0 +1,46 @@
+---
+title: Amplitude Modulation
+categories: [Physics, Music, Engineering]
+subcategories: [Waves, Signals]
+tags: []
+blurb: An interactive demo which enables you to both see and hear the result of multiplying a sine wave with a cosine amplitude envelope.
+stylesheets: [styles.css]
+libraries: [AudioContextMonkeyPatch.js, d3.v3.min.js]
+scripts: [demo.js]
+latex: true
+twitterCard: true
+facebookOG: true
+codepen: true
+---
+
+
+<p>
+	The demo above shows three waveforms. From top to bottom, they are coloured blue, red and purple, and are mathematically described by the following equations
+</p>
+
+\[ y_1 = \sin{(2\pi f_1 t)} \]
+\[ y_2 = 1 + A_2\cos{(2\pi f_2 t)} \]
+\[ y_{1\times2} = y_1 \times y_2 =  \sin{(2\pi f_1 t)} \left(1 + A_2\cos{(2\pi f_2 t)}\right) \]
+
+<p>
+	where \( f1 \) and \( f2 \) are the frequencies of each wave, \( A_2 \) is the amplitude of the second wave, and
+	 \( t \) is the time. The amplitude of the first wave is 1.
+</p>
+
+<p>
+	You can check the "Sound on/off" checkbox to hear what \( y_{1\times2} \) sounds like (this feature may not work in older browsers or Internet Explorer). You should be able to hear a note that has a frequency of \( f_1 \), that is going up and down in loudness at a rate of \( f_2 \). For example, if the value of \( f_2 \) is 1Hz, the volume should go to zero once every second.
+</p>
+
+<p>
+	The \( y_2\) waveform is acting as a modulator and creates an amplitude envelope. This means its magnitude is determining the magnitude of \( y_{1\times2} \). When the value of \( A_2 \) is zero, the modulator has a constant value of 1, and the line \( y_{1\times2} \) is exactly equal to \( y_1 \) meaning you will not hear any variation in loudness.
+</p>
+
+<p>
+	If you increase \( f_2 \) higher and higher, you may begin to hear two discernible frequencies, and the tone sounds a little like a dial tone. This can be explained by understanding that the trigonometric identity
+</p>
+
+\[ \sin{\left(\frac{x+y}{2}\right)}\cos{\left(\frac{x-y}{2}\right)}  =  \frac{1}{2} \left[\sin{(x)} + \sin{(y)}\right] \]
+
+<p>
+	allows us to write the equation for \( y_{1\times2} \) as a sum of sine waves, which is equivalent to playing two tones of different frequencies. The fact that rapidly modulating the amplitude of one wave results in a waveform identical to playing two notes of different frequencies is quite remarkable and for more information on such wave interference, please see our <a href="/demos/wave-interference-beat-frequency">wave interference and beat frequency</a> demo.
+</p>

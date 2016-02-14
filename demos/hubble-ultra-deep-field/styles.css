@@ -1,0 +1,17 @@
+.noUiSlider.connect.lower#wien{
+  background: #CB4B4B;
+}
+  .noUiSlider.connect.lower#temperature2{
+    background: #C0D800;
+  }
+  .noUiSlider div{
+    cursor: pointer;
+  }
+
+
+.input_display{
+  border:none;
+  width:100px;
+  display: inline;
+  color: #2c3e50;
+}

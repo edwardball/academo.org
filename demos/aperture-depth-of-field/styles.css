@@ -1,0 +1,41 @@
+#demo{
+	position: relative;
+	background: url("/img/loader.gif");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+#demo img{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+
+#night{
+	opacity:1;
+}
+
+#bortle span{
+	font-weight: bold;
+}
+
+.f-number{
+	text-transform: none!important;
+}
+
+.aperture-diagrams{
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.aperture{
+	display: block;
+	width:20px;
+	height:20px;
+	background:#AAA;
+	margin:10px auto;
+	border-radius: 50px;
+}

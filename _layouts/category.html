@@ -1,0 +1,43 @@
+{% include header.html %}
+
+<h1>{{page.title}}</h1>
+
+<hr>
+
+<div class="category-description">
+	{{content}}
+
+	<p>
+		You can filter these demos further by clicking on one of the following subcategories:
+	</p>
+
+</div>
+
+<p class="tags">
+	{% strip %}
+		{% for subcat in site.pages %}
+			{% if subcat.layout == 'subcategory' and subcat.category == page.title %}
+				<a href="{{ subcat.url }}">{{ subcat.title }}</a>
+			{% endif %}
+		{% endfor %}
+	{% endstrip %}
+</p>
+
+<hr>
+
+<ul class="thumbnails">
+	{% assign sorted_pages = (site.pages | sort: 'title') %}
+	{% for demo in sorted_pages %}
+		{% if demo.layout == 'demo' and demo.categories contains page.title %}
+			<li class="span3">
+				<a href="{{ demo.url }}" class="thumbnail">
+					<img src="{{ demo.url }}thumbnail.png" alt="">
+					<p class="thumbnail-title">{{ demo.title }}</p>
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+
+{% include footer.html %}

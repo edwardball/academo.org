@@ -1,0 +1,38 @@
+require './RakeHelpers.rb'
+
+
+desc 'The default function. This will run when you type "rake"'
+task :default do
+	puts "Hello World!";
+end
+
+desc 'Serves locally'
+task :serve do
+	system("jekyll serve --w --port 4000 --config _config.yml,_config-dev.yml")
+end 
+
+desc 'Deploy'
+task :deploy do
+	if RakeHelpers::isclean() && RakeHelpers::ismaster()
+		puts "Clean and on master"
+		status = system("git push")
+		status = true
+		if status
+			status = system("jekyll build")
+			if status
+				puts "Code to upload to S3 will go here!"
+				system("s3_website push")
+			end
+		end
+	elsif !RakeHelpers::isclean()
+		puts "Not clean"
+	elsif !RakeHelpers::ismaster()
+		puts "Not on master"
+	end
+end
+
+desc 'Gets git master status'
+task :status do
+	`git checkout master`
+	puts `git status`
+end

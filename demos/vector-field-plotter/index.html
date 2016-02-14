@@ -1,0 +1,75 @@
+---
+title: Vector Field Plotter
+categories: [Physics, Maths]
+subcategories: [Geometry]
+tags: [Fields]
+blurb: An interactive visulization of vector fields.
+#stylesheets: [styles.css]
+libraries: [parser.js]
+scripts: [graph.js, demo.js]
+latex: true
+---
+
+<canvas id='c' width='500' height='500' style='display:block;margin:0 auto;'></canvas>
+
+<p>
+	A vector function is a function that takes a number of inputs, and returns a vector. For simplicity, let's keep things in 2 dimensions and call those inputs \(x\) and \(y\).
+	Mathematically speaking, this can be written as
+</p>
+
+\[ \vec{F}(x,y) = g(x,y)\hat{i} + h(x,y)\hat{j} \]
+
+<p>
+	Where \( \hat{i} \) and \( \hat{j} \) are unit vectors along the \(x\) and \(y\) axes respectively. Then, if we have a grid like the one above, we can systematically pick points on the grid at which to plot the corresponding vector. The end result is known as a vector field.
+</p>
+
+<p>
+	Our interactive demo allows you to enter any function you like for \( g(x,y) \) and \( h(x,y) \). When the page first loads, these functions are set to
+</p>
+
+\[ g(x,y) = ax + by \\
+ h(x,y) = cx + dy \]
+
+<p>
+	The values \( a,b,c \) and \( d \) just simple constants. They are, however, linked to the sliders, which means you can adjust them and watch how the vector field changes in real time.
+	Don't let them confuse you though, you can safely ignore these if desired.
+</p>
+
+<p>
+	To enter a new vector function, type your expressions in the \( \hat{i} \) and \( \hat{j} \) text boxes and press "update expression". The types of functions you can enter are explained in the table below.
+</p>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Expression</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>sin(x)</td>
+		<td>The sine of x in radians</td>
+	</tr>
+	<tr>
+		<td>cos(x)</td>
+		<td>The cosine of x in radians</td>
+	</tr>
+	<tr>
+		<td>tan(x)</td>
+		<td>The tangent of x in radians</td>
+	</tr>
+	<tr>
+		<td>asin(x), acos(x), atan(x)</td>
+		<td>The inverse of the three trigonometric functions listed above</td>
+	</tr>
+	<tr>
+		<td>sqrt(x)</td>
+		<td>The square root of x (for positive x only)</td>
+	</tr>
+	<tr>
+		<td>log(x)</td>
+		<td>The natural logarithm of x</td>
+	</tr>
+	<tr>
+		<td>pow(x, y)</td>
+		<td>The power of x to the y</td>
+	</tr>
+</table>

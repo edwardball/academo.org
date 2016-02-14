@@ -1,0 +1,65 @@
+---
+title: Wave Interference and Beat Frequency
+categories: [Physics, Engineering]
+subcategories: [Waves, Signals]
+tags: [interference, superposition]
+blurb: An interactive demo which enables you to both see and hear the result of adding two sine waves of different frequencies.
+stylesheets: [styles.css]
+libraries: [AudioContextMonkeyPatch.js, d3.v3.min.js]
+scripts: [demo.js]
+latex: true
+twitterCard: true
+facebookOG: true
+---
+
+<p>
+	The demo above displays two sine waves, coloured blue and red. The equations of these lines are:
+</p>
+
+\[ y_1 = \sin{(2\pi f_1 t)} \]
+\[ y_2 = \sin{(2\pi f_2 t)} \]
+
+
+<p>
+	where the frequencies of each wave are \( f_1 \) and \( f_2 \) respectively,
+	and \( t \) is the time.
+	You can change the waves' frequencies by adjusting the corresponding sliders in the user interface. These two wave oscillate between -1 and 1.
+</p>
+<p>
+	Don't be confused by the vertical position of the blue wave being higher than the red, this is just one of many ways to display multiple waveforms. If you find it useful, you can stack the waves, by ticking the "overlay waves" checkbox. The demo can also be zoomed in and out along the time axis by adjusting the zoom slider.
+</p>
+
+<p>
+	The demo displays a third wave (in purple), which is the superposition of the blue and red waves. To get the displacement of the purple wave at any time, you just add the value of the blue and red waves at that time. Mathematically speaking, this can be written as:
+</p>
+
+\[ y_{1+2} = y_1 + y_2 = \sin{(2\pi f_1 t)} + \sin{(2\pi f_2 t)} \]
+
+<p>
+	You can hear what this sounds like by ticking the "Sound on/off" checkbox. (Sadly, some older browsers and Internet Explorer versions may not support this feature).
+</p>
+
+<p>
+	When \( f_1 \) and \( f_2 \) are quite close together, it becomes hard to hear two distinct notes, and instead they seem to merge into one note, but with the volume oscillating up and down - this phenomenon is known as a beat, and the frequency at which the sound oscillates in amplitude is known as the "beat frequency". We can explain this effect in mathematical terms by considering the trigonometric identity
+
+\[ \sin{(x)} + \sin{(y)} = 2 \sin{\left(\frac{x+y}{2}\right)}\cos{\left(\frac{x-y}{2}\right)} \]
+
+<p>
+	We can use this to rewrite the equation for \( y_{1+2} \) as a product instead of a sum
+</p>
+
+\[ y_{1+2} = 2 \sin{\left[2\pi\frac{f1+f2}{2}t\right]}\cos{\left[2 \pi\frac{f1-f2}{2}t\right]} \]
+
+<p>
+	This equation shows that \( y_{1+2} \) is equivalent to a sine wave with a frequency of the average of \( f_1 \) and \( f_2 \) multiplied by another term with a frequency of half of the difference of \( f_1 \) and \( f_2 \). It is this second term that is responsible for the beating effect, and is known as an envelope. (For more detail on this, please take a look at our demo on <a href="/demos/amplitude-modulation">amplitude modulation</a>.)
+</p>
+
+<p>
+	It's worth pointing out that there are two times that the envelope passes through zero for every wavelength, so the beat frequency is twice the frequency of the envelope and is given by the magnitude of the difference of the two frequencies.
+</p>
+
+\[ f_{beat} = \left| f_1 - f_2 \right| \]
+
+<p>
+	To hear this in action, try setting the frequency sliders to values that differ by 1Hz, and the beat you hear should occur exactly once every 1 second. If you set the difference to 2Hz, the beat will occur twice a second, and so on.
+</p>

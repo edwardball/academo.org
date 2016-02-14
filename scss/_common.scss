@@ -1,0 +1,67 @@
+body{
+	font-family: "Open Sans", sans-serif;
+}
+
+.body--shaded{
+	background:$grey;
+}
+
+//stickyfooter
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+.wrapper{
+	max-width:1200px;
+	background:$white;
+	box-shadow: 0px 0px 3px 0px $grey--dark;
+
+	//sticky footer
+	min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0px auto -62px; /* the bottom margin is the negative value of the footer's height */
+
+}
+
+.main{
+	padding:20px;
+	overflow:hidden;
+}
+
+.lead {
+	font-size: 1.4em;
+}
+
+hr{
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid #ecf0f1;
+}
+
+.hr--margin-large {
+	margin:60px 0;
+}
+
+#academo-banner {
+	padding: 10px;
+	background:rgba(0,0,0,.6);
+	position:fixed;
+	top:0;
+	left:0;
+	color:$white;
+	text-decoration:none;
+}
+
+#academo-banner:hover{
+	color:$green;
+}
+
+@media (max-width: 1200px) {
+	.wrapper{
+		margin-top:0;
+	}
+}

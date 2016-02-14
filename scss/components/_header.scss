@@ -1,0 +1,93 @@
+.header-upper{
+	background:$navy;
+	overflow:hidden;
+	padding:20px;
+}
+
+.header-upper .header-inner{
+	position: relative;
+}
+
+.logo{
+	font-size: 32px;
+	position: absolute;
+	top: -10px;
+	left: 0;
+}
+
+.header-lower{
+	background:$navy--light;
+	overflow:hidden;
+	padding:10px 20px;
+	border-top: solid 1px $green;
+}
+
+.header a{
+	text-decoration:none;
+	color:$white;
+
+	&:hover, &.current{
+		color:$orange;
+	}
+}
+
+.header-inner{
+	width:100%;
+	max-width:1200px;
+	margin:0 auto;
+}
+
+.nav{
+	float:right;
+	padding:0;
+	margin:0 0 0 40px;
+}
+
+.nav--secondary{
+	float:left;
+	margin-left:0;
+}
+
+.nav li{
+	float:left;
+	list-style:none;
+	margin-left:20px;
+}
+
+.nav--secondary li{
+	margin-left:0;
+	margin-right:20px;
+}
+
+@media (max-width: 600px) {
+    .logo{
+        position: static;
+        float:left;
+        font-size: 26px;
+        top:-6px;
+        margin-right:20px;
+    }
+
+    .nav--primary {
+    	margin-top: 7px;
+    	margin-left: 0;
+    	float:left;
+    }
+
+    .nav--primary li:first-child {
+    	margin-left:0;
+    }
+}
+
+@media (max-width: 350px) {
+	.nav--primary .social--twitter,
+	.nav--primary .social--facebook {
+		position: absolute;
+	    top: 0;
+	    right: 20px;
+	}
+
+	.nav--primary .social--facebook {
+		right: 0px;
+	}
+}

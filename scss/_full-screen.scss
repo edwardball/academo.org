@@ -1,0 +1,58 @@
+//Styles here for when demo is in full screen mode
+//We decided to drop full screen mode for the time being, and this file
+//is not included in main.scss, but it's left here for prosperity.
+
+.fullscreen .interface{
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.fullscreen .container{
+    margin:0;
+    width:100%;
+}
+.fullscreen .navbar{
+    display: none;
+}
+body.fullscreen{
+    // padding-top:20px;
+    padding-top:0px;
+}
+.fullscreen .preamble{
+    display: none;
+}
+
+.fullscreen #ui-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding:20px;
+    background: rgba(0,0,0,0.17);
+    z-index: 999;
+    font-weight:bold;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+    width:240px;
+}
+
+.fullscreen #ui-container.dark{
+
+    background: rgba(255,255,255,0.2);
+    z-index: 999;
+    font-weight:bold;
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+}
+
+#ui-container.dark label{
+    color: #fff;
+}
+
+.fullscreen #demo{
+    width:100%;
+    height:100%;
+    // -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    // -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    // box-sizing: border-box;
+}
+
+#exit-fullscreen{
+    margin-bottom: 10px;
+}

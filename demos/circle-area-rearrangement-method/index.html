@@ -1,0 +1,33 @@
+---
+title: Area of a circle (Rearrangement Method)
+categories: [Maths]
+subcategories: [Geometry]
+tags: [circle]
+blurb: A demonstration of how rearranging sectors can help you visualise the area of a circle
+scripts: [demo.js]
+stylesheets: [style.css] 
+libraries: []
+latex: true
+---
+
+
+<p>
+	Imagine a circle. We know that the circumference of the circle is \( 2\pi r \), where \( r \) is the radius, but
+	how can we calculate its area? One thing we can do is split the circle into 4 equal wedges (known as sectors), and arrage them edge-to-edge.
+</p>
+
+<p>
+	This results in an unusal, wavy shape, that you can see above. The left and right edges of the wavy shape
+	are both equal to \( r \), and the top edge and bottom edge are both equal to  \( \frac{2\pi r}{4} + \frac{2\pi r}{4} = \pi r \), because each side consists of 2 sectors,
+	and each of these sectors has length \( \frac{1}{4} \) of the total circumference.
+</p>
+
+<p>
+	You may be wondering why this is useful. Well, try adjusting the slider to increase the number of sectors. No matter how many sectors are used, the left and right side of the shape remain at length  \( r \), and the top and bottom both remain
+	at length  \( \pi r \) using exactly the same logic as explained above.
+</p>
+
+<p>
+	As the number increases, the wavy shape starts to look very much like a rectangle, and since we know that the area of a rectangle is width multiplied by height,
+	we can now say that the area of the circle is \( \pi r \times r = \pi r^2 \).
+</p>

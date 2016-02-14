@@ -1,0 +1,49 @@
+---
+title: Quadrilateral Area Calculator
+categories:  [Maths]
+subcategories: [Geometry]
+tags: [Area]
+blurb: A quick and simple tool to draw and calculate areas of quadrilaterals.
+stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+---
+
+
+<span id='quad-area'>Area</span>
+<svg id='quadrilateral-area'>
+	<!--<polygon fill='none' stroke='blue' points='' />
+	<circle	r='5' cx='' cy='' />-->
+	<g id="translator">
+		<g id='scaler'>
+			<text id='text-a'>A</text>
+			<text id='text-b'>B</text>
+			<text id='text-c'>C</text>
+			<text id='text-d'>D</text>
+			<text id='text-alpha' style='font-family:serif'>α</text>
+			<path stroke='blue' path='' fill='none'/>
+		</g>
+	</g>
+<svg>
+
+<p>
+	Given 4 lengths and an angle, we can use this information to draw a quadrilateral. Then we can use Bretschneider's formula to calculate the area, \( K \). The formula works for all convex quadrilaterals, which means none of the internal angles are greater than 180&deg;. 
+</p>
+
+\[ K = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2{\frac{\alpha + \gamma}{2}}} \]
+
+<p>
+	\( s \) is the semi perimeter, (half of the sum of all the lengths) and \( \alpha \) and \( \gamma \) are two opposite angles.
+</p>
+
+<p>
+	There are many cases in which it is useful to calculate the area of a quadrilateral. For example, if a farmer needs to distribute 100g of fertilizer per square meter of a field, they can use the calculator to calculate the area of the field. Alternatively, if you need to buy some tiles or new carpet for a room, the tool will tell you how much material you need to buy.
+</p>
+
+<p>
+	To use the calculator, enter your lengths, and the angle \( \alpha \) into the sidebar and hit calculate. The tool will automatically calculate the value of \( \gamma \) that results in a convex quadrilateral and will then display the computed area. The resulting quadrilateral will also be drawn on the screen. The size will automatically be scaled, to fit the screen size.
+</p>
+
+<p>
+	Please note some combinations of numbers cannot be used to make a quadrilateral. To try and visualize this, imagine three sides of length 1, and one side of length 100. There is no way that the side of length 100 can fit into the available space. If your inputs cannot be used to create a valid quadrilateral, we will display a note on the graph. If this is the case, please re-check your measurements and try again.
+</p>

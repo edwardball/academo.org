@@ -1,0 +1,11 @@
+#color_display{
+    height: 200px;
+}
+
+#color span{
+	font-weight: bold;
+}
+
+#color{
+	float: left;
+}

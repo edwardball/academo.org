@@ -1,0 +1,3 @@
+dev_mode: true
+assets_server: "http://localhost:8000"
+jquery_path: '/js/lib/jquery-1.11.1.min.js'

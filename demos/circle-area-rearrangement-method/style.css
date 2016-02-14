@@ -1,0 +1,15 @@
+path{
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-ms-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+
+#demo{
+	background: #eee;
+	background-image:url("/img/graph-paper-centered-hi-res.png");
+	/*background-image:url("/img/graph-paper-centered.png");*/
+	background-position: center center;
+	background-size: 50px 50px;
+}

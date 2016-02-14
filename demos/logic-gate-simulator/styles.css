@@ -1,0 +1,117 @@
+
+.window { border:1px solid #346789;
+box-shadow: 2px 2px 19px #aaa;
+   -o-box-shadow: 2px 2px 19px #aaa;
+   -webkit-box-shadow: 2px 2px 19px #aaa;
+   -moz-box-shadow: 2px 2px 19px #aaa;
+
+opacity:0.8;
+filter:alpha(opacity=80);
+width:5em; height:5em;
+line-height:5em;
+text-align:center;
+/*z-index:20; */
+position:absolute;
+background-color:#eeeeef;
+color:black;
+font-family:helvetica;padding:0.5em;
+font-size:0.9em;
+cursor: move;}
+.window:hover {
+
+box-shadow: 2px 2px 19px #444;
+   -o-box-shadow: 2px 2px 19px #444;
+   -webkit-box-shadow: 2px 2px 19px #444;
+   -moz-box-shadow: 2px 2px 19px #444;
+    opacity:0.6;
+filter:alpha(opacity=60);
+
+}
+
+._jsPlumb_endpoint{
+	cursor: pointer;
+	z-index: 1;
+	/*border:4px dotted rgba(255,255,255,0);*/
+}
+
+/*Webkit transform added by me to make it easier to see when connection has been made*/
+
+.active {
+	border:2px dotted green;
+
+	/*-webkit-transform: translate(-4px,-4px);*/
+
+
+
+}
+
+/*.window .close{
+	display: none;
+}*/
+
+/*.window:hover .close{*/
+.window .close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	line-height: 20px;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: #2c3e50;
+	color:white;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	-webkit-appearance: none;
+	border: none;
+}
+
+
+
+.hover {
+	border:2px dotted red;
+	/*-webkit-transform: translate(-4px,-4px);*/
+}
+
+#INPUT {
+	left: 391.5px;
+	top: 389px;
+}
+#AND {
+	left: 30%;
+	top: 30%;
+}
+#OR{
+	left:40%;
+	top:40%;
+}
+#output-0 {
+	right: 0%;
+	top: 50%;
+}
+
+#input-1 {
+	left: 10%;
+	top: 20%;
+}
+
+
+
+.on{
+	background-color: #ffee75;
+}
+
+#demo{
+	position: relative;
+	height:500px;
+	background: url('graph-paper.png')
+}
+
+.window img{
+	width:100%;
+}
+
+.truth-table{
+	margin-bottom: 100px;
+}

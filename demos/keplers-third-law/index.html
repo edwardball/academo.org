@@ -1,0 +1,83 @@
+---
+title: Kepler's Third Law
+categories: [Physics]
+subcategories: [Classical Mechanics, Astronomy]
+tags: [Orbit, Kepler]
+blurb: An interactive demonstration showing how the semi-major axis of an orbit is related to the orbital period.
+stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+credits:
+  - "The starry background is based on this image: <a href='http://commons.wikimedia.org/wiki/File:Vermont_night_sky_stargazing.JPG#mediaviewer/File:Vermont_night_sky_stargazing.JPG'>Vermont night sky stargazing</a> by Chensiyuan."
+---
+
+
+<p>
+	Kepler's Third Law tells us that the square of the orbital period of an orbiting body is proportional to the cube of the semi-major axis of its orbit. The relationship can be written to give us the period, \( T \): 
+</p>
+
+\[ T = 2 \pi \sqrt{\frac{a^3}{GM} } \]
+
+<p>
+	Where \( a \) is the semi-major axis (which, in the case of circular orbits, is equivalent to the radius of the orbit), \( G \) is the universal gravitational constant and \( M \) is the mass of the body being orbited.
+</p>
+
+<p>
+	If we consider circular orbits only, a derivation of the above equation follows from Newton's Law of Gravitation and centripetal acceleration. For an object locked in a circular orbit, the acceleration due to gravity must equal the centripetal acceleration. 
+</p>
+
+<p>
+	From Newton, we have:
+</p>
+
+\[ F = ma = \frac{GMm}{r^2} \]
+\[ a = \frac{GM}{r^2} \]
+
+<p>
+	The equation for centripetal acceleration is 
+</p>
+
+\[ a = \frac{v^2}{r} \]
+
+<p>
+	Equating the two equations for acceleration gives 
+</p>
+
+\[ \frac{v^2}{r} = \frac{GM}{r^2} \]
+\[ v = \sqrt{\frac{GM}{r}} \]
+
+<p>
+	From here, to calculate the orbital period, \( T \), you need to divide the distance travelled, ie the circumference of the orbit, \( 2 \pi r \), by the speed, \( v \)
+</p>
+
+\[ \frac{2 \pi r}{\sqrt{\frac{GM}{r}}} \]
+
+<p>Which, via some algebraic manipulation simplifies to:</p>
+
+\[ T = 2 \pi \sqrt{\frac{r^3}{GM} } \]
+
+
+<p>
+	The demo above shows two planets in circular orbits around a star. Using the sliders, you can see how increasing the radius increases the orbital period (in other words, it makes the planet move slower). Increasing the mass of the star decreases the period, meaning the planets move faster.
+</p>
+
+
+
+
+<svg class="js-orbit-demo">
+	<filter id="blurMe">
+	   <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+	 </filter>
+	 <filter id="blurMeLess">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+	  </filter>
+	 <g class='js-system-wrapper'>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='white' filter="url(#blurMe)"/>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='yellow' />
+	 	<circle class='js-planet-shadow' cx='0' cy='0' r='10' fill='#f60' filter="url(#blurMeLess)"/>
+	 	<circle class='js-planet' cx='0' cy='0' r='10' fill='#f60'/>
+	 	<circle class='js-planet-shadow-2' cx='0' cy='0' r='10' fill='lightblue' filter="url(#blurMeLess)"/>
+	 	<circle class='js-planet-2' cx='0' cy='0' r='10' fill='lightblue'/>
+	 </g>
+</svg>
+<div class='explosion js-explosion'></div>

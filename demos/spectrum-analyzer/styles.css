@@ -1,0 +1,18 @@
+canvas {
+     position: absolute;
+     /*background: black;*/
+/*     width: 500px;
+     height: 500px;*/
+   }
+
+#canvas{
+	background: black;
+}
+
+ #demo{
+ 	height:540px;
+ }
+
+ .demo audio{
+ 	width: 100%;
+ }

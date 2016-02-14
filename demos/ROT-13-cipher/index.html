@@ -1,0 +1,36 @@
+---
+title: ROT-13 Encrypter/decrypter
+categories: [Engineering]
+subcategories: [Computing]
+tags: [Cryptography]
+blurb: An online, interactive ROT-13 encrypter/decrypter
+stylesheets: [styles.css]
+scripts: [demo.js]
+---
+
+<p>
+	ROT-13 is a method used to encrypt messages. It involves replacing each letter with the corresponding letter located 13 places away from it in the alphabet. Methods such as these,
+	where letters are substituted by others a fixed distance away, are known as Caesar ciphers, named after Julius Caesar who used the technique to send secret messages.
+</p>
+
+<p>
+	In ROT13, A is replaced with N, B with O and so on. The full list of substitutions is outlined in the table below.
+
+</p>
+
+<table class="table table-bordered">
+	<tr>
+		<td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td>
+	<tr>
+		<td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td><td>&#8597;</td>
+	</tr>
+	<tr>
+		<td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td>
+	</tr>
+</table>
+
+<p>
+	In reality, the algorithm offers very little security as it can be undone by applying the exact
+	same algorithm. In other words, the inverse of ROT13 is also ROT13. As such, it should not be used as an encryption method for critical information, but it remains useful to study as an introduction to
+	cryptography and also for more light hearted scenarios such as hiding spoilers on internet forums.
+</p>

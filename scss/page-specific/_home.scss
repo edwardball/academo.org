@@ -1,0 +1,42 @@
+.home .main {
+	text-align:center;
+}
+
+.home .thumbnails li {
+	float:none;
+	display:inline-block;
+	vertical-align:top;
+	
+}
+
+.home .main p {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.home .logos {
+	list-style-type:none;
+}
+
+.home .logos li {
+	display:inline-block;
+	vertical-align:top;
+}
+
+.home .logos img {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+	opacity:0.6;
+	margin: 20px;
+	transition: all 0.5s;
+}
+
+.home .logos img:hover {
+	-webkit-filter: grayscale(0%);
+	-moz-filter: grayscale(0%);
+	filter: grayscale(0%);
+	opacity:1;
+	transition-duration:0s;
+}
