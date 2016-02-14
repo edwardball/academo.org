@@ -1,7 +1,7 @@
 # Academo Documentation
 
 ## Background
-Academo is a hub of educational and interactive demonstrations. As of Feb 2016, the majority of the demos were written by me, the founder, Ed Ball. Many of the demos were written when I was relatively new to JavaScript and as such need refactoring (I'm following the release philsophy of Reid Hoffman and Facebook), so if you see some code that could do with some TLC, please do submit a pull request! 
+Academo is a hub of educational and interactive demonstrations. As of Feb 2016, the majority of the demos were written by me, the founder, Ed Ball. Many of the demos were written when I was relatively new to JavaScript and as such need refactoring (hey, I'm following the release philosophy of Reid Hoffman and Facebook), so if you see some code that could do with some TLC, please do submit a pull request! 
 
 More recently, I've developed a more consistent approach to writing demos, explained below. If you have an idea for a demo, and know a little Javascript, please do consider submitting one.
 
