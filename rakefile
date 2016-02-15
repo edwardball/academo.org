@@ -8,7 +8,7 @@ end
 
 desc 'Serves locally'
 task :serve do
-	system("jekyll serve --w --port 4000 --config _config.yml,_config-dev.yml")
+	system("jekyll serve --incremental --port 4000 --config _config.yml,_config-dev.yml")
 end 
 
 desc 'Deploy'
