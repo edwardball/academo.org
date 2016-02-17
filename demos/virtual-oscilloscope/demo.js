@@ -2,7 +2,7 @@ var ui = {
     inputType: {
         title: "Input",
         value: 2,
-        values: [["Live Input (5V peak amplitude)",1], ["Sine Wave (amplitude 5V)",2], ["Square Wave (amplitude 5V)",3]]
+        values: [["Live Input (5 V peak amplitude)",1], ["Sine Wave (amplitude 5 V)",2], ["Square Wave (amplitude 5 V)",3]]
     },
     freeze: {
         title: "Freeze Live Input",
@@ -28,12 +28,12 @@ var ui = {
     dropdownExample: {
         title: "Seconds / div",
         value: 1,
-        values: [["50µs", 0.05],["100µs", 0.1],["200µs", 0.2],["500µs", 0.5],["1ms", 1]]
+        values: [["50 µs", 0.05],["100 µs", 0.1],["200 µs", 0.2],["500 µs", 0.5],["1 ms", 1], ["2 ms", 2],["5 ms", 5]]
     },
     volts: {
         title: "Volts / div",
         value: 1,
-        values: [["1V", 0.2],["2V", 0.4],["5V", 1],["10V", 2]]
+        values: [["1 V", 0.2],["2 V", 0.4],["5 V", 1],["10 V", 2]]
     },
     // dc_offset: {
     //     title: "Vertical Offset",
@@ -243,7 +243,8 @@ if (AudioContext){
 
   analyser.smoothingTimeConstant = .9;
   // analyser.fftSize = 512;
-  analyser.fftSize = 1024;
+  // analyser.fftSize = 1024;
+  analyser.fftSize = 4096;
   gainNode.connect(analyser);
   // frequencyBinCount is readonly and set to fftSize/2;
   var timeDomain = new Uint8Array(analyser.frequencyBinCount);
