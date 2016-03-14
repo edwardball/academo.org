@@ -1,0 +1,34 @@
+---
+title: Estimating Pi using the Monte Carlo Method
+categories: [Maths]
+subcategories: [Numbers, Statistics]
+tags: [Pi]
+blurb: How to estimate a value of Pi using the Monte Carlo method - generate a large number of random points and see how many fall in the circle enclosed by the unit square.
+#stylesheets: [styles.css]
+scripts: [demo.js]
+libraries: [d3.v3.min.js]
+latex: true
+codepen: true
+twitterCard: true
+facebookOG: true
+---
+
+
+<p>
+	One method to estimate the value of \( \pi \) (3.141592...) is by using a Monte Carlo method. In the demo above, we have a circle of radius 0.5, enclosed by a 1 &times; 1 square. The area of the circle is \( \pi r^2 = \pi / 4 \), the area of the square is 1. If we divide the area of the circle, by the area of the square we get \( \pi / 4 \).
+</p>
+
+<p>
+	We then generate a large number of uniformly distributed random points and plot them on the graph. These points can be in any position within the square i.e. between (0,0) and (1,1). If they fall within the circle, they are coloured red, otherwise they are coloured blue. We keep track of the total number of points, and the number of points that are inside the circle. If we divide the number of points within the circle, \( N_{inner} \) by the total number of points, \( N_{total} \), we should get a value that is an approximation of the ratio of the areas we calculated above, \( \pi / 4 \).
+</p>
+
+<p>
+	In other words,
+</p>
+
+\[ \frac{\pi}{4} \approx \frac{N_{inner}}{N_{total}} \]
+\[ \pi \approx 4 \frac{N_{inner}}{N_{total}} \]
+
+<p>
+	When we only have a small number of points, the estimation is not very accurate, but when we have hundreds of thousands of points, we get much closer to the actual value - to within around 2 decimal places of accuracy. You can add points one at a time, or you can tick the "animate" checkbox to add many points to the graph very quickly.
+</p>
