@@ -68,10 +68,15 @@
         margin-right:20px;
     }
 
+    .header a {
+    	font-size: 16px;
+    }
+
     .nav--primary {
     	margin-top: 7px;
     	margin-left: 0;
     	float:left;
+    	clear:both;
     }
 
     .nav--primary li:first-child {
@@ -79,7 +84,7 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
 	.nav--primary .social--twitter,
 	.nav--primary .social--facebook {
 		position: absolute;
