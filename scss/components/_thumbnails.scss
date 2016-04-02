@@ -1,5 +1,5 @@
 .thumbnails{
-	margin:0;
+	margin:0 -18px;
 	padding:0;
 	overflow:hidden;
 }
@@ -15,13 +15,20 @@
 	}
 }
 
+.thumbnail-title {
+    font-size: 14px;
+    color: $grey--xx-dark;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
 .thumbnails a{
 	text-decoration:none;
 	color: $grey--x-dark;
 	transition: color 0.3s;
 	display: block;
 
-	&:hover{
+	&:hover .thumbnail-title{
 		color: $orange;
 		transition-duration: 0s; 
 	}
@@ -33,7 +40,7 @@
 	width:100%;
 
 	&:hover{
-		opacity: 0.75;
+		opacity: 0.85;
 		transition-duration:0s; 
 	}
 }

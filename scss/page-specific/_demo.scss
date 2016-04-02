@@ -31,8 +31,8 @@
 
 .demo-description{
 	margin-bottom: 60px;
-	max-width: 640px;
-	margin-left: 100px;
+	max-width: 700px;
+	// margin-left: 100px;
 	margin-top:60px;
 }
 
@@ -68,6 +68,11 @@
 	margin-top:60px;
 }
 
+.sidebar .thumbnails {
+	padding:2px;
+	margin:0;
+}
+
 .sidebar h3{
 	margin-top:0;
 }
@@ -82,7 +87,7 @@
 
 .sidebar .thumbnails li{
 	width:100%;
-	margin:0;
+	margin:0 0 20px;
 	&:nth-child(4n+1){
 		clear:none;
 	}
