@@ -1,18 +1,15 @@
-<div id="fb-root"></div>
-<script>
-
-
-
-/* Twitter */
-
-
-</script>
-
 <div class="social-buttons">
-	<div class="fb-share-button-wrapper">
-		<div class="fb-share-button" data-href="{{include.url}}" data-type="button_count"></div>
+	<div class="social-button social-button--google-classroom">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <div class="g-sharetoclassroom" data-size="32" data-url="https://academo.org{{page.url}}" ></div>
 	</div>
-	<div class="twitter-share-button">
-		<a href="https://twitter.com/share" data-url='http://academo.org{{include.url}}' data-text='{{page.title}}' class="twitter-share-button"></a>
-	</div>
+
+	<div class="social-button social-button--facebook">
+		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://academo.org{{page.url}}"></a>
+    </div>
+
+	<div class="social-button social-button--twitter">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text={{page.title}}%20https://academo.org{{page.url}}+from+@AcademoOrg"></a>
+    </div>
+	
 </div>

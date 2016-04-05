@@ -26,6 +26,10 @@
         {% endstrip %}
     </p>
     <hr>
+
+		{% include social.html %}
+
+    <hr>
 </div>
 
 <div id="demo" {% if page.background %} style='background:{{page.background}}' {% endif %} class="{% if page.noUi == true %} demo--wide {% endif %}">

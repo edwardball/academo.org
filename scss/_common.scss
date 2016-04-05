@@ -61,6 +61,48 @@ hr{
 	color:$green;
 }
 
+.social-buttons {
+	min-height:40px;
+	overflow:hidden;
+}
+
+.social-button {
+	display:block;
+	float:left;
+    padding: 0px 10px 10px 0;
+}
+
+.social-button--google-classroom {
+	min-width:32px;
+}
+
+.social-button--facebook a,
+.social-button--twitter a {
+	background: url("/img/social-media-sprite.png");
+	background-size:136px 54px;
+	display:block;
+	margin-top:5px;
+}
+
+.social-button--twitter a {
+	width: 63px;
+    height: 26px;
+
+    &:hover {
+    	background-position: 0 24px;
+    }
+}
+
+.social-button--facebook a {
+	width: 61px;
+    height: 25px;
+    background-position: 61px 0;
+
+    &:hover {
+    	background-position: 61px 24px;
+    }
+}
+
 @media (max-width: 1200px) {
 	.wrapper{
 		margin-top:0;
