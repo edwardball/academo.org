@@ -59,6 +59,24 @@
 	margin-right:20px;
 }
 
+.sponsor-wrapper {
+	float:right;
+	padding:20px;
+	width:100%;
+	max-width:320px;
+	height:50px;
+}
+
+.sposor-wrapper img {
+	width:100%;
+}
+
+@media (max-width: 800px) {
+	.sponsor-wrapper {
+		display:none;
+	}
+}
+
 @media (max-width: 600px) {
     .logo{
         position: static;
