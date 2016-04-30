@@ -69,7 +69,25 @@ $(document).on("uiLoaded", function(){
         $(".preamble").append("<div class='alert'>To use Live Audio Input, please download the latest version of Chrome.</div>");
         $("#inputType-interface option[value=1]").attr("disabled", true);
     };
-})
+
+});
+
+
+if (typeof getQueryVariable("embedded") != "undefined"){
+  $("body").addClass("embedded");
+  $("#ui-container").prepend("<h2 class='embed-title'><a href='https://academo.org/demos/virtual-oscilloscope/' target='_blank'>Academo.org</a></h2>")
+}
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return pair[1];
+    }
+  } 
+}
 
 
 
