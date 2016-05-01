@@ -76,10 +76,7 @@
 	</div>
 
 	<div class="wrapper">
-		<div class="sponsor-wrapper">
-			{% if page.layout == "demo" or page.layout == 'all' or page.layout == "category" or page.layout == "subcategory %}
-				<a href="http://tr.grammarly.com/aff_c?offer_id=97&aff_id=8559" target='_blank'><img src="/img/grammarly-banner.png"></a>
-			{% endif %}
+		<div class='sponsor-wrapper {% if page.layout == "demo" or page.layout == 'all' or page.layout == "category" or page.layout == "subcategory %}js-sponsor-wrapper{% endif %}'>
 		</div>
 		<div class="main">
 

@@ -65,10 +65,10 @@ $("body").on("click", ".sidebar a", function(e){
 });
 
 
-// Create codepen link
 
 $(document).ready(function(){
 
+	// Create codepen link
 	if ($("#codepen-script").length){
 		var time = new Date().getTime();
 		var blurb = $.trim($(".blurb").text());
@@ -124,4 +124,13 @@ $(document).ready(function(){
 		$("#ui-container").append(form);
 	}
 
+	
+	var sponsoredLinks = [
+		'<a href="http://tr.grammarly.com/aff_c?offer_id=97&aff_id=8559" target="_blank"><img src="/img/grammarly-banner.png"></a>',
+		'<a href="http://www.dpbolvw.net/click-8052599-12207280-1448292209000" target="_top"><img src="http://www.tqlkg.com/image-8052599-12207280-1448292209000" width="194" height="54" alt="ORM, O\'Reilly, Logo, Friends" border="0"/></a>'
+	];
+
+	// Randomise sponsored link
+	$(".js-sponsor-wrapper").html(shuffle(sponsoredLinks)[0]);
+	
 });
