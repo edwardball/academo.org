@@ -11,6 +11,11 @@
 				value: "(-2,3,1)",
 				type: "userInputString"
 			},
+			v3: {
+				title: "Vector 3 (optional) (orange)",
+				value: "(0,0,0)",
+				type: "userInputString"
+			},
 			showResultant: {
 				title: "Show resultant, v1+v2 (Purple)",
 				value: true
@@ -43,6 +48,7 @@
 		data: null,
 		v1:null,
 		v2:null,
+		v3:null,
 
 		init: function(){
 			$("#demo").append($("#visualization"));
@@ -101,6 +107,7 @@
 
 			this.v1 = this.ui.v1.value.substring(1, this.ui.v1.value.length-1).split(","); 
 			this.v2 = this.ui.v2.value.substring(1, this.ui.v2.value.length-1).split(",");
+			this.v3 = this.ui.v3.value.substring(1, this.ui.v3.value.length-1).split(",");
 			this.vCross = [];
 			this.vCross[0] = this.v1[1] * this.v2[2] - this.v1[2] * this.v2[1]; 
 			this.vCross[1] = this.v1[2] * this.v2[0] - this.v1[0] * this.v2[2];
@@ -118,7 +125,7 @@
 			error = 0;
 
 			for (i = 0 ; i < 3 ; i++){
-				if (!this.isNumber(this.v1[i]) || !this.isNumber(this.v2[i]) || !this.isNumber(this.vCross[i]) || !this.isNumber(this.vResultant[i]) || !this.isNumber(this.vDifference[i])){
+				if (!this.isNumber(this.v1[i]) || !this.isNumber(this.v2[i]) || !this.isNumber(this.v3[i]) || !this.isNumber(this.vCross[i]) || !this.isNumber(this.vResultant[i]) || !this.isNumber(this.vDifference[i])){
 					this.data = new vis.DataSet();
 					this.data.add({id:0,x:0,y:0,z:0,style:0});
 					this.data.add({id:1,x:0,y:0,z:0,style:0});
@@ -155,8 +162,8 @@
 		threeDPlot: function(){
 
 
-			min = Math.min(this.v1[0], this.v1[1], this.v1[2], this.v2[0], this.v2[1], this.v2[2], this.vCross[0], this.vCross[1], this.vCross[2], this.vResultant[0], this.vResultant[1], this.vResultant[2], this.vDifference[0], this.vDifference[1], this.vDifference[2]);
-			max = Math.max(this.v1[0], this.v1[1], this.v1[2], this.v2[0], this.v2[1], this.v2[2], this.vCross[0], this.vCross[1], this.vCross[2], this.vResultant[0], this.vResultant[1], this.vResultant[2], this.vDifference[0], this.vDifference[1], this.vDifference[2]);
+			min = Math.min(this.v1[0], this.v1[1], this.v1[2], this.v2[0], this.v2[1], this.v2[2], this.v3[0], this.v3[1], this.v3[2], this.vCross[0], this.vCross[1], this.vCross[2], this.vResultant[0], this.vResultant[1], this.vResultant[2], this.vDifference[0], this.vDifference[1], this.vDifference[2]);
+			max = Math.max(this.v1[0], this.v1[1], this.v1[2], this.v2[0], this.v2[1], this.v2[2], this.v3[0], this.v3[1], this.v3[2], this.vCross[0], this.vCross[1], this.vCross[2], this.vResultant[0], this.vResultant[1], this.vResultant[2], this.vDifference[0], this.vDifference[1], this.vDifference[2]);
 
 			absMax = Math.max(max, Math.abs(min));
 
@@ -177,6 +184,7 @@
 			this.data.add({id:0,x:0,y:0,z:0,style:0});
 			this.data.add({id:1,x:this.v1[0],y:this.v1[1],z:this.v1[2]});
 			this.data.add({id:2,x:this.v2[0],y:this.v2[1],z:this.v2[2]});
+			// this.data.add({id:6,x:this.v3[0],y:this.v3[1],z:this.v3[2]});
 
 			if (this.ui.showResultant.value == true){
 				this.data.add({id:4,x:this.vResultant[0],y:this.vResultant[1],z:this.vResultant[2]});
@@ -193,6 +201,10 @@
 			} else {
 				this.data.add({id:3,x:0,y:0,z:0});
 			}
+
+			// vector 3
+			this.data.add({id:6,x:this.v3[0],y:this.v3[1],z:this.v3[2]});
+
 			this.graph3d.setData(this.data);
 
 		}
