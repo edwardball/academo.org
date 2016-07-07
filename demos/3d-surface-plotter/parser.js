@@ -92,6 +92,29 @@ var Parser = (function (scope) {
 		return v;
 	}
 
+	function hasValue(values, index) {
+		var parts = index.split(/\./);
+		var value = values;
+		var part;
+		while (part = parts.shift()) {
+			if (!(part in value)) {
+				return false;
+			}
+			value = value[part];
+		}
+		return true;
+	}
+
+	function getValue(values, index) {
+		var parts = index.split(/\./);
+		var value = values;
+		var part;
+		while (part = parts.shift()) {
+			value = value[part];
+		}
+		return value;
+	}
+
 	Expression.prototype = {
 		simplify: function (values) {
 			values = values || {};
@@ -109,8 +132,8 @@ var Parser = (function (scope) {
 				if (type_ === TNUMBER) {
 					nstack.push(item);
 				}
-				else if (type_ === TVAR && (item.index_ in values)) {
-					item = new Token(TNUMBER, 0, 0, values[item.index_]);
+				else if (type_ === TVAR && hasValue(values, item.index_)) {
+					item = new Token(TNUMBER, 0, 0, getValue(values, item.index_));
 					nstack.push(item);
 				}
 				else if (type_ === TOP2 && nstack.length > 1) {
@@ -189,11 +212,11 @@ var Parser = (function (scope) {
 					nstack.push(f(n1, n2));
 				}
 				else if (type_ === TVAR) {
-					if (item.index_ in values) {
-						nstack.push(values[item.index_]);
+					if (hasValue(values, item.index_)) {
+						nstack.push(getValue(values, item.index_));
 					}
-					else if (item.index_ in this.functions) {
-						nstack.push(this.functions[item.index_]);
+					else if (hasValue(this.functions, item.index_)) {
+						nstack.push(getValue(this.functions, item.index_));
 					}
 					else {
 						throw new Error("undefined variable: " + item.index_);
@@ -305,7 +328,7 @@ var Parser = (function (scope) {
 		return Number(a) + Number(b);
 	}
 	function sub(a, b) {
-		return a - b; 
+		return a - b;
 	}
 	function mul(a, b) {
 		return a * b;
@@ -319,14 +342,63 @@ var Parser = (function (scope) {
 	function concat(a, b) {
 		return "" + a + b;
 	}
-
+	function equal(a, b) {
+		return a == b;
+	}
+	function notEqual(a, b) {
+		return a != b;
+	}
+	function greaterThan(a, b) {
+		return a > b;
+	}
+	function lessThan(a, b) {
+		return a < b;
+	}
+	function greaterThanEqual(a, b) {
+		return a >= b;
+	}
+	function lessThanEqual(a, b) {
+		return a <= b;
+	}
+	function andOperator(a, b) {
+		return Boolean(a && b);
+	}
+	function orOperator(a, b) {
+		return Boolean(a || b);
+	}
+	function sinh(a) {
+		return Math.sinh ? Math.sinh(a) : ((Math.exp(a) - Math.exp(-a)) / 2);
+	}
+	function cosh(a) {
+		return Math.cosh ? Math.cosh(a) : ((Math.exp(a) + Math.exp(-a)) / 2);
+	}
+	function tanh(a) {
+		if (Math.tanh) return Math.tanh(a);
+		if(a === Infinity) return 1;
+		if(a === -Infinity) return -1;
+		return (Math.exp(a) - Math.exp(-a)) / (Math.exp(a) + Math.exp(-a));
+	}
+	function asinh(a) {
+		if (Math.asinh) return Math.asinh(a);
+		if(a === -Infinity) return a;
+		return Math.log(a + Math.sqrt(a * a + 1));
+	}
+	function acosh(a) {
+		return Math.acosh ? Math.acosh(a) : Math.log(a + Math.sqrt(a * a - 1));
+	}
+	function atanh(a) {
+		return Math.atanh ? Math.atanh(a) : (Math.log((1+a)/(1-a)) / 2);
+	}
 	function log10(a) {
 	      return Math.log(a) * Math.LOG10E;
 	}
 	function neg(a) {
 		return -a;
 	}
-
+	function trunc(a) {
+		if(Math.trunc) return Math.trunc(a);
+		else return a < 0 ? Math.ceil(a) : Math.floor(a);
+	}
 	function random(a) {
 		return Math.random() * (a || 1);
 	}
@@ -340,8 +412,21 @@ var Parser = (function (scope) {
 	}
 
 	// TODO: use hypot that doesn't overflow
-	function pyt(a, b) {
-		return Math.sqrt(a * a + b * b);
+	function hypot() {
+		if(Math.hypot) return Math.hypot.apply(this, arguments);
+		var y = 0;
+		var length = arguments.length;
+		for (var i = 0; i < length; i++) {
+			if (arguments[i] === Infinity || arguments[i] === -Infinity) {
+				return Infinity;
+			}
+			y += arguments[i] * arguments[i];
+		}
+		return Math.sqrt(y);
+	}
+
+	function condition(cond, yep, nope) {
+		return cond ? yep : nope;
 	}
 
 	function append(a, b) {
@@ -372,6 +457,12 @@ var Parser = (function (scope) {
 			"asin": Math.asin,
 			"acos": Math.acos,
 			"atan": Math.atan,
+			"sinh": sinh,
+			"cosh": cosh,
+			"tanh": tanh,
+			"asinh": asinh,
+			"acosh": acosh,
+			"atanh": atanh,
 			"sqrt": Math.sqrt,
 			"log": Math.log,
 			"lg" : log10,
@@ -380,6 +471,7 @@ var Parser = (function (scope) {
 			"ceil": Math.ceil,
 			"floor": Math.floor,
 			"round": Math.round,
+			"trunc": trunc,
 			"-": neg,
 			"exp": Math.exp
 		};
@@ -392,7 +484,15 @@ var Parser = (function (scope) {
 			"%": mod,
 			"^": Math.pow,
 			",": append,
-			"||": concat
+			"||": concat,
+			"==": equal,
+			"!=": notEqual,
+			">": greaterThan,
+			"<": lessThan,
+			">=": greaterThanEqual,
+			"<=": lessThanEqual,
+			"and": andOperator,
+			"or": orOperator
 		};
 
 		this.functions = {
@@ -400,9 +500,11 @@ var Parser = (function (scope) {
 			"fac": fac,
 			"min": Math.min,
 			"max": Math.max,
-			"pyt": pyt,
+			"hypot": hypot,
+			"pyt": hypot, // backward compat
 			"pow": Math.pow,
-			"atan2": Math.atan2
+			"atan2": Math.atan2,
+			"if": condition
 		};
 
 		this.consts = {
@@ -428,6 +530,12 @@ var Parser = (function (scope) {
 		asin: Math.asin,
 		acos: Math.acos,
 		atan: Math.atan,
+		sinh: sinh,
+		cosh: cosh,
+		tanh: tanh,
+		asinh: asinh,
+		acosh: acosh,
+		atanh: atanh,
 		sqrt: Math.sqrt,
 		log: Math.log,
 		lg: log10,
@@ -436,14 +544,17 @@ var Parser = (function (scope) {
 		ceil: Math.ceil,
 		floor: Math.floor,
 		round: Math.round,
+		trunc: trunc,
 		random: random,
 		fac: fac,
 		exp: Math.exp,
 		min: Math.min,
 		max: Math.max,
-		pyt: pyt,
+		hypot: hypot,
+		pyt: hypot, // backward compat
 		pow: Math.pow,
 		atan2: Math.atan2,
+		"if": condition,
 		E: Math.E,
 		PI: Math.PI
 	};
@@ -611,6 +722,7 @@ var Parser = (function (scope) {
 		error_parsing: function (column, msg) {
 			this.success = false;
 			this.errormsg = "parse error [column " + (column) + "]: " + msg;
+			this.column = column;
 			throw new Error(this.errormsg);
 		},
 
@@ -654,7 +766,7 @@ var Parser = (function (scope) {
 
 			for (var i = 0; i < v.length; i++) {
 				var c = v.charAt(i);
-	
+
 				if (escaping) {
 					switch (c) {
 					case "'":
@@ -699,7 +811,7 @@ var Parser = (function (scope) {
 					}
 				}
 			}
-	
+
 			return buffer.join('');
 		},
 
@@ -745,37 +857,98 @@ var Parser = (function (scope) {
 		isOperator: function () {
 			var code = this.expression.charCodeAt(this.pos);
 			if (code === 43) { // +
-				this.tokenprio = 0;
+				this.tokenprio = 2;
 				this.tokenindex = "+";
 			}
 			else if (code === 45) { // -
-				this.tokenprio = 0;
+				this.tokenprio = 2;
 				this.tokenindex = "-";
+			}
+			else if (code === 62) { // >
+				if (this.expression.charCodeAt(this.pos + 1) === 61) {
+					this.pos++;
+					this.tokenprio = 1;
+					this.tokenindex = ">=";
+				} else {
+					this.tokenprio = 1;
+					this.tokenindex = ">";
+				}
+			}
+			else if (code === 60) { // <
+				if (this.expression.charCodeAt(this.pos + 1) === 61) {
+					this.pos++;
+					this.tokenprio = 1;
+					this.tokenindex = "<=";
+				} else {
+					this.tokenprio = 1;
+					this.tokenindex = "<";
+				}
 			}
 			else if (code === 124) { // |
 				if (this.expression.charCodeAt(this.pos + 1) === 124) {
 					this.pos++;
-					this.tokenprio = 0;
+					this.tokenprio = 1;
 					this.tokenindex = "||";
 				}
 				else {
 					return false;
 				}
 			}
+			else if (code === 61) { // =
+				if (this.expression.charCodeAt(this.pos + 1) === 61) {
+					this.pos++;
+					this.tokenprio = 1;
+					this.tokenindex = "==";
+				}
+				else {
+					return false;
+				}
+			}
+			else if (code === 33) { // !
+				if (this.expression.charCodeAt(this.pos + 1) === 61) {
+					this.pos++;
+					this.tokenprio = 1;
+					this.tokenindex = "!=";
+				}
+				else {
+					return false;
+				}
+			}
+			else if (code === 97) { // a
+				if (this.expression.charCodeAt(this.pos + 1) === 110 && this.expression.charCodeAt(this.pos + 2) === 100) { // n && d
+					this.pos++;
+					this.pos++;
+					this.tokenprio = 0;
+					this.tokenindex = "and";
+				}
+				else {
+					return false;
+				}
+			}
+			else if (code === 111) { // o
+				if (this.expression.charCodeAt(this.pos + 1) === 114) { // r
+					this.pos++;
+					this.tokenprio = 0;
+					this.tokenindex = "or";
+				}
+				else {
+					return false;
+				}
+			}
 			else if (code === 42 || code === 8729 || code === 8226) { // * or ∙ or •
-				this.tokenprio = 1;
+				this.tokenprio = 3;
 				this.tokenindex = "*";
 			}
 			else if (code === 47) { // /
-				this.tokenprio = 2;
+				this.tokenprio = 4;
 				this.tokenindex = "/";
 			}
 			else if (code === 37) { // %
-				this.tokenprio = 2;
+				this.tokenprio = 4;
 				this.tokenindex = "%";
 			}
 			else if (code === 94) { // ^
-				this.tokenprio = 3;
+				this.tokenprio = 5;
 				this.tokenindex = "^";
 			}
 			else {
@@ -894,7 +1067,7 @@ var Parser = (function (scope) {
 			for (var i = this.pos; i < this.expression.length; i++) {
 				var c = this.expression.charAt(i);
 				if (c.toUpperCase() === c.toLowerCase()) {
-					if (i === this.pos || (c != '_' && (c < '0' || c > '9'))) {
+					if (i === this.pos || (c != '_' && c != '.' && (c < '0' || c > '9'))) {
 						break;
 					}
 				}

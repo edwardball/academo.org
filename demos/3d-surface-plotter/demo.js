@@ -16,6 +16,13 @@
 				value: "-50, 50",
 				type: "userInputString"
 			},
+			resolution: {
+				title: "Resolution",
+				value: 25,
+				range: [1, 100],
+				resolution: 1,
+				input: "hidden"
+			},
 			calculate: {
 				title: "Calculate",
 				type: "button"
@@ -104,7 +111,8 @@
 			var steps = 50;  // number of datapoints will be steps*steps
 			var axisMax = 314;
 			var axisStep = axisMax / steps;
-			var numberOfSteps = 25;
+			// var numberOfSteps = 25;
+			var numberOfSteps = this.ui.resolution.value;
 			xRange = this.ui.xRange.value.split(",");
 			yRange = this.ui.yRange.value.split(",");
 			xRange[0] = parseFloat(xRange[0]);
@@ -130,14 +138,19 @@
 			if (rangeError == 0){
 				for (var x = xRange[0] ; x <= xRange[1] ; x+=xInterval) {
 					for (var y = yRange[0]; y <= yRange[1]; y+=yInterval) {
-						r = Math.sqrt(x*x + y*y)/50 ;
-						var value = this.expr.evaluate({x:x, y:y});
-						if (isNaN(value)){
-							nanCount++;
-							// console.log(value, x, y);
-						} else {
-							this.data.add({id:counter++,x:x,y:y,z:value,style:value});
-						}
+						// if (x > y){
+							r = Math.sqrt(x*x + y*y)/50 ;
+							var value = this.expr.evaluate({x:x, y:y});
+							if (typeof value == "undefined"){
+
+							} else if (isNaN(value)){
+								nanCount++;
+								// console.log(value, x, y);
+							} else {
+								this.data.add({id:counter++,x:x,y:y,z:value,style:value});
+							}
+							
+						// }
 					}
 				}
 				this.graph3d.setData(this.data);

@@ -6,6 +6,7 @@ tags: [Graph, plot, surface]
 blurb: An online tool to create 3D plots of surfaces.
 stylesheets: [vis.css, styles.css]
 scripts: [parser.js, vis.min.js, demo.js]
+latex: true
 ---
 
 <div id="visualization"></div>
@@ -17,4 +18,12 @@ scripts: [parser.js, vis.min.js, demo.js]
 </p>
 
 {% include expression_table.html %}
+
+<p>
+	You can also apply certain constraints/inequalities to the graph. If, for example, you wanted to show the funtion \(x^2\) - \(y^2\) but only in areas where \(x\) is greater than \(y\), you would enter "if (x > y, x*x - y*y)" in the expression box. You can also enter a third option which will be plotted if the first condition is not met - for example "if (x > y, x*x - y*y, x)" will plot \(x^2\) - \(y^2\) in all areas where \( x \) is greater than  \( y\), and \(x \) in all areas where x is <em>not</em> greater than y.
+</p>
+
+<p>
+	The resolution slider can be used to increase the number of data points displayed on the graph, which gives a smoother final result, but since this needs more computational power, you may notice a slight decrease in frame rate when interacting with the graph.
+</p>
 
