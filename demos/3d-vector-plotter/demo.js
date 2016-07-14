@@ -100,14 +100,12 @@
 		  return !isNaN(parseFloat(n)) && isFinite(n);
 		},
 
-
 		update: function(e){
-
-
 
 			this.v1 = this.ui.v1.value.substring(1, this.ui.v1.value.length-1).split(","); 
 			this.v2 = this.ui.v2.value.substring(1, this.ui.v2.value.length-1).split(",");
 			this.v3 = this.ui.v3.value.substring(1, this.ui.v3.value.length-1).split(",");
+
 			this.vCross = [];
 			this.vCross[0] = this.v1[1] * this.v2[2] - this.v1[2] * this.v2[1]; 
 			this.vCross[1] = this.v1[2] * this.v2[0] - this.v1[0] * this.v2[2];
@@ -122,10 +120,11 @@
 			this.vDifference[1] = 1*this.v1[1] - 1*this.v2[1];
 			this.vDifference[2] = 1*this.v1[2] - 1*this.v2[2];
 
-			error = 0;
+			var error = 0;
 
 			for (i = 0 ; i < 3 ; i++){
 				if (!this.isNumber(this.v1[i]) || !this.isNumber(this.v2[i]) || !this.isNumber(this.v3[i]) || !this.isNumber(this.vCross[i]) || !this.isNumber(this.vResultant[i]) || !this.isNumber(this.vDifference[i])){
+					alert("There is a problem with your input, please try again")
 					this.data = new vis.DataSet();
 					this.data.add({id:0,x:0,y:0,z:0,style:0});
 					this.data.add({id:1,x:0,y:0,z:0,style:0});
@@ -133,19 +132,15 @@
 					this.data.add({id:3,x:0,y:0,z:0,style:0});
 					this.data.add({id:4,x:0,y:0,z:0,style:0});
 					this.data.add({id:5,x:0,y:0,z:0,style:0});
+					this.data.add({id:6,x:0,y:0,z:0,style:0});
 					this.graph3d.setData(this.data);
-					alert("There is a problem with your input, please try again")
-
-				} else {
-					this.threeDPlot();
-				}
+					error++;
+				} 
 			}
 
-
-			
-
-
-
+			if (error === 0){
+				this.threeDPlot();
+			}
 		},
 
 		animate: function(){
