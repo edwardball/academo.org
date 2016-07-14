@@ -103,14 +103,14 @@ function Spectrogram(settings){
 			title: "Frequency",
 			property: "frequencyRange",
 			options: [{
-				title: "0 - 1 Khz",
+				title: "0 - 1 kHz",
 				value: 1000
 			},{
-				title: "0 - 5 Khz",
+				title: "0 - 5 kHz",
 				value: 5000,
 				selected: true,
 			},{
-				title: "0 - 10Khz",
+				title: "0 - 10 kHz",
 				value: 10000
 			}],
 		},{
