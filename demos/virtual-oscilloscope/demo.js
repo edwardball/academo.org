@@ -262,7 +262,12 @@ if (AudioContext){
   analyser.smoothingTimeConstant = .9;
   // analyser.fftSize = 512;
   // analyser.fftSize = 1024;
-  analyser.fftSize = 4096;
+  // analyser.fftSize = 4096;
+  try {
+    analyser.fftSize = 4096;
+  } catch(e) {
+    analyser.fftSize = 2048;
+  }
   gainNode.connect(analyser);
   // frequencyBinCount is readonly and set to fftSize/2;
   var timeDomain = new Uint8Array(analyser.frequencyBinCount);
