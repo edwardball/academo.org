@@ -50,6 +50,9 @@
 			title: "Jet",
 			value: "/articles/sounds/jet.mp3",
 		},{
+			title: "Lion",		
+			value: "/articles/sounds/lion.mp3",		
+		},{
 			title: "Major Scale",
 			value: "/articles/sounds/major_scale.mp3",
 		},{
@@ -65,6 +68,9 @@
 			title: "Scream",
 			value: "/articles/sounds/scream.mp3",
 		},{
+			title: "Siamangs",		
+			value: "/articles/sounds/siamangs.mp3",
+		},{		
 			title: "Sine Wave",
 			value: "/articles/sounds/sine_wave.mp3",
 		},{
