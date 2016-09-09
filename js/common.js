@@ -123,11 +123,15 @@ $(document).ready(function(){
 
 		$("#ui-container").append(form);
 	}
-
 	
+
 	var sponsoredLinks = [
-		'<a href="http://tr.grammarly.com/aff_c?offer_id=97&aff_id=8559" target="_blank"><img src="/img/grammarly-banner.png"></a>',
-		'<a href="http://www.dpbolvw.net/click-8052599-12207280-1448292209000" target="_top"><img src="https://www.tqlkg.com/image-8052599-12207280-1448292209000" width="194" height="54" alt="ORM, O\'Reilly, Logo, Friends" border="0"/></a>'
+		// '<a href="http://tr.grammarly.com/aff_c?offer_id=97&aff_id=8559" target="_blank"><img src="/img/grammarly-banner.png"></a>',
+		// '<a href="http://www.dpbolvw.net/click-8052599-12207280-1448292209000" target="_top"><img src="https://www.tqlkg.com/image-8052599-12207280-1448292209000" width="194" height="54" alt="ORM, O\'Reilly, Logo, Friends" border="0"/></a>',
+		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=23011826" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(23011826)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>',
+		// '<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=22604650" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(22604650)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>'
+		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=22604638" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(22604638)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>',
+		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=23085442" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(23085442)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>'
 	];
 
 	// Randomise sponsored link
