@@ -44,3 +44,37 @@
 	opacity:1;
 	transition-duration:0s;
 }
+.tweets {
+	overflow: hidden;
+	width:90%;
+	max-width: 1000px;
+	margin:0 auto;
+	text-align: center;
+}
+.tweet {
+	width:30%;
+	display: inline-block;
+	padding:10px;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+@media (max-width: 1000px) {
+	.tweet {
+		width:40%;
+		display: inline-block;
+		margin:0 auto;
+	}
+}
+
+@media (max-width: 730px) {
+	.tweets {
+		width:100%;
+	}
+
+	.tweet {
+		display: block;
+		width:100%;
+		margin:0 auto;
+	}
+}
