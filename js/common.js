@@ -51,14 +51,11 @@ $(document).ready(function(){
 })
 
 $("body").on("click", ".sidebar a", function(e){
-	e.preventDefault();
-	// ga('send', 'event', 'sidebar', 'click', $(this).attr("href"), {'hitCallback':
-	// function () {
-	// 	document.location = $(this).attr("href");
-	// }
-	// });
-	ga('send', 'event', 'sidebar', 'click', $(this).attr("href"));
-	document.location = $(this).attr("href");
+	if ($(this).attr("target" != "_blank")){
+		e.preventDefault();
+		ga('send', 'event', 'sidebar', 'click', $(this).attr("href"));
+		document.location = $(this).attr("href");
+	}
 });
 
 
