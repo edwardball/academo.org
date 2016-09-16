@@ -46,3 +46,16 @@ p{
 	padding:5px;
 	font-family: courier;
 }
+
+@media (max-width: 1000px) {
+	p, li{
+		font-size:16px;
+	}
+}
+
+@media (max-width: 700px) {
+	p, li{
+		font-size:14px;
+	}
+}
+
