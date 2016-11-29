@@ -81,7 +81,7 @@
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .logo{
         position: static;
         float:left;
@@ -101,12 +101,13 @@
     	clear:both;
     }
 
-    .nav--primary li:first-child {
+    .nav--primary li {
     	margin-left:0;
+    	margin-right:20px;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
 	.nav--primary .social--twitter,
 	.nav--primary .social--facebook {
 		position: absolute;
