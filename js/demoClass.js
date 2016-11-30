@@ -60,7 +60,15 @@ function Demo(settings){
   			    // self.update(prop);
 			});
 		} else if (ui[prop].type == "userInputString"){
-  			inputBoxHTML = "<input class='form-control user-input-string' value='"+ui[prop].value+"'>";
+			var inputBoxHTML = "";
+  			if (ui[prop].prepend){
+	  			inputBoxHTML = "<div class='input-group'>";
+  				inputBoxHTML += "<span class='input-group-addon'>"+ui[prop].prepend+"</span>";
+  			}
+  			inputBoxHTML += "<input class='form-control user-input-string' value='"+ui[prop].value+"'>";
+  			if (ui[prop].prepend){
+	  			inputBoxHTML += "</div>";
+	  		}
 	  		$(propContainerSelector).append(inputBoxHTML);
   		    $('#'+prop+'-interface input').change(function(){
 	    		ui[prop].value = $('#'+prop+'-interface input').val();
