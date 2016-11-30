@@ -72,12 +72,31 @@
 
 		update: function(e){
 			try{
-				this.expr = Parser.parse(this.ui.expression.value);
-				// if (this.expr.variables().sort().toString() == "x,y") {
-					this.threeDPlot();
-				// } else {
-				// 	alert("Please enter an equation in terms of x and y");
-				// }
+				var enteredExpression = this.ui.expression.value.trim();
+
+				// need to account for inequalities
+				// first remove "if". This syntax was part of older format. eg (if x > y, x, y)
+				// New format needs to be like so
+				// x > y ? x : y
+				enteredExpression = enteredExpression.replace("if", "");
+				//next replace first comma with "?"
+				enteredExpression = enteredExpression.replace(",", "?");
+
+				if (enteredExpression.indexOf("?") > -1){
+				//finally replace last comma with ":"
+					if (enteredExpression.indexOf(",") > -1){
+						enteredExpression = enteredExpression.replace(",", ":");
+						console.log(enteredExpression);
+					} else {
+						// this means we don't have a second expression. So remove last bracket, add null and re-add it.
+						enteredExpression = enteredExpression.slice(0, -1);
+						enteredExpression += ": null)";
+					}
+				}
+				
+				this.node = math.parse(enteredExpression); 
+				this.expr = this.node.compile();
+				this.threeDPlot();
 			} catch (e) {
 				alert("Sorry, it looks like there's something wrong with the mathematical expression you entered. Please try again.");
 				this.data = new vis.DataSet();
@@ -138,19 +157,21 @@
 			if (rangeError == 0){
 				for (var x = xRange[0] ; x <= xRange[1] ; x+=xInterval) {
 					for (var y = yRange[0]; y <= yRange[1]; y+=yInterval) {
-						// if (x > y){
-							r = Math.sqrt(x*x + y*y)/50 ;
-							var value = this.expr.evaluate({x:x, y:y});
+						var value =  this.expr.eval({x:x, y:y});
+						if (value == null){
+							// don't plot anything
+						} else {
+							// Display real value.
+							value = math.re(value);
+
 							if (typeof value == "undefined"){
 
 							} else if (isNaN(value)){
 								nanCount++;
-								// console.log(value, x, y);
 							} else {
 								this.data.add({id:counter++,x:x,y:y,z:value,style:value});
 							}
-							
-						// }
+						}	
 					}
 				}
 				this.graph3d.setData(this.data);
