@@ -82,7 +82,7 @@
 
 		updateURL: function(){
 			var data = {
-				expression: this.ui.expression.value,
+				expression: this.ui.expression.value.replace(/ /g,''), // strip white space because $.param encodes it as +
 				xRange: this.ui.xRange.value,
 				yRange: this.ui.yRange.value,
 				resolution: this.ui.resolution.value
