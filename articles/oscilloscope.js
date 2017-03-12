@@ -64,7 +64,12 @@ function Oscilloscope(id, userSettings){
 
 	this.analyser.smoothingTimeConstant = .9;
 	// this.analyser.fftSize = 4096;
-	this.analyser.fftSize = 8192;
+	try {
+		this.analyser.fftSize = 8192;
+	} catch(err) {
+		// we are in a browser with limited fft size
+		this.analyser.fftSize = 2048;
+	}
 	this.gainNode.connect(this.analyser);
 	// frequencyBinCount is readonly and set to fftSize/2;
 	this.timeDomain = new Uint8Array(this.analyser.frequencyBinCount);
@@ -739,7 +744,9 @@ function Oscilloscope(id, userSettings){
 			console.log("Capture error: ", error.code);
 		});
 	} else {
+		$("#mic-toggle, label[for=mic-toggle]").css("opacity", 0.3).attr("disabled", true)
 		$("#inputType-interface option[value=1]").attr("disabled", true);
+		$("#oscilloscope").after("<p>Microphone input is unavailble in this browser. Please try again using the latest version of Chrome or Firefox.</p>");
 	};
 
 }
