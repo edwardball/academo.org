@@ -445,7 +445,7 @@ function Oscilloscope(id, userSettings){
 					title: "Lion: Little Rock Zoo",
 					value: "/articles/oscilloscope-sounds/lion.mp3",
 				},{
-					title: "Major Scale: Anna C. Scott&nbsp;",
+					title: "Major Scale: Ana C. Scott&nbsp;",
 					value: "/articles/oscilloscope-sounds/major_scale.mp3",
 				},{
 					title: "Miter Saw: Joe Gosnell",
