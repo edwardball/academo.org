@@ -1,4 +1,6 @@
-
+.sponsor-wrapper, .sidebar {
+	display: none;
+}
 
 #demo{
   position:relative;

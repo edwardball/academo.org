@@ -6,10 +6,87 @@ tags: [Audio]
 blurb: This online vectorscope uses stereo audio as its input. The two channels are plotted against each other on the x and y axes to produce a range of interesting patterns.
 stylesheets: [styles.css]
 scripts: [AudioContextMonkeyPatch.js, stereo-analyser-node.js, demo.js]
-twitterCard: true
-facebookOG: true
+latex: true
 ---
 
-<p style='height:200px;'>
-	Equations for curves are taken from <a href="https://www.wolframalpha.com/input/?i=popular+curves">Wolfram Alpha</a>. Full instructions will follow shortly, in the meantime, please refer to the paper <em>Sonification and Visualization of Parametric Equations</em> for a description of this demonstration.
+<p style='height:100px;'>
+	Please note, the data for the Ballerina and Dolphin curves takes a few seconds to compute.
+	Equations for curves are taken from <a href="https://www.wolframalpha.com/input/?i=popular+curves">Wolfram Alpha</a>.
+	For best performance, please use Google Chrome.
 </p>
+
+
+<h2>Introduction</h2>
+
+<p>
+Parametric equations are sets of equations that express quantities  in terms of independent variables known as "parameters". An example of a pair of such equations would be
+</p>
+
+
+\begin{align}
+x = \sin{t}\\
+y = \cos{t}
+\end{align}
+
+
+<h2>Sonification</h2>
+
+<p>Sonifying parametric equations is a matter of creating two channels of audio, one for the \(x\) variable and one for the \(y\). Equations 1 and 2 can be sonified using two Web Audio oscillator nodes, as long as the phase difference between the two oscillators is \(\pi/2\). At the time of writing, phase control of oscillator nodes is unavailable in Web Audio but is in development. However, we can still create a phase offset by using a <code>delayNode</code> with its <code>delayTime</code> set to one quarter of a period of the current frequency.</p>
+
+<p>For more complicated parametric equations, an alternative approach is to create a stereo <code>AudioBufferSourceNode</code> and fill the left and right buffers with data that has been calculated programatically using the parametric equation for that channel. This is done over a certain range of \(t\) (ideally one which contains a whole number of periods which therefore avoids discontinuities and audio artefacts) and the <code>loop</code> property of the buffer is set to <code>true</code>.</p>
+
+
+<h2>Visualization</h2>
+
+<p>Visualizing parametric equations can be done using the HTML5 canvas drawing API. The displacement at a specific time can be obtained via the <code>getFloatTimeDomainData</code> method of a Web Audio <code>analyserNode</code>. However, at the time of writing, the native Web Audio analyser node does not support stereo input, so we utilise an MIT licensed <a href="https://github.com/mohayonao/stereo-analyser-node" target="_blank">custom implementation</a>. The two audio channels are passed to the analyser which then fills two arrays with the time domain data.</p>
+
+<p>With appropriate scaling, the horizontal offset on the canvas is determined by the time domain data from one channel, the vertical offset by the data from the other channel and the data is plotted as in Figure 1c. This process is repeated at approximately 60fps using the <code>requestAnimationFrame</code> method allowing any time evolution of the pattern to be shown on the screen.</p>
+
+<p>Pieces of hardware that plot such x-y graphs of signals are known as <em>vectorscopes</em>, a special type of oscilloscope. Users familiar with standard oscilloscopes can also recreate this functionality by enabling "x-y mode" on their particular model.</p>
+
+
+<h2>Lissajous Figures</h2>
+
+<p>In their most general form, Lissajous Figures are created from the following pair of parametric equations:</p>
+
+\begin{align}
+x &= A \sin{(at + \delta)}\\
+y &= B \sin{(bt)}
+\end{align}
+
+<p>For simplicity, our demo has \(A = B = 1\). Two oscillator nodes are created, with adjustable frequencies determined by \(a\) and \(b\). The relative phase offset between them would be \(\delta\). Due to the lack of precise phase control as mentioned earlier, the \(\delta\) slider in the demo doesn't represent an accurate phase offset (as the oscillator's relative phase changes when the frequency changes) but nevertheless still provides a way to nudge the phase and adjust the visualization.</p>
+
+<p>Lissajous patterns can range from very simple to very intricate depending on the ratio of \(a:b\). In terms of sound, they are very simple - two pure tones.</p>
+
+
+<h2>Hypotrochoids</h2>
+
+<p>Mathematically speaking, hypotrochoids are created via the following pair of parametric equations:</p>
+
+\begin{align}
+x(t) = (R-r)\cos(t) + d  \cos \left(\frac{R-r}{r} t\right)\\
+y(t) = (R-r)\sin(t) - d  \sin \left(\frac{R-r}{r} t\right)
+\end{align}
+
+<p>Hypotrochoids are made up of 4 sinusoids, so again they can be created simply using web audio oscillators. Sonically, they sound very similar to Lissajous figures, as they consist of just two pure frequencies. Despite the simple sound, they can produce some very intricate patterns.</p>
+
+
+<h2>Rose Curves</h2>
+
+<p>Rose curves are created by equations 7 and 8. Since these equations involve multiplication of sinusoids, we are able to recreate these in Web Audio by connecting oscillators to <code>gainNodes</code> that have their gain value modulated by a separate oscillator.</p>
+
+
+\begin{align}
+x(t) = \cos(kt)\cos(t)\\
+y(t) = \cos(kt)\sin(t)
+\end{align}
+
+
+
+<h2>Pre-calculated curves</h2>
+
+<p>Producing more complex plots can be done by adding large numbers of sinusoids together. While it should be possible to recreate these by creating large numbers of corresponding oscillator nodes, the author has for the following cases decided to create an empty buffer and programatically calculate the required samples over a single period.</p>
+
+
+
+<p>To introduce time evolution, this process can be repeated over a number of periods. For each period, a transformation is applied to the samples. The transformation is then adjusted slightly for the next iteration. In this way, the author was able to create a spinning ballerina, and a jumping dolphin.</p>
