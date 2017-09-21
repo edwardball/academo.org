@@ -54,7 +54,9 @@ audio.addEventListener('play', function(){
 	window.cancelAnimationFrame(animationID);
 	streaming = false;
 	$("#mic-toggle").prop("checked", false).attr("checked", false);
-	window.mediaStreamSource.disconnect();
+	if (typeof window.mediaStreamSource === 'object'){
+		window.mediaStreamSource.disconnect();
+	}
 	spectrogram.running = true;
 	spectrogram.render();
 });
@@ -462,7 +464,9 @@ function Spectrogram(settings){
 					_this.render();
 				} else {
 					streaming = false;
-					window.mediaStreamSource.disconnect();
+					if (typeof window.mediaStreamSource === 'object'){
+						window.mediaStreamSource.disconnect();
+					}
 					_this.running = false;
 					window.cancelAnimationFrame(animationID);
 				}
