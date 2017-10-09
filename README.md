@@ -143,4 +143,4 @@ As mentioned above, the `update` function is fired any time a user interface ele
 Finally, each demo needs a `thumbnail.png` file. The image should be saved at a size of 260&times;170px in PNG format. Please don't include any borders on the images because the thumbnail has a border provided via CSS.
 
 ## To Do List
-I'd like to start implementing testing on demos (e.g. with Jasmine), and am currently investigating the best way to go about this. Any input/advice/tips welcome.
+I'd like to start implementing testing on demos (e.g. with Jasmine), and i am currently investigating the best way to go about this. Any input/advice/tips welcome.
