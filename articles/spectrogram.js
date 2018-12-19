@@ -348,6 +348,8 @@ function Spectrogram(settings){
 		$("#spectrogram-ui-container audio").attr("id", "audio-element");		
 		$("#spectrogram-ui-container audio").css("vertical-align", "middle");
 		$("#spectrogram-ui-container audio").css("margin-left", "10px");
+		$("#spectrogram-ui-container audio").css("height", "26px");
+		$("#spectrogram-ui-container audio").css("width", "300px");
 		
 		$("#spectrogram-ui-container .dropdown:first").css("border-right", "none");
 		$("#spectrogram-ui-container .dropdown:last").css("border-right", "none");
@@ -369,7 +371,7 @@ function Spectrogram(settings){
 		style += this.selector + " #spectrogram-ui-container{position:absolute;bottom:20px;left:40px;color:"+this.labelColor+";}";
 		style += this.selector + " label{margin-bottom:10px;display:block;font:"+this.font+";}";
 		style += this.selector + " input[type=file]{display:none}";
-		style += ".dropdown {float: left;height:40px;border-right: solid 1px "+this.labelColor+";padding: 0 10px 10px;}";
+		style += ".dropdown {float: left;height:40px;border-right: solid 1px "+this.labelColor+";padding: 0 9px 10px;}";
 		style += "</style>"
 		$(style).appendTo("head");
 	},
