@@ -285,7 +285,7 @@ function Oscilloscope(id, userSettings){
 		style += this.selector + " .dropdown {float: left;height:25px;border-right: solid 1px white;padding: 0 10px 0px;margin-bottom:5px}";
 		style += this.selector + " #audio-file{margin-top:10px;}";
 		style += this.selector + " audio{float:right;width:260px;}";
-		style += this.selector + " #audioDropdown{margin-bottom:20px;border-right:none;} #audioDropdown audio {padding-left:10px} #audioDropdown input {margin-left: 10px;margin-top:10px;}";
+		style += this.selector + " #audioDropdown{margin-bottom:20px;border-right:none;} #audioDropdown audio {padding-left:10px;height:26px;width:235px} #audioDropdown input {margin-left: 10px;margin-top:10px;}";
 		style += "</style>";
 		$(style).appendTo("head");
 	}
