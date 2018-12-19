@@ -52,6 +52,12 @@ function Oscilloscope(id, userSettings){
 
 	var AudioContext = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
 
+	$(window).on("mousemove click scroll", function(){
+		if (_this.audioContext.state !== 'running' ){
+			_this.audioContext.resume();
+		}
+	});
+
 	this.demo = document.getElementById(this.selector.substring(1)); // use substring to remove initial #
 
 	this.audioContext = new AudioContext();
@@ -736,6 +742,8 @@ function Oscilloscope(id, userSettings){
 	            clearTimeout(id);
 	        };
 	}());
+
+
 
 	this.init();
 

@@ -50,16 +50,18 @@ var animationID;
 var audio = new Audio();
 audio.controls = true;
 
+
 audio.addEventListener('play', function(){
 	window.cancelAnimationFrame(animationID);
 	streaming = false;
 	$("#mic-toggle").prop("checked", false).attr("checked", false);
-	if (typeof window.mediaStreamSource === 'object'){
-		window.mediaStreamSource.disconnect();
-	}
 	spectrogram.running = true;
 	spectrogram.render();
+  if (window.mediaStreamSource)
+    window.mediaStreamSource.disconnect();
 });
+
+
 
 audio.addEventListener('ended', function(){
 	spectrogram.running = false;
@@ -225,6 +227,12 @@ function Spectrogram(settings){
     this.resetScrolling = function(){
         this.scrollingProgress = 0;
     }
+
+    $(window).on("mousemove click scroll", function(){
+		if (_this.context.state !== 'running' ){
+			_this.context.resume();
+		}
+	});
 
 
     this.init = function(){
