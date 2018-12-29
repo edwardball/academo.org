@@ -2,6 +2,12 @@ var AudioContext = (window.AudioContext || window.webkitAudioContext || window.m
 
   var audioContext = new AudioContext();
 
+  $(window).on("mousemove click scroll", function(){
+    if (audioContext.state !== 'running' ){
+      audioContext.resume();
+    }
+  });
+
 var ui = {
     inputType: {
         title: "Type",

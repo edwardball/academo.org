@@ -1,6 +1,12 @@
 var AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 context = new AudioContext();
 
+$(window).on("mousemove click scroll", function(){
+    if (context.state !== 'running' ){
+      context.resume();
+    }
+  });
+
 var animationID;
 
 var audio = new Audio();
