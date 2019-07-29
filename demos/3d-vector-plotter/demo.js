@@ -102,9 +102,9 @@
 
 		update: function(e){
 
-			this.v1 = this.ui.v1.value.substring(1, this.ui.v1.value.length-1).split(","); 
-			this.v2 = this.ui.v2.value.substring(1, this.ui.v2.value.length-1).split(",");
-			this.v3 = this.ui.v3.value.substring(1, this.ui.v3.value.length-1).split(",");
+			this.v1 = this.ui.v1.value.trim().slice(1, -1).split(",");
+			this.v2 = this.ui.v2.value.trim().slice(1, -1).split(",");
+			this.v3 = this.ui.v3.value.trim().slice(1, -1).split(",");
 
 			this.vCross = [];
 			this.vCross[0] = this.v1[1] * this.v2[2] - this.v1[2] * this.v2[1]; 
