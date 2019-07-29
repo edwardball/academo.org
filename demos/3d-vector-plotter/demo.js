@@ -124,7 +124,6 @@
 
 			for (i = 0 ; i < 3 ; i++){
 				if (!this.isNumber(this.v1[i]) || !this.isNumber(this.v2[i]) || !this.isNumber(this.v3[i]) || !this.isNumber(this.vCross[i]) || !this.isNumber(this.vResultant[i]) || !this.isNumber(this.vDifference[i])){
-					alert("There is a problem with your input, please try again")
 					this.data = new vis.DataSet();
 					this.data.add({id:0,x:0,y:0,z:0,style:0});
 					this.data.add({id:1,x:0,y:0,z:0,style:0});
@@ -140,6 +139,8 @@
 
 			if (error === 0){
 				this.threeDPlot();
+			} else {
+				alert("There is a problem with your input, please try again");
 			}
 		},
 
