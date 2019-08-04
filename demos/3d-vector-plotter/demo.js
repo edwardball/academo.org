@@ -227,7 +227,7 @@
 
 				// add the vectors to the UI
 				this.ui[vecName] = {
-										title: "Vector " + vecName + " (" + vecColorName + ")",
+										title: "Expression " + vecName + " (" + vecColorName + ")",
 										value: "v1 x v2",
 										type: "userInputString"
 									};
