@@ -5031,60 +5031,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
     // ACADEMO
 
-    //first line
-      point = this.dataPoints[0];
-      ctx.lineWidth = 1;    // TODO: make customizable
-      ctx.strokeStyle = 'blue'; // TODO: make customizable
+    ctx.lineWidth = 1;    // TODO: make customizable
+    point = this.dataPoints[0];
+
+    for (var i = 1; i<this.dataPoints.length; i+=1) {
+      ctx.strokeStyle = Colors.colorMaps[Colors.colors[i]];
       ctx.beginPath();
       ctx.moveTo(point.screen.x, point.screen.y);
-      ctx.lineTo(this.dataPoints[1].screen.x, this.dataPoints[1].screen.y);
+      ctx.lineTo(this.dataPoints[i].screen.x, this.dataPoints[i].screen.y);
       ctx.stroke();
-
-     //second line
-     point = this.dataPoints[0];
-     ctx.lineWidth = 1;    // TODO: make customizable
-     ctx.strokeStyle = 'red'; // TODO: make customizable
-     ctx.beginPath();
-     ctx.moveTo(point.screen.x, point.screen.y);
-     ctx.lineTo(this.dataPoints[2].screen.x, this.dataPoints[2].screen.y);
-     ctx.stroke();
-
-     //third line
-     point = this.dataPoints[0];
-     ctx.lineWidth = 1;    // TODO: make customizable
-     ctx.strokeStyle = 'green'; // TODO: make customizable
-     ctx.beginPath();
-     ctx.moveTo(point.screen.x, point.screen.y);
-     ctx.lineTo(this.dataPoints[3].screen.x, this.dataPoints[3].screen.y);
-     ctx.stroke();
-
-     //fourth line
-     point = this.dataPoints[0];
-     ctx.lineWidth = 1;    // TODO: make customizable
-     ctx.strokeStyle = 'purple'; // TODO: make customizable
-     ctx.beginPath();
-     ctx.moveTo(point.screen.x, point.screen.y);
-     ctx.lineTo(this.dataPoints[4].screen.x, this.dataPoints[4].screen.y);
-     ctx.stroke();
-
-     //fifth line
-     point = this.dataPoints[0];
-     ctx.lineWidth = 1;    // TODO: make customizable
-     ctx.strokeStyle = 'turquoise'; // TODO: make customizable
-     ctx.beginPath();
-     ctx.moveTo(point.screen.x, point.screen.y);
-     ctx.lineTo(this.dataPoints[5].screen.x, this.dataPoints[5].screen.y);
-     ctx.stroke();
-
-     //sixth line
-     point = this.dataPoints[0];
-     ctx.lineWidth = 1;    // TODO: make customizable
-     ctx.strokeStyle = 'orange'; // TODO: make customizable
-     ctx.beginPath();
-     ctx.moveTo(point.screen.x, point.screen.y);
-     ctx.lineTo(this.dataPoints[6].screen.x, this.dataPoints[6].screen.y);
-     ctx.stroke();
-
+    }
 
   };
 
