@@ -268,8 +268,8 @@
 
 			if (error === 0){
 				this.threeDPlot();
-			} else{
-				alert("There is a problem with your input, please try again")
+			} else {
+				alert("There is a problem with your input, please try again");
 			}
 		},
 
