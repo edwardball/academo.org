@@ -427,113 +427,113 @@ function Oscilloscope(id, userSettings){
 			property: "audioFile",
 			options: [{
 					title: "Baby",
-					value: "../sounds/baby.mp3",
+					value: "../oscilloscope-sounds/baby.mp3",
 					selected: true
 				},{
 					title: "Baby 'Ok'",
-					value: "../sounds/baby_OK.mp3",
+					value: "../oscilloscope-sounds/baby_OK.mp3",
 				},{
 		 			title: "Banging",
-					value: "../sounds/banging.mp3",
+					value: "../oscilloscope-sounds/banging.mp3",
 				},{
 		 			title: "Bassoon: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_bassoon.mp3",
+					value: "../oscilloscope-sounds/phil_bassoon.mp3",
 				},{
 					title: "Bell: UNC Asheville, J. Todd&nbsp;",
-					value: "../sounds/bell.mp3",
+					value: "../oscilloscope-sounds/bell.mp3",
 				},{
 					title: "Birds",
-					value: "../sounds/birds.mp3",
+					value: "../oscilloscope-sounds/birds.mp3",
 				},{
 					title: "Chimes: Regi Blackburn&nbsp;",
-					value: "../sounds/chimes.mp3",
+					value: "../oscilloscope-sounds/chimes.mp3",
 				},{
 					title: "Dogs: Owners Bob & Julie Roepnack ",
-					value: "../sounds/dogs.mp3",
+					value: "../oscilloscope-sounds/dogs.mp3",
 				},{
 					title: "Exotic Bird: Greensboro Science Center&nbsp;",
-					value: "../sounds/exotic_bird.mp3",
+					value: "../oscilloscope-sounds/exotic_bird.mp3",
 				},{
 					title: "Flute: Isabel Ferber",
-					value: "../sounds/flute.mp3",
+					value: "../oscilloscope-sounds/flute.mp3",
 				},{
 					title: "French Horn: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_french_horn.mp3",
+					value: "../oscilloscope-sounds/phil_french_horn.mp3",
 				},{
 					title: "Funny Voices: Daniel Simon&nbsp;",
-					value: "../sounds/funny_voices_daniel_simon.mp3",
+					value: "../oscilloscope-sounds/funny_voices_daniel_simon.mp3",
 				},{
 					title: "Hey: M. Alyssa Meadows",
-					value: "../sounds/hey.mp3",
+					value: "../oscilloscope-sounds/hey.mp3",
 				},{
 					title: "Jet: Dave Isenor",
-					value: "../sounds/jet.mp3",
+					value: "../oscilloscope-sounds/jet.mp3",
 				},{
 					title: "Lion: Little Rock Zoo",
-					value: "../sounds/lion.mp3",
+					value: "../oscilloscope-sounds/lion.mp3",
 				},{
 					title: "Major Scale: Ana C. Scott&nbsp;",
-					value: "../sounds/major_scale.mp3",
+					value: "../oscilloscope-sounds/major_scale.mp3",
 				},{
 					title: "Miter Saw: Joe Gosnell",
-					value: "../sounds/miter_saw.mp3",
+					value: "../oscilloscope-sounds/miter_saw.mp3",
 				},{
 		 			title: "Oboe: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_oboe.mp3",
+					value: "../oscilloscope-sounds/phil_oboe.mp3",
 				},{
 					title: "Orchestra: Allan Dennis & mya.org&nbsp;",
-					value: "../sounds/orchestra.mp3",
+					value: "../oscilloscope-sounds/orchestra.mp3",
 				},{
 					title: "Saxophone: James Berlyn",
-					value: "../sounds/saxophone.mp3",
+					value: "../oscilloscope-sounds/saxophone.mp3",
 				},{
 					title: "Scream: Madeleine Boone",
-					value: "../sounds/scream.mp3",
+					value: "../oscilloscope-sounds/scream.mp3",
 				},{
 					title: "Siamangs: Omaha, NE Zoo",
-					value: "../sounds/siamangs.mp3",
+					value: "../oscilloscope-sounds/siamangs.mp3",
 				},{
 					title: "Sirens: BluelightTV&nbsp;",
-					value: "../sounds/sirens.mp3",
+					value: "../oscilloscope-sounds/sirens.mp3",
 				},{
 					title: "Soprano",
-					value: "../sounds/soprano.mp3",
+					value: "../oscilloscope-sounds/soprano.mp3",
 				},{
 					title: "Sweeping Sine",
-					value: "../sounds/sweep.mp3",
+					value: "../oscilloscope-sounds/sweep.mp3",
 				},{
 					title: "Theremin: Casey Robinson",
-					value: "../sounds/theremin.mp3",
+					value: "../oscilloscope-sounds/theremin.mp3",
 				},{
 					title: "Thunder: rhondle",
-					value: "../sounds/thunder.mp3",
+					value: "../oscilloscope-sounds/thunder.mp3",
 				},{
 					title: "Tom-Toms: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_tom_toms.mp3",
+					value: "../oscilloscope-sounds/phil_tom_toms.mp3",
 				},{
 					title: "Train",
-					value: "../sounds/train.mp3",
+					value: "../oscilloscope-sounds/train.mp3",
 				},{
 					title: "Trombone: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_trombone.mp3",
+					value: "../oscilloscope-sounds/phil_trombone.mp3",
 				},{
 					title: "Tuba: Bud Holmes 24 Harmonics&nbsp;",
-					value: "../sounds/tuba.mp3",
+					value: "../oscilloscope-sounds/tuba.mp3",
 				},{
 					title: "Vibrato Sound",
-					value: "../sounds/vibrato.mp3",
+					value: "../oscilloscope-sounds/vibrato.mp3",
         },{
 					title: "Viola: www.philharmonia.co.uk&nbsp;",
-					value: "../sounds/phil_viola.mp3",
+					value: "../oscilloscope-sounds/phil_viola.mp3",
 				},{
 					title: "Violin: Willy Michel",
-					value: "../sounds/violin.mp3",
+					value: "../oscilloscope-sounds/violin.mp3",
 				},{
 					title: "Vowels: M. J. Ruiz",
-					value: "../sounds/vowels.mp3",
+					value: "../oscilloscope-sounds/vowels.mp3",
 				},{
 		 			title: "Waterfall: Looking Glass, NC&nbsp;",
-					value: "../sounds/waterfall.mp3",
+					value: "../oscilloscope-sounds/waterfall.mp3",
 				}]
 		}
 		$("#ui-container-osc").prepend($('<div class="dropdown" id="audioDropdown"></div>'));
