@@ -51,7 +51,7 @@ $(document).ready(function(){
 })
 
 $("body").on("click", ".sidebar a", function(e){
-	if ($(this).attr("target" != "_blank")){
+	if ($(this).attr("target") != "_blank"){
 		e.preventDefault();
 		ga('send', 'event', 'sidebar', 'click', $(this).attr("href"));
 		document.location = $(this).attr("href");
