@@ -5,6 +5,10 @@
 	<title>{{page.title}} | {{ site.name }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% if page.url == "/" %}<meta name="google-site-verification" content="e-G7_FBQBrCiTbxovimqQQxUkQ3sc5s1oYrSOCKUZPM" />{% endif %}
+
+	{% if page.blurb %}
+		<meta name="description" content="{{page.blurb | strip_html }}">
+	{% endif %}
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="stylesheet" href="/scss/main.css?v={{ site.time | date: "%s" }}">
 
