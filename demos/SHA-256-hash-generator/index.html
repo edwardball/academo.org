@@ -1,0 +1,38 @@
+---
+title: SHA-256 Hash Generator
+categories: [Maths]
+subcategories: [Numbers]
+tags: [Cryptography]
+blurb: Use this tool to find the SHA-256 hash of any text/string you enter into the text box. 
+stylesheets: [styles.css]
+scripts: [demo.js]
+noUi: true
+libraries: ["crypto-js.min.js"]
+twitterCard: true
+facebookOG: true
+---
+
+<div class="sha-generator">
+<p>Input your text here: </p>
+<textarea name="" id="js-input" cols="30" rows="10"></textarea>
+
+
+<div class="input-group">
+	<span class="input-group-addon">SHA256 hash: </span>
+	<input class="form-control with-units" id="js-output" disabled="">
+</div>
+
+</div>
+
+<p>SHA-256 is an algorithm that converts a string of text into another string, called a <em>hash</em>. The hash is always the same length: exactly 64 hexadecimal characters long. This is equivalent to 256 bits, which is where the name comes from - "Secure Hashing Algorithm - 256". Even if the input is empty, the hash will be 64 characters long, and in that specific scenario is: <pre>e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</pre></p>
+
+<p>The hashing algorithm is intentionally designed so that if the input changes just slightly, for example changing a letter from upper to lower case, or by adding a comma, the hash is completely different and bears no relation to what it was previously.</p>
+
+<p>This feature makes hashing algorithms useful for creating "fingerprints" of documents, allowing you to quickly check if there have been any edits made to the original, by comparing the hash of the document to a previously calculated hash.</p>
+
+<p>
+	Additionally, SHA-256 is used by Bitcoin miners when mining blocks of transactions. The process involves combining a list of transactions with a chosen number and then running this combination through SHA-256 to find the hash. If the hash begins with a specified certain number of 0's (at the time of writing, it is 19 zeros), then the mining attempt is successful. If the hash fails this test, then the miner needs to choose a new number and try hashing the transactions again.</p>
+
+<p>
+	By using the interactive tool above to create your own hashes, you can demonstrate that it requires a huge number of attempts to successfully find a hash that fits these criteria.
+</p>
