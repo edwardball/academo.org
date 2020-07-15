@@ -1,12 +1,26 @@
 ---
-title: Demo title
-categories: [Physics, Maths]
-subcategories: [Astronomy, Light, Quantum Physics]
-tags: [Radiation]
-blurb: A few words describing the demo
-#stylesheets: [styles.css]
+title: Azimuth Calculator
+categories: [Physics, Geography]
+subcategories: [Astronomy, Maps]
+tags: []
+blurb: Use this tool to establish which direction you need to look in, when trying to locate objects in the night sky.
+stylesheets: [styles.css]
 scripts: [demo.js]
+cdn: ["//maps.googleapis.com/maps/api/js?key=AIzaSyCoFlR16Ohnl6uSCw3Xn6RL8v9pzx3gJDE&sensor=false&libraries=geometry", "https://www.google.com/jsapi"]
 ---
 
 
-<p>Description here.</p>
+<p>
+	When you want to observe an object such as a comet or planet in the night sky, often you will visit a website that tells you where to look. The website often provides two numbers: an <em>azimuth</em> and an <em>altitude</em>. 
+</p>
+
+<div class="azimuth-illustration"><a title="TWCarlson / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)" href="https://commons.wikimedia.org/wiki/File:Azimuth-Altitude_schematic.svg"><img width="256" alt="Azimuth-Altitude schematic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Azimuth-Altitude_schematic.svg/256px-Azimuth-Altitude_schematic.svg.png"></a>
+</div>
+
+<p>The azimuth is a number between 0&deg; and 360&deg;, and is an angle (measured clockwise) from due north. So in other words, the azimuth tells you which direction along the horizon you should turn. An azimuth of 0&deg; means you should look due north. An azimuth of 90&deg; means you should look east. An azimuth of 180&deg; means you should look south, and so on.</p>
+
+<p>The altitude is how far above the horizon you should look. An altitude of 0&deg; means the object is directly on the horizon, whereas an altitude of 90&deg; means the object is directly above you.</p>
+
+<p>To use this tool, drag the pin marker to your location, or click on the "set marker to current location" button to do this automatically. Then drag the star marker around until the azimuth displays the correct value. You will then be able to use the line that joins the two markers to help you identify which direction you need to look in to see your object.</p>
+
+<p>In the default example above, if you are in the middle of Trafalgar Square, and your stargazing website has said the object your looking for can be found at an azimuth of 32&deg, then you know that to see it, you need to look in the direction of the Coliseum.</p>
