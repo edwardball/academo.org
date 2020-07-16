@@ -66,6 +66,13 @@
 			this.canvas.addEventListener('mousedown', function () {
 			        if (utils.containsPoint({x:_this.charge2.x + 250,y:_this.charge2.y+250,radius:_this.pointChargeRadius}, _this.mouse.x, _this.mouse.y)) {
 			          _this.isMouseDown = true;
+			          _this.movingCharge = 2;
+			          _this.canvas.addEventListener('mouseup', _this.onMouseUp, false);
+			          _this.canvas.addEventListener('mousemove', _this.onMouseMove, false);
+			        }
+			        if (utils.containsPoint({x:_this.charge1.x + 250,y:_this.charge1.y+250,radius:_this.pointChargeRadius}, _this.mouse.x, _this.mouse.y)) {
+			          _this.isMouseDown = true;
+			          _this.movingCharge = 1;
 			          _this.canvas.addEventListener('mouseup', _this.onMouseUp, false);
 			          _this.canvas.addEventListener('mousemove', _this.onMouseMove, false);
 			        }
@@ -75,14 +82,20 @@
 		},
 
 		onMouseUp: function() {
+			demo.movingCharge = 0;
 			demo.isMouseDown = false;
 			demo.canvas.removeEventListener('mouseup', demo.onMouseUp, false);
 			demo.canvas.removeEventListener('mousemove', demo.onMouseMove, false);
 		},
 		      
 		onMouseMove: function (event) {
-			demo.charge2.x = demo.mouse.x - 250;
-			demo.charge2.y = demo.mouse.y - 250;
+			if (demo.movingCharge == 1){
+				demo.charge1.x = demo.mouse.x - 250;
+				demo.charge1.y = demo.mouse.y - 250;
+			} else {
+				demo.charge2.x = demo.mouse.x - 250;
+				demo.charge2.y = demo.mouse.y - 250;
+			}
 			demo.update();
 		},
 
@@ -385,7 +398,7 @@
 		},
 
 		calcField: function(x, y){
-			var pointChargeLocation = {x:-100,y:0};
+			var pointChargeLocation = {x:this.charge1.x,y:this.charge1.y};
 			var r = {x:x-pointChargeLocation.x , y:y - pointChargeLocation.y};
 			$(".js-charge-1").attr("cx", pointChargeLocation.x).attr("cy", pointChargeLocation.y);
 			var k = .1;
