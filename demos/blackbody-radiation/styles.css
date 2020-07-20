@@ -4,5 +4,6 @@
 }
 
 .demo_description img{
-	margin-bottom: 20px;
+	display: block;
+	margin:20px auto;
 }

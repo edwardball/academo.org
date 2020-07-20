@@ -16,7 +16,7 @@ var ui = {
     color: "lightgreen"
 	},
 	wien: {
-		title: "Display Wien's Law?",
+		title: "Display Wien's Displacement Law?",
 		value: true,
 		units: null
 
