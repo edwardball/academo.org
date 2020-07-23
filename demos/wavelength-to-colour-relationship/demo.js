@@ -20,7 +20,12 @@ var demo = new Demo({
     update: function(e){
         this.color = this.nmToRGB(this.ui.wavelength.value);
         $("#color_display").css("background-color", this.rgbToHex(this.color));
-        $("#color").html("<p><span>Color:</span><br />rgb("+ this.color[0] +","+ this.color[1] + ", "+ this.color[2] +")<br />Hex: " + this.rgbToHex(this.color) + "</p>");
+        var colHtml = "<p><span>Color:</span><br />rgb(";
+        colHtml += this.color[0] +", "+ this.color[1] + ", "+ this.color[2];
+        colHtml += ")<br />Hex: " + this.rgbToHex(this.color) + "<br />";
+        colHtml += chroma(this.rgbToHex(this.color)).css('hsl');
+        colHtml += "</p>";
+        $("#color").html(colHtml);
     },
 
     nmToRGB: function(wavelength){

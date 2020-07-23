@@ -9,3 +9,7 @@
 #color{
 	float: left;
 }
+
+#color p {
+	line-height: 2;
+}
