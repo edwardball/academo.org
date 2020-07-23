@@ -1,0 +1,50 @@
+---
+title: Orbit Simulator (simplified)
+categories: [Physics]
+subcategories: [Classical Mechanics, Astronomy]
+tags: [Orbit, Newton]
+blurb: Adjust the moon's speed to discover the different types of orbit.
+stylesheets: [styles.css]
+scripts: [demo.js]
+latex: true
+credits:
+  - This demo was inspired by feedback from William E. Kimberly, Sr. 
+  - "The starry background is based on this image: <a href='http://commons.wikimedia.org/wiki/File:Vermont_night_sky_stargazing.JPG#mediaviewer/File:Vermont_night_sky_stargazing.JPG'>Vermont night sky stargazing</a> by Chensiyuan."
+  - Collision animation uses artwork from <a href='https://mrbubblewand.wordpress.com'>https://mrbubblewand.wordpress.com</a>
+---
+
+<p>
+	The demo above is a simplified version of our original <a href="/demos/orbit-simulator/">orbit simulator</a> (please visit that page for a more comprehensive explanation of Newton's law of gravitation, as well as more parameters to change such as the moon's position, velocity and mass).
+</p>
+
+<p>
+	In this demo, there is just one main parameter to change, and that is the initial horizontal speed (x component) of the moon. Use the slider to increase or decrease this value, and see if you can achieve on of the three possible orbits
+</p>
+
+<ul>
+	<li>Circular (Tip: Try leaving the initial settings as they are. You can refresh the page to reset if needed.)</li>
+	<li>Elliptical</li>
+	<li>Hyperbolic</li>
+</ul>
+
+<p>If the moon isn't travelling fast enough, you might cause a collision! Don't worry, the moon will regenerate and you can try again.</p>
+
+
+
+<svg class="js-orbit-demo">
+	<filter id="blurMe">
+	   <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+	 </filter>
+	 <filter id="blurMeLess">
+	    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+	  </filter>
+	 <g class='js-system-wrapper'>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='white' filter="url(#blurMe)"/>
+	 	<circle class='js-sun' cx='0' cy='0' r='30' fill='lightblue' />
+	 	<circle class='js-planet-shadow' cx='0' cy='0' r='10' fill='beige' filter="url(#blurMeLess)"/>
+	 	<circle class='js-planet' cx='0' cy='0' r='10' fill='beige'/>
+	 	<path stroke-width='5' stroke='#1abc9c' fill='#1abc9c' class='js-drag-line' stroke-linecap='round' />
+	 	<path class='js-trail' stroke-width='1' stroke='white' path='' fill='none'/>
+	 </g>
+</svg>
+<div class='explosion js-explosion'></div>

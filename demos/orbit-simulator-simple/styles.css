@@ -1,0 +1,32 @@
+#demo{
+	position: relative;
+}
+
+svg{
+	background: #000010;
+	background: url("starry-background-2.png");
+	background-size:cover; 
+}
+
+rect{
+	fill: blue;
+}
+
+button[disabled="disabled"]{
+	opacity: 0.5;
+}
+
+.explosion{
+	width:96px;height:96px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-top:-48px;
+	margin-left:-48px;
+	background: url("explosion.png");
+	display: none;
+	-webkit-transform-origin:50% 50%;
+	-moz-transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+}
