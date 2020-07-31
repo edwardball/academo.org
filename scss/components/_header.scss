@@ -1,7 +1,11 @@
+.header {
+	background:white;
+}
+
 .header-upper{
 	background:$navy;
 	overflow:hidden;
-	padding:20px;
+	padding:25px;
 }
 
 .header-upper .header-inner{
@@ -13,6 +17,13 @@
 	position: absolute;
 	top: -10px;
 	left: 0;
+	text-transform:lowercase;
+}
+
+.logo img {
+	width:35px;
+	vertical-align:middle;
+	margin-right:10px;
 }
 
 .header-lower{
@@ -24,7 +35,7 @@
 
 .header a{
 	text-decoration:none;
-	color:$white;
+	color:transparentize($white,0.05);
 
 	&:hover, &.current{
 		color:$orange;
@@ -60,11 +71,13 @@
 }
 
 .sponsor-wrapper {
-	float:right;
-	padding:20px;
-	width:100%;
-	max-width:320px;
-	height:50px;
+	/*float:right;*/
+	padding:20px 0;
+	width:90%;
+	/*max-width:320px;/*
+	/*height:50px;*/
+	margin:20px auto;
+	box-sizing:border-box;
 }
 
 .sponsor-wrapper a {
@@ -75,9 +88,13 @@
 	width:100%;
 }
 
+.nav--primary .social--facebook {
+	margin-left:0;	
+}
+
 @media (max-width: 800px) {
 	.sponsor-wrapper {
-		display:none;
+		/*display:none;*/
 	}
 }
 

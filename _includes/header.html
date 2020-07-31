@@ -9,7 +9,7 @@
 	{% if page.blurb %}
 		<meta name="description" content="{{page.blurb | strip_html }}">
 	{% endif %}
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="shortcut icon" type="image/png" href="/favicon-new-v2.png">
 	<link rel="stylesheet" href="/scss/main.css?v={{ site.time | date: "%s" }}">
 
 	{% strip %}
@@ -51,7 +51,7 @@
 	<div class="header">
 		<div class="header-upper">
 			<div class="header-inner">
-				<a class="logo" href="/">Academo</a>
+				<a class="logo" href="/"><img src="/icon.png" alt="">Academo</a>
 				<ul class="nav nav--primary">
 					<li><a class="{% if page.url == '/about/' %} current {% endif %}" href="/about/">About</a></li>
 					<li><a class="{% if page.url == '/search/' %} current {% endif %}" href="/search/">Search</a></li>
