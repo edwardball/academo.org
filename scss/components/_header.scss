@@ -21,7 +21,7 @@
 }
 
 .logo img {
-	width:35px;
+	width:40px;
 	vertical-align:middle;
 	margin-right:10px;
 }
@@ -98,7 +98,12 @@
 	}
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+
+	.header-upper {
+		padding: 15px 20px;
+	}
+
     .logo{
         position: static;
         float:left;
@@ -107,12 +112,17 @@
         margin-right:20px;
     }
 
+    .logo img {
+    	width:30px;
+    	margin-right:5px;
+    }
+
     .header a {
     	font-size: 16px;
     }
 
     .nav--primary {
-    	margin-top: 7px;
+    	margin-top: 10px;
     	margin-left: 0;
     	float:left;
     	clear:both;
