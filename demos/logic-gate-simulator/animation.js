@@ -1,3 +1,12 @@
+// This code needs substantial refactoring
+
+var nodesObject;
+var iterations = 2;
+var objectComparison = "";
+var nodes = {};
+var index = 0;
+var logicAnimationID = window.requestAnimationFrame(calculateOutputs);
+
 var ui = {
 	newNode: {
         //This creates a dropdown selection
@@ -5,23 +14,31 @@ var ui = {
         value: "Input",
         values: [
 			["INPUT", "Input"],
+			["OUTPUT", "Output"],
 			["NOT","Not"],
 			["AND","And"],
+			["AND (3 inputs)","And3"],
 			["NAND","Nand"],
 			["OR","Or"],
 			["NOR","Nor"],
-			["XOR","Xor"]
+			["XOR","Xor"],
+			// ["CLOCK","Clock"], to be added
 		] //the first value in each pair is the label, the second is the value
     },
     addNode:{
         //This creates a button that doesn't need an intrinsic value
         title: "Add node",
         type: "button"
+    },
+    fullScreen:{
+        //This creates a button that doesn't need an intrinsic value
+        title: "Full screen mode",
+        type: "button"
     }
 };
 
-nodes = {};
-index = 0;
+
+var logicAnimationID;
 
 
 function And(id){
@@ -29,38 +46,23 @@ function And(id){
 	this.state = 0;
 	this.inputs = [];
 
-	$("#demo").append('<div class="window" id="'+this.id+'"><span class="close">&times;</span><img alt="AND gate" src="symbols/and.svg"/></div>');
+	$("#demo").append('<div class="window window-and" id="'+this.id+'"><span class="close">&times;</span><img alt="AND gate" src="symbols/and.svg"/></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.25, -1, 0], [0, 0.75, -1, 0]]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
 
-	this.updateState = function(){
-		inputsAND = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsAND[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
+}
 
+function And3(id){
+	this.id = "and3-" + id;
+	this.state = 0;
+	this.inputs = [];
 
-		if (inputsAND[0] && inputsAND[1]){
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		} else {
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		}
+	$("#demo").append('<div class="window window-and-3" id="'+this.id+'"><span class="close">&times;</span><img alt="AND gate" src="symbols/and3.svg"/></div>');
 
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
+	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.2, -1, 0], [0, 0.50, -1, 0], [0, 0.80, -1, 0]]);
+	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
 }
 
@@ -69,38 +71,11 @@ function Nand(id){
 	this.state = 0;
 	this.inputs = [];
 
-	$("#demo").append('<div class="window" id="'+this.id+'"><span class="close">&times;</span><img alt="NAND gate" src="symbols/nand.svg"/></div>');
+	$("#demo").append('<div class="window window-nand" id="'+this.id+'"><span class="close">&times;</span><img alt="NAND gate" src="symbols/nand.svg"/></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.25, -1, 0], [0, 0.75, -1, 0]]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
-
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
-
-	this.updateState = function(){
-		inputsNAND = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsNAND[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
-
-
-		if (this.inputs.length == 2 && inputsNAND[0] && inputsNAND[1]){
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		} else {
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		}
-
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
+	$("#"+this.id).data('state', "off");
 
 }
 
@@ -110,38 +85,12 @@ function Or(id){
 	this.state = 0;
 	this.inputs = [];
 
-	$("#demo").append('<div class="window" id="'+this.id+'"><button class="close">&times;</button><img alt="OR gate" src="symbols/or.svg"/></div>');
+	$("#demo").append('<div class="window window-or" id="'+this.id+'"><button class="close">&times;</button><img alt="OR gate" src="symbols/or.svg"/></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.25, -1, 0], [0, 0.75, -1, 0]]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
-
-	this.updateState = function(){
-		var inputsOR = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsOR[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
-
-
-		if (inputsOR[0] || inputsOR[1]){
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		} else {
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		}
-
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
+	
 }
 
 function Nor(id){
@@ -149,38 +98,11 @@ function Nor(id){
 	this.state = 0;
 	this.inputs = [];
 
-	$("#demo").append('<div class="window" id="'+this.id+'"><button class="close">&times;</button><img alt="NOR gate" src="symbols/nor.svg"/></div>');
+	$("#demo").append('<div class="window window-nor" id="'+this.id+'"><button class="close">&times;</button><img alt="NOR gate" src="symbols/nor.svg"/></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.25, -1, 0], [0, 0.75, -1, 0]]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
-
-	this.updateState = function(){
-		var inputsNOR = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsNOR[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
-
-
-		if (inputsNOR[0] || inputsNOR[1]){
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		} else {
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		}
-
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
 }
 
 function Xor(id){
@@ -188,39 +110,11 @@ function Xor(id){
 	this.state = 0;
 	this.inputs = [];
 
-	// <strong>XOR</strong><br />
-	$("#demo").append('<div class="window xor" id="'+this.id+'"><button class="close">&times;</button><img alt="XOR gate" src="symbols/xor.svg"/></div>');
+	$("#demo").append('<div class="window xor window-xor" id="'+this.id+'"><button class="close">&times;</button><img alt="XOR gate" src="symbols/xor.svg"/></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], [[0, 0.25, -1, 0], [0, 0.75, -1, 0]]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
-
-	this.updateState = function(){
-		var inputsXOR = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsXOR[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
-
-
-		if ((inputsXOR[0] || inputsXOR[1]) && inputsXOR[0] + inputsXOR[1] < 2){
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		} else {
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		}
-
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
 }
 
 function Not(id){
@@ -228,38 +122,12 @@ function Not(id){
 	this.state = 0;
 	this.inputs = [];
 
-	$("#demo").append('<div class="window" id="'+this.id+'" title="NOT"><button class="close">&times;</button><img alt="NOT gate" src="symbols/not.svg" /></div>');
+	$("#demo").append('<div class="window window-not" id="'+this.id+'" title="NOT"><button class="close">&times;</button><img alt="NOT gate" src="symbols/not.svg" /></div>');
 
 	_addEndpoints(this.id, ["RightMiddle"], ["LeftMiddle"]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
-	this.getInputs = function(){
-		this.inputs = jsPlumb.getConnections({
-			target:this.id
-		});
-	}
 
-	this.updateState = function(){
-		var inputsNOT = [];
-		for (i=0,len = this.inputs.length ; i < len ; i++ ){
-			inputsNOT[i] = $("#"+this.inputs[i].sourceId).data("state") == "on" ? 1 : 0;
-		}
-
-
-		if (inputsNOT[0]){
-			this.state = 0;
-			$("#"+this.id).data('state', "off");
-		} else {
-			this.state = 1;
-			$("#"+this.id).data('state', "on");
-		}
-
-	}
-
-	this.update = function(){
-		this.getInputs();
-		this.updateState();
-	}
 }
 
 function Input(id){
@@ -267,8 +135,8 @@ function Input(id){
 	this.state = 0;
 	var _this = this;
 
-	$("#demo").append('<div class="window switch" id="'+this.id+'"><button class="close">&times;</button><button class="toggle">On/Off</button></div>');
-
+	$("#demo").append('<div class="window switch" id="'+this.id+'"><button class="close">&times;</button><div class="col-sm-5"><button type="button" class="toggle btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off"><div class="handle"></div></button></div>');
+	$("#"+this.id).data('state', "off");
 	_addEndpoints(this.id, ["RightMiddle"]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
@@ -280,12 +148,14 @@ function Input(id){
 		if ($("#"+this.id).data('state') == "on"){
 			$("#"+this.id).data('state', "off")
 			this.state = 0;
+			nodesObject[this.id].state = "off";
 		} else {
 			$("#"+this.id).data('state', "on");
 			this.state = 1;
+			nodesObject[this.id].state = "on";
 
 		}
-		update();
+		calculateOutputs();
 	};
 
 	(function(selector){
@@ -293,44 +163,78 @@ function Input(id){
 			_this.toggle();
 			update();
 		});
-		console.log("Click handler set up for ", "#"+_this.id)
+		
 	})("#"+_this.id);
 
 }
+
+// Add clock at a later date
+
+// var tick = 0;
+
+// function Clock(id){
+// 	this.id = "clock-" + id;
+// 	this.state = 0;
+// 	var _this = this;
+
+// 	// $("#demo").append('<div class="window switch" id="'+this.id+'"><button class="close">&times;</button><button class="toggle">On/Off</button></div>');
+// 	$("#demo").append('<div class="window switch" id="'+this.id+'"><button class="close">&times;</button>Clock</div>');
+// 	$("#"+this.id).data('state', "off");
+// 	_addEndpoints(this.id, ["RightMiddle"]);
+// 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
+
+// 	this.tick = function(){
+// 		tick = 0;
+// 		this.state = "on";
+// 		console.log("tick")
+// 	}
+
+
+// 	this.toggle = function(){
+
+
+// 		$("#"+this.id).toggleClass("on");
+// 		if ($("#"+this.id).data('state') == "on"){
+// 			$("#"+this.id).data('state', "off")
+// 			this.state = 0;
+// 			nodesObject[this.id].state = "off";
+// 		} else {
+// 			$("#"+this.id).data('state', "on");
+// 			this.state = 1;
+// 			nodesObject[this.id].state = "on";
+
+// 		}
+// 		calculateOutputs();
+// 	};
+
+// 	(function(selector){
+// 		$(selector + " button.toggle").click(function(){
+// 			_this.toggle();
+// 			update();
+// 		});
+// 		console.log("Click handler set up for ", "#"+_this.id)
+// 	})("#"+_this.id);
+
+// }
 
 function Output(id){
 	this.id = "output-" + id;
 	this.state = 0;
 	var _this = this;
 
-	$("#demo").append('<div class="window" id="'+this.id+'"><b>OUTPUT</b></div>');
+	$("#demo").append('<div class="window output-node" id="'+this.id+'"><button class="close">&times;</button><span contenteditable="true">OUTPUT</span></div>');
 
 	_addEndpoints(this.id, null, ["LeftMiddle"]);
 	jsPlumb.draggable(jsPlumb.getSelector(".window"), {containment: 'parent'});
 
 
-	this.update = function(){
-
-		outputCons = jsPlumb.getConnections({
-			target:this.id
-		});
-
-		if (outputCons.length){
-			if ($("#"+outputCons[0].sourceId).data("state") == "on"){
-				$("#"+this.id).addClass("on")
-			} else {
-				$("#"+this.id).removeClass("on")
-			}
-		} else {
-		    //nothing is connected so switch off
-		    $("#"+this.id).removeClass("on")
-		}
-	}
 
 }
 
 
-endpointHoverStyle = {fillStyle:"#5C96BC"}
+endpointHoverStyle = {
+	fillStyle: "#5C96BC"
+}
 
 var connectorPaintStyle = {
 	lineWidth:3,
@@ -356,7 +260,12 @@ sourceEndpoint = {
 		lineWidth:2
 	},
 	isSource:true,
-	connector:[ "Flowchart", { stub:[40, 60], gap:0, cornerRadius:5, alwaysRespectStubs:true } ],
+	connector:["Flowchart",{
+			stub:[40, 60],
+			gap:0,
+			cornerRadius:5,
+			alwaysRespectStubs: true
+		}],
 	connectorStyle:connectorPaintStyle,
 	hoverPaintStyle:endpointHoverStyle,
 	connectorHoverStyle:connectorHoverStyle,
@@ -366,11 +275,17 @@ sourceEndpoint = {
 
 targetEndpoint = {
 	endpoint:"Dot",
-	paintStyle:{ fillStyle:"#1abc9c",radius:7 },
-	hoverPaintStyle:endpointHoverStyle,
+	paintStyle: {
+		fillStyle:"#1abc9c",
+		radius:7
+	},
+	hoverPaintStyle: endpointHoverStyle,
 	// maxConnections:-1,
-	maxConnections:1,
-	dropOptions:{ hoverClass:"hover", activeClass:"active" },
+	maxConnections: 1,
+	dropOptions: {
+		hoverClass:"hover",
+		activeClass:"active"
+	},
 	isTarget:true,
 
 };
@@ -392,6 +307,7 @@ function _addEndpoints(toId, sourceAnchors, targetAnchors) {
 };
 
 
+// Initialise the demo with one input and one output
 jsPlumb.ready(function(){
 	nodes["output-" + index] = new window["Output"](index++);
 	nodes["input-" + index] = new window["Input"](index++);
@@ -401,85 +317,258 @@ jsPlumb.ready(function(){
 
 function update(e){
 
+	if (e == "fullScreen"){
+		if ($("body").hasClass("full-screen-logic-mode")){
+			$("body").removeClass("full-screen-logic-mode");
+			$("#fullScreen-interface button").html("Full screen mode")
+		} else {
+			$("body").addClass("full-screen-logic-mode");
+			$("#fullScreen-interface button").html("Exit full screen ")
+
+		}
+	}
+
 	if (e == 'addNode'){
 		nodes[ui.newNode.value.toLowerCase() + "-" + index] = new window[ui.newNode.value](index++);
 	}
 
-	calcOutput();
 	jsPlumb.repaintEverything();
 
 }
 
 
-//calculates final output
-function calcOutput(){
 
-	tiers = [];
-
-	parentNodes = [{sourceId: "output-0"}];
-
-	childNodesCount = 1;
-	iterations = 0;
-	while (childNodesCount > 0){
-
-		tiers.push(parentNodes);
-		childNodes = [];
-
-		for (var i = 0; i < parentNodes.length ; i++){
-			section = jsPlumb.getConnections({
-				target:parentNodes[i].sourceId
-			});
-
-			for (var j = 0 ; j < section.length; j++){
-				childNodes.push(section[j])
-			}
-		}
-
-		childNodesCount = childNodes.length;
-		parentNodes = childNodes;
-		iterations++;
-		if (iterations > 100){
-			alert("Whoops! It looks like there is an infinite loop in this set up. Please remove it and try again.");
-			break;
-		}
-
-	}
-
-	for (var i = tiers.length-1; i >= 0 ; i--){
-		currentTier = tiers[i];
-		for (var k = 0 ; k < currentTier.length ; k++){
-			currentNodeID = currentTier[k].sourceId;
-			currentNode = nodes[currentNodeID]
-			if (typeof currentNode.update === "function") { 
-			    currentNode.update();
-			}
-		}
-	}
-
-}
-
-
-jsPlumb.bind("connection", update);
+jsPlumb.bind("connection", function(){
+	getMyNodes();
+	calculateOutputs();
+});
 
 
 jsPlumb.bind("connectionDetached", function(conn, originalEvent) {
-	update();
+	getMyNodes();
+	calculateOutputs();
 });
 
 //delete on rightclick
 jsPlumb.bind("contextmenu", function(conn, originalEvent) {
 	originalEvent.preventDefault();
 	jsPlumb.detach(conn);
-	update();
-	calcOutput();
+	getMyNodes();
+	calculateOutputs();
 });
 
+// Delete nodes when close button pressed
 $("#demo").on("click", ".close", function(){
-	var id = $(this).parent().attr("id");
+	var id = $(this).parent("").attr("id");
 	jsPlumb.removeAllEndpoints(id);
 	$("#"+id).remove();
+	getMyNodes();
 })
 
 $(window).resize(function(){
 	jsPlumb.repaintEverything();
 })
+
+$("#demo").on("dblclick", ".window span", function(e){
+	// allow label to be edited
+	$(this).focus();
+	e.stopPropagation(); 
+})
+
+
+
+function checkOrphanedOutputs(){
+// if output nodes are not connected to anything, they aren't in the nodesObject.
+//So we need to check if there are any orphaned outputs and ensure their output is 0
+	$(".output-node").each(function(i, e){
+		if (!nodesObject.hasOwnProperty($(this).prop("id"))){
+			$(this).removeClass("on");
+		}
+	});
+}
+
+
+function calculateOutputs(){
+	console.log("calculateOutputs running");
+	var stable = false;
+
+	for (var j = 0 ; j < iterations ; j++){
+
+			for (var prop in nodesObject){
+				
+				if (getTypeFromIDString(prop) == "and"){
+					if (nodesObject[prop].inputs.length == 2){
+						nodesObject[prop].state = and(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else {
+						nodesObject[prop].state = "off";
+					}
+				}
+				if (getTypeFromIDString(prop) == "and3"){
+					if (nodesObject[prop].inputs.length == 3){
+						nodesObject[prop].state = and3(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state, nodesObject[nodesObject[prop].inputs[2]].state)
+					} else {
+						nodesObject[prop].state = "off";	
+					}
+				}
+				if (getTypeFromIDString(prop) == "nand"){
+					if (nodesObject[prop].inputs.length == 2){
+						nodesObject[prop].state = nand(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else {
+						nodesObject[prop].state = "off";
+					}
+				}
+				if (getTypeFromIDString(prop) == "xor"){
+					if (nodesObject[prop].inputs.length == 2){
+						nodesObject[prop].state = xor(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else {
+						nodesObject[prop].state = "off";
+					}
+				}
+				if (getTypeFromIDString(prop) == "nor"){
+					if (nodesObject[prop].inputs.length == 2){
+						nodesObject[prop].state = nor(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else {
+						nodesObject[prop].state = "off";
+					}
+				}
+				if (getTypeFromIDString(prop) == "not"){
+					nodesObject[prop].state = not(nodesObject[nodesObject[prop].inputs[0]].state)
+				}
+
+				if (getTypeFromIDString(prop) == "or"){
+
+					if (nodesObject[prop].inputs.length == 2){
+						nodesObject[prop].state = or(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else {
+						nodesObject[prop].state = "off";
+					}
+				}
+
+				if (getTypeFromIDString(prop) == "output"){
+					nodesObject[prop].state = nodesObject[nodesObject[prop].inputs[0]].state;
+					if (nodesObject[prop].state == "on"){
+						$("#"+prop).addClass("on");
+					} else {
+						$("#"+prop).removeClass("on");
+					}
+				}
+			}
+
+			checkOrphanedOutputs();
+
+
+			if (objectComparison == JSON.stringify(JSON.stringify(nodesObject))){
+				// console.log("stable after " + j + " iterations");
+				stable = true;
+				break;
+
+				
+			}
+
+			objectComparison = JSON.stringify(JSON.stringify(nodesObject));
+
+		}
+
+		if (stable){
+			window.cancelAnimationFrame(logicAnimationID);
+		} else {
+			logicAnimationID = window.requestAnimationFrame(calculateOutputs);
+		}
+		
+}
+
+
+function getMyNodes(){
+	var allNodes = jsPlumb.getAllConnections();
+	nodesObject = {};
+	objectComparison = JSON.stringify(JSON.stringify(nodesObject));
+	for (var i = 0 ; i < allNodes.length ; i++){
+
+		// this gets all nodes that have inputs going into them.
+		if (!nodesObject.hasOwnProperty(allNodes[i].targetId)){
+			nodesObject[allNodes[i].targetId] = {
+				inputs: [allNodes[i].sourceId],
+				state: null,
+			};
+		} else {
+			nodesObject[allNodes[i].targetId].inputs.push(allNodes[i].sourceId);
+		}
+
+		// this gets all "input" type nodes
+
+		if (!nodesObject.hasOwnProperty(allNodes[i].sourceId)){
+			nodesObject[allNodes[i].sourceId] = {
+				inputs: [],
+				state: $("#"+allNodes[i].sourceId).data('state'),
+			};
+		}
+	}
+
+}
+
+
+function getTypeFromIDString(IDString){
+	return IDString.split("-")[0];
+}
+
+// The logic gate functions
+
+function and(a, b){
+	if (a == "on" && b == "on"){
+		return "on";
+	} else {
+		return "off";
+	}
+}
+
+function and3(a, b, c){
+	if (a == "on" && b == "on" && c == "on"){
+		return "on";
+	} else {
+		return "off";
+	}
+}
+
+function nand(a, b){
+	if (a == "on" && b == "on"){
+		return "off";
+	} else {
+		return "on";
+	}
+}
+
+function or(a, b){
+	if (a == "on" || b == "on"){
+		return "on";
+	} else {
+		return "off";
+	}
+}
+
+function xor(a, b){
+	if (a == "on" && b == "on"){
+		return "off";
+	} else if (a == "off" && b == "off") {
+		return "off";
+	} else {
+		return "on";
+	}
+}
+
+function nor(a, b){
+	if (a == "on" || b == "on"){
+		return "off";
+	} else {
+		return "on";
+	}
+}
+
+function not(a){
+	if (a == "on"){
+		return "off";
+	} else {
+		return "on";
+	}
+}
+
+
