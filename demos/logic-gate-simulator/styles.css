@@ -78,6 +78,7 @@ box-shadow: 2px 2px 19px #444;
 	margin: 0;
 	-webkit-appearance: none;
 	border: none;
+  z-index: 10;
 }
 
 .window .close:hover{
