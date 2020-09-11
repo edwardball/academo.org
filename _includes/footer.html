@@ -9,32 +9,10 @@
 			{% strip %}
 
 				{% if page.latex %}
-				
-					<script type="text/x-mathjax-config">
-						MathJax.Hub.Config({
-							TeX: {
-								equationNumbers: {
-									autoNumber: "AMS"
-								},
-							},
-							"HTML-CSS": {
-								styles: {
-									".MathJax_Display": {
-										"margin": "2.5em 0em",
-										// "width": "auto",
-										// "overflow-x": "scroll",
-										// "overflow-y": "hidden"
-									},
-									".MathJax a": {
-										"color": "#2C3E50",
-										"font-size": "80%"
-									}
-								}
-							}
-						});
-					</script>
 
-					<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" class='js-demo-external-library'></script>
+				  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+				  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 				{% endif %}
 
 				{% for script in page.cdn %}
