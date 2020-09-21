@@ -202,7 +202,14 @@ var demo = new Demo({
 			  source.noteOn(0);
 
 			}.bind(this), false);
-		}
+
+			document.documentElement.addEventListener(
+  				"mousedown", function(){
+	    			// mouse_IsDown = true;
+	    			if (demo.audioContext.state !== 'running') {
+	    				demo.audioContext.resume();
+	  				}})
+				}
 	},
 
 	update: function(e){
