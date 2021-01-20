@@ -60,15 +60,27 @@ var ui = {
 };
 
 $(document).on("uiLoaded", function(){
-    if (navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)){
-        navigator.getUserMedia( {audio:true}, gotStream,function(error) {
-            console.log("Capture error: ", error.code);
+    if (navigator.mediaDevices){
+        // navigator.getUserMedia( {audio:true}, gotStream,function(error) {
+        //     console.log("Capture error: ", error.code);
+        //   });
+        $(".preamble").append("<div class='alert'>To use Live Audio Input, please allow access to your browser's microphone when prompted, or check your browser settings.</div>");
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(function(stream) {
+            /* use the stream */
+            gotStream(stream);
+            $(".alert").css("display", "none");
+          })
+          .catch(function(err) {
+            /* handle the error */
           });
     } else {
         animate();
         $(".preamble").append("<div class='alert'>To use Live Audio Input, please download the latest version of Chrome.</div>");
         $("#inputType-interface option[value=1]").attr("disabled", true);
     };
+
+    
 
 });
 
