@@ -27,7 +27,7 @@ $(document).ready(function(){
 			var items = [];
 			demoArray = shuffle(data.entries);
 			sidebarArray = [];
-			i = 5;
+			i = 6;
 			while (i){
 				potential = demoArray.pop();
 				if (potential.url != window.location.pathname && potential.url.indexOf("/demos/") != -1){
@@ -98,20 +98,16 @@ $(document).ready(function(){
 		};
 
 		var JSONstring = 
-		  JSON.stringify(data)
-		    // Quotes will screw up the JSON
-		    .replace(/"/g, "&​quot;") // careful copy and pasting, I had to use a zero-width space here to get markdown to post this.
-		    .replace(/'/g, "&apos;");
-
-
+		  JSON.stringify(data);		  
+		  JSONstring = JSONstring.replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+		  
 		var form = 
-			'<div class="interface clearfix"><button title="CodePen is a free online tool for editing and writing code." onclick=\'document.getElementById("codepen-form").submit();\'><i class="fa fa-external-link"></i> Open with CodePen <i class="fa fa-codepen"></i></button></div>' +
-			'<form action="http://codepen.io/pen/define" method="POST" target="_blank" id="codepen-form">' + 
+			'<div class="interface clearfix"><button id="codepen-submit-button" title="CodePen is a free online tool for editing and writing code." onclick=\'document.getElementById("codepen-form").submit();\'><i class="icon-link-ext"></i> Open with CodePen <i class="fa fa-codepen"></i></button></div>' +
+			'<form action="https://codepen.io/pen/define" method="POST" target="_blank" id="codepen-form">' + 
 		    '<input type="hidden" name="data" value=\'' + 
 		      JSONstring + 
 		      '\'>' + 
-		    // '<input type="image" src="http://s.cdpn.io/3/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">' +
-		    // '<input type="submit" value="Edit this demo on CodePen" class="codepen-mover-button">' +
+		    
 		  '</form>';
 
 
