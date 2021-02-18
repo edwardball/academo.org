@@ -78,13 +78,13 @@ var demo = new Demo({
 
 		  this.oscillator1 = this.audioContext.createOscillator();
 		  this.oscillator1.type = 'sine';
-		  this.oscillator1.frequency.value = this.ui.f1.value;
+		  this.oscillator1.frequency.setValueAtTime(this.ui.f1.value, 0);
 		  this.oscillator1.connect(this.gainNode1);
 		  this.oscillator1.start(0);
 
 		  this.oscillator2 = this.audioContext.createOscillator();
 		  this.oscillator2.type = 'sine';
-		  this.oscillator2.frequency.value = this.ui.f2.value;
+		  this.oscillator2.frequency.setValueAtTime(this.ui.f2.value, 0);
 		  this.oscillator2.connect(this.gainNode2);
 		  this.oscillator2.start(0);
 
@@ -179,9 +179,6 @@ var demo = new Demo({
 		     .text("Time in seconds");
 
 
-
-		this.previousFrequency = 1;
-
 		this.lineFunction = d3.svg.line()
 		                         .x(function(d) { return this.canvasXScale(d.x); })
 		                        .y(function(d) { return this.canvasYScale(d.y); })
@@ -226,8 +223,8 @@ var demo = new Demo({
 			}
 			this.gainNode2.gain.value = this.defaultGain * this.ui.amplitude2.value;
 
-			this.oscillator1.frequency.value = this.ui.f1.value;
-			this.oscillator2.frequency.value = this.ui.f2.value;
+			this.oscillator1.frequency.setValueAtTime(this.ui.f1.value, 0);
+			this.oscillator2.frequency.setValueAtTime(this.ui.f2.value, 0);
 
 			if (e == "sound"){
 				if (this.ui.sound.value == true){
