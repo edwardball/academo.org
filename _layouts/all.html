@@ -18,7 +18,7 @@
 <hr>
 
 <ul class="thumbnails">
-	{% assign sorted_pages = (site.pages | sort: 'title') %}
+	{% assign sorted_pages = site.pages | sort: 'title' %}
 	{% for demo in sorted_pages %}
 		{% if demo.layout == 'demo'%}
 			<li>

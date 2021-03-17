@@ -12,7 +12,7 @@
 
 		<ul class="thumbnails">
 			{% assign j = 0 %}
-			{% assign sorted_pages = (site.pages | sort: 'title') %}
+			{% assign sorted_pages = site.pages | sort: 'title' %}
 			{% for demo in sorted_pages %}
 				{% if demo.layout == 'demo' and demo.subcategories contains page.title %}
 					<li class="span3">
@@ -21,9 +21,6 @@
 							<p class="thumbnail-title">{{ demo.title }}</p>
 						</a>
 					</li>
-					{% if j == 2 %}
-						<li class='span3 sponsored-tile js-sponsored-tile'>	</li>
-					{% endif %}
 					{% assign j = j | plus: 1 %}
 				{% endif %}
 			{% endfor %}
