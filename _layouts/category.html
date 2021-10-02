@@ -32,7 +32,7 @@
 		{% if demo.layout == 'demo' and demo.categories contains page.title %}
 			<li class="span3">
 				<a href="{{ demo.url }}" class="thumbnail">
-					<img src="{{ demo.url }}thumbnail.png" alt="">
+					<img loading="lazy" src="{{ demo.url }}thumbnail.png" alt="">
 					<p class="thumbnail-title">{{ demo.title }}</p>
 				</a>
 			</li>

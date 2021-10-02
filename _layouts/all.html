@@ -23,7 +23,7 @@
 		{% if demo.layout == 'demo'%}
 			<li>
 				<a href="{{ demo.url }}" class="thumbnail">
-					<img src="{{ demo.url }}thumbnail.png" alt="">
+					<img loading="lazy" src="{{ demo.url }}thumbnail.png" alt="">
 					<p class="thumbnail-title">{{ demo.title }}</p>
 				</a>
 			</li>
