@@ -28,6 +28,14 @@ a{
 	}
 }
 
+.footer a {
+	color:$white;
+
+	&:hover{
+		color:$orange;
+	}
+}
+
 p, li{
 	font-size: 18px;
 	line-height: 1.5;
