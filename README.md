@@ -110,8 +110,8 @@ ui: {
 		units: "K", //optional
 		range:[2000,7000], //this range option means the UI element will be a slider
 		resolution:1, // Determines the amount of rounding of the slider number. Give value as a power of 10, eg 0.01,0.1,1 etc
-	    color: "lightblue" //can also be hex or rgb
-	    input: // Normally you can probably omit this option. However, if you don't want a text field below the slider, but want the value to display, this should be "readonly". If you don't want any display at all, this should be "hidden"
+		color: "lightblue" //can also be hex or rgb
+		input: // Normally you can probably omit this option. However, if you don't want a text field below the slider, but want the value to display, this should be "readonly". If you don't want any display at all, this should be "hidden"
 	},
 	showLine: {
 		// This creates a check box
