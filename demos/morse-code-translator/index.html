@@ -1,0 +1,70 @@
+---
+title: Morse code translator
+categories: [Engineering]
+tags: [Cryptography, Morse]
+blurb: Use this online tool to generate morse code from regular text. Your input is converted into dots and dashes, and you can listen to how it sounds.
+stylesheets: [styles.css]
+scripts: [jscwlib-0.2.1.js, demo.js]
+credits: ["This demo utilises <a target='_blank' rel='noreferrer' href='https://fkurz.net/ham/jscwlib.html'>jscwlib</a>"]
+---
+
+<p>
+	Morse code was developed in around 1837 by Samuel Morse. It was a way of quickly sending messages over long distances when the technology of the time (electrical telegraphs) only really allowed people to send "pulses".</p>
+
+	<p>Letters in morse code are represented by sequences of dots and dashes: a dot is a short pulse whereas a dash is a long pulse, and to be specific, a dash is three times longer than a dot.</p>
+
+	<p>The table below contains the morse code definitions of the letters of the alphabet as well as the numbers 0 to 9. In morse code, there is no differentiation between upper case and lower case letters.
+</p>
+
+
+<h3>List of letters and numbers in morse code</h3>
+
+<table class="morse-characters table table-bordered">
+	<thead>
+		<tr><th>Character</th><th>Morse code</th></tr>
+	</thead>
+	<tbody>
+<tr class="js-morse-character"><td>A</td><td>·—</td></tr>
+<tr class="js-morse-character"><td>B</td><td>—···</td></tr>
+<tr class="js-morse-character"><td>C</td><td>—·—·</td></tr>
+<tr class="js-morse-character"><td>D</td><td>—··</td></tr>
+<tr class="js-morse-character"><td>E</td><td>·</td></tr>
+<tr class="js-morse-character"><td>F</td><td>··—·</td></tr>
+<tr class="js-morse-character"><td>G</td><td>——·</td></tr>
+<tr class="js-morse-character"><td>H</td><td>····</td></tr>
+<tr class="js-morse-character"><td>I</td><td>··</td></tr>
+<tr class="js-morse-character"><td>J</td><td>·———</td></tr>
+<tr class="js-morse-character"><td>K</td><td>—·—</td></tr>
+<tr class="js-morse-character"><td>L</td><td>·—··</td></tr>
+<tr class="js-morse-character"><td>M</td><td>——</td></tr>
+<tr class="js-morse-character"><td>N</td><td>—·</td></tr>
+<tr class="js-morse-character"><td>O</td><td>———</td></tr>
+<tr class="js-morse-character"><td>P</td><td>·——·</td></tr>
+<tr class="js-morse-character"><td>Q</td><td>——·—</td></tr>
+<tr class="js-morse-character"><td>R</td><td>·—·</td></tr>
+<tr class="js-morse-character"><td>S</td><td>···</td></tr>
+<tr class="js-morse-character"><td>T</td><td>—</td></tr>
+<tr class="js-morse-character"><td>U</td><td>··—</td></tr>
+<tr class="js-morse-character"><td>V</td><td>···—</td></tr>
+<tr class="js-morse-character"><td>W</td><td>·——</td></tr>
+<tr class="js-morse-character"><td>X</td><td>—··—</td></tr>
+<tr class="js-morse-character"><td>Y</td><td>—·——</td></tr>
+<tr class="js-morse-character"><td>Z</td><td>——··</td></tr>
+<tr class="js-morse-character"><td>0</td><td>—————</td></tr>
+<tr class="js-morse-character"><td>1</td><td>·————</td></tr>
+<tr class="js-morse-character"><td>2</td><td>··———</td></tr>
+<tr class="js-morse-character"><td>3</td><td>···——</td></tr>
+<tr class="js-morse-character"><td>4</td><td>····—</td></tr>
+<tr class="js-morse-character"><td>5</td><td>·····</td></tr>
+<tr class="js-morse-character"><td>6</td><td>—····</td></tr>
+<tr class="js-morse-character"><td>7</td><td>——···</td></tr>
+<tr class="js-morse-character"><td>8</td><td>———··</td></tr>
+<tr class="js-morse-character"><td>9</td><td>————·</td></tr>
+
+		
+	</tbody>
+</table>
+
+<p>The user interface in the sidebar allows you to choose a certain speed that the audio is played at. The units are <em>wpm</em> which stands for <em>words per minute</em>. This assumes a typical word length of 5 characters.</p>
+
+<p><em>Please note, if you see a # symbol in the output, this means your character was not recognised.</em></p>

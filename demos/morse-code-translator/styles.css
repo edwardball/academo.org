@@ -1,0 +1,45 @@
+#demo p {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+#demo textarea{
+	width:80%;
+	height:100px;
+	padding:20px;
+	margin-bottom: 40px;
+	font-size: 20px;
+	line-height: 1.2;
+	background: #fafafa;
+}
+
+.demo-description td,.demo-description th{
+	text-align: center;
+	
+	
+}
+
+#demo #js-morse {
+	margin-bottom: 0;
+}
+
+#demo #js-morse, .demo-description td:last-child {
+	font-size: 26px;
+	font-family: sans-serif;
+}
+
+table {
+	margin:20px 0;
+}
+
+.morse-characters {
+	cursor: pointer;
+}
+
+.morse-characters thead tr {
+	background: #eee;
+}
+
+.morse-characters tbody tr:hover {
+	background:aliceblue;
+}
