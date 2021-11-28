@@ -24,7 +24,7 @@
 }
 
 #demo #js-morse, .demo-description td:last-child {
-	font-size: 26px;
+	font-size: 28px;
 	font-family: sans-serif;
 }
 
@@ -37,7 +37,7 @@ table {
 }
 
 .morse-characters thead tr {
-	background: #eee;
+	background: #f2f2f2;
 }
 
 .morse-characters tbody tr:hover {
