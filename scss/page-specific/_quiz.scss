@@ -1,0 +1,249 @@
+	/* BASE QUIZ STYLES */
+/* These styles ensure that the necessary elements are hidden for toggling */
+
+.startQuiz,
+.nextQuestion,
+.backToQuestion,
+.questions li.question,
+.questions li.question .responses,
+.questions li.question .responses .correct,
+.questions li.question .responses .incorrect,
+.quizResults {
+    display: none;
+}
+
+/* If response messages are disabled or only shown on quiz completion,
+   nextQuestion button IS checkAnswer button - so it must be displayed */
+.nextQuestion.checkAnswer {
+    display: block;
+}
+
+ol.questions,
+ul.answers,
+ul.responses,
+ol.questions li,
+ul.answers li,
+ul.responses li {
+    list-style-type: none;
+}
+
+/* Accessibility */
+.quizName span:first-child {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/*  */
+
+.button {
+    float: left;
+    width: auto;
+    padding: 5px 15px;
+    color:#ffffff;
+    background-color:darkcyan;
+    border: 1px solid #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.button:hover {
+    background-color:darkslategray;
+}
+
+.startQuiz {
+    margin-top: 40px;
+}
+
+.tryAgain {
+    float: none;
+    margin: 20px 0;
+}
+
+/* clearfix */
+.quizArea, .quizResults {
+    zoom: 1;
+}
+.quizArea:before, .quizArea:after, .quizResults:before, .quizResults:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+}
+.quizArea:after, .quizResults:after {
+    clear: both;
+}
+
+.questionCount {
+    font-size: 14px;
+    font-style: italic;
+}
+.questionCount span {
+    font-weight: bold;
+}
+
+ol.questions {
+    margin-top: 20px;
+    margin-left: 0;
+}
+ol.questions li {
+    margin-left: 0;
+}
+
+ul.answers {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul.responses li {
+    margin: 10px 20px 20px;
+}
+ul.responses li p span {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+.complete ul.answers li.correct, ul.responses li.correct p span {
+    color: #6C9F2E;
+}
+ul.responses li.incorrect p span {
+    color: #B5121B;
+}
+
+.quizResults h3 {
+    margin: 0;
+}
+.quizResults h3 span {
+    font-weight: normal;
+    font-style: italic;
+}
+.quizResultsCopy {
+    clear: both;
+    margin-top: 20px;
+}
+
+.quizArea input[type=checkbox] {
+     visibility: visible; 
+}
+
+#slickQuiz {
+    max-width: 640px;
+    margin: 20px auto;
+    background: #f9f9f9;
+    border: solid 1px #ddd;
+    padding: 20px 20px 40px;
+}
+
+#slickQuiz .button {
+        padding: 10px;
+    background: #ddd;
+    border: none;
+    border-bottom: solid 2px #ccc;
+    transition: background 0.3s;
+
+    font-size: 13px;
+    color: #333;
+    font-weight: 800;
+    -webkit-appearance: none;
+    width: 100%;
+
+
+    /* Undo default SlickQuiz styles */
+    padding-left:20px;
+    padding-right:20px;
+    width: auto;
+    border-radius: 0;
+    margin:10px 10px 10px 0px;
+}
+
+#slickQuiz .button:hover {
+    background: #8ddece;
+    border-color: #53cdb5;
+    transition-duration: 0s;
+}
+
+.question img {
+    max-width: calc(100% - 40px);
+    height: auto;
+    margin:20px auto;
+
+}
+
+.layout--quiz .demo-description {
+    width: 100%;
+    max-width: none;
+}
+
+.layout--quiz {
+    .answers, .responses, .responses li {
+        padding-left:0;
+        margin-left: 0;
+    }
+}
+
+
+/* Sidebar on Quiz page*/
+
+.sidebar--quiz p {
+    font-size: 15px;
+}
+
+.sidebar--quiz svg {
+    vertical-align: middle;
+    margin-right: 10px;
+
+}
+
+.layout--quiz {
+        .sidebar{
+            width:100%;
+            margin:0 0 20px;
+            background: #f9f9f9;
+            border: solid 1px #ddd;    
+        }
+
+        .sidebar .thumbnails li{
+            margin: 20px;
+            width: calc(33% - 40px);
+            
+
+            &:nth-child(3n+1){
+                clear:both;
+            }
+        }
+
+
+    @media (max-width: 600px) {
+
+        .sidebar .thumbnails li{
+            width: calc(50% - 40px);
+
+            &:nth-child(3n+1){
+                clear:none;
+            }
+
+            &:nth-child(2n+1){
+                clear:both;
+            }
+        }
+    }
+
+    @media (max-width: 320px) {
+        .sidebar .thumbnails li{
+            width:100%;
+            margin-left:0;
+
+            img{
+                width:99%;//sub pixel rendering bug causes right hand border to be cut off without this
+            }
+        }
+    }
+}

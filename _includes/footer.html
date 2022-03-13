@@ -3,6 +3,23 @@
 		<script src="{{site.jquery_path}}"></script>
 		<script src="/js/all.js?v={{ site.time | date: "%s" }}"></script> 
 
+		{% if page.layout == 'quiz' %}
+			<script src="/js/lib/slickQuiz.js"></script>
+			<script>
+				$(function () {
+	    			$('#slickQuiz').slickQuiz({
+	      				checkAnswerText: "Check answer",
+	      				backButtonText: "&laquo; Back",
+	      				skipStartButton: true,
+	      				disableRanking: true,
+	      				preventUnanswered: true,
+	      				perQuestionResponseAnswers: true,
+	      				tryAgainText: "Restart quiz"
+	    			});
+				});
+			</script>
+		{% endif %}
+
 
 		{% if page.layout == 'demo' %}
 

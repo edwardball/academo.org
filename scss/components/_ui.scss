@@ -190,6 +190,16 @@ input[type=checkbox] {
     cursor: text;
 }
 
+.button {
+    background:#16a34a;
+    border:none;
+}
+
+.button:hover {
+    color:white;
+    background:#22c55e;
+}
+
 
 @media (max-width: 768px) {
     #ui-container, .sidebar{
