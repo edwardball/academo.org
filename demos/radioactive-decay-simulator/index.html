@@ -1,0 +1,39 @@
+---
+title: Radioactive decay simulator
+categories: [Physics]
+tags: [Radiation, half-life]
+blurb: Use this simulator to see how a population of radioactive atoms decays over time. Adjust the half-life and see how this affects the rate at which atoms decay.
+stylesheets: [styles.css]
+scripts: [demo.js]
+cdn: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"]
+twitterCard: true
+facebookOG: true
+latex: true
+---
+
+
+<p>This interactive demo simulates what happens when a material undergoes radioactive decay. The green box at the top of the page contains 1600 radioactive atoms. As each interval of time passes, a certain number of atoms decay. In this demo, we signify that an atom has decayed by changing its colour from dark blue to bright green.</p>
+
+<p>The "half-life", \( t_{1/2} \) of the material is the time needed for half of the material to undergo decay. The number of undecayed atoms \( N(t) \) at a time \( t \) is given by the following equation</p>
+
+$$ N(t) = N_{0} \, 2^{\frac{-t}{t_{1/2}}} $$
+
+<p>Where \( N_{0} \) is the initial number of atoms, which in the case of this demo is 1600. This is the equation of the trendline in the graph above. This equation can also be written in a slightly different way, using an exponential function. Here, the value 0.693 is the natural logarithm of 2.</p>
+
+$$ N(t) =  N_{0} e^{\frac{-0.693t}{t_{1/2}}} $$
+
+<p>As an example, let's say the half-life is set to 10. This means that we would expect that after 10 time steps, the number of undecayed atoms would be half its original value, in other words, 800. And after 20 time steps, it would be half again, 400. Play around with different values of \( t_{1/2} \) and observe how the behaviour changes.</p>
+
+<p>You can advance the time step one step at a time, which can be useful when the half life is low. Alternatively, if you have a very long half-life, the "start simulation" button will automatically run through timesteps at a fast pace. Every time the time step advances, the chart is updated to show the latest number of undecayed particles.</p>
+
+
+
+<p>There is the option to show or hide a trendline on the graph which shows the expected pattern of decay based on the equation above. However you may notice that as the simulation progresses, the actual data points may lie slightly above or below the line. This is because radioactive decay is a random phenomenon. In a given time frame we only have a probability that an atom will decay - it may or may not, and that comes down to random chance. Think of an analogy of flipping 1600 coins. You may expect 800 to land on heads, but the reality is that sometimes the number will be slightly more or less than 800 exactly.
+
+<h3>Further reading</h3>
+<ul>
+	<li><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/Nuclear/meanlif.html" target="_blank" rel="noreferrer">Mean Lifetime for Particle Decay</a>, from HyperPhysics</li>
+</ul>
+
+  
+  
