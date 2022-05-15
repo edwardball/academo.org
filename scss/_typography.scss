@@ -11,6 +11,10 @@ h2{
 	color:transparentize($navy, 0.25);
 }
 
+h5 {
+	font-size: 18px;
+}
+
 @media (max-width: 600px){
 	h1{
 		font-size:30px;
