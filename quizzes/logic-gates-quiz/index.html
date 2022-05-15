@@ -1,0 +1,112 @@
+---
+title: Logic Gates Quiz
+tags: []
+blurb: "Test your knowledge of logic gates with this interactive quiz. Be sure to check out the <a href='/demos/logic-gate-simulator/'>logic gate simulator</a> before attempting the questions."
+stylesheets: [styles.css]
+latex: true
+layout: quiz
+noUi: true
+---
+
+<script>
+var quizJSON = {
+    "info": {
+        "name":    "",
+        "main":    "",
+        "results": "<p>You can learn all about logic gates and how they work with our <a href='/demos/logic-gate-simulator/'>logic gate simulator</a>.</p>"
+    },
+    "questions": [
+        { // Question 1 - Multiple Choice, Single True Answer
+            "q": "What type of gate does this symbol represent? <br/> <img src='https://academo.org/demos/logic-gate-simulator/symbols/or.svg' />",
+            "a": [
+                {"option": "AND",      "correct": false},
+                {"option": "OR",     "correct": true},
+                {"option": "NAND",      "correct": false},
+                {"option": "XOR",     "correct": false} // no comma here
+            ],
+            "correct": "<p><span>Correct, well done!</span> This is an OR gate.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> This is an OR gate.</p>" // no comma here
+        },{ // Question 2 - Multiple Choice, Single True Answer
+            "q": "What type of gate does this symbol represent? <br/> <img src='https://academo.org/demos/logic-gate-simulator/symbols/and.svg' />",
+            "a": [
+                {"option": "AND",      "correct": true},
+                {"option": "OR",     "correct": false},
+                {"option": "NAND",      "correct": false},
+                {"option": "XOR",     "correct": false} // no comma here
+            ],
+            "correct": "<p><span>Correct, well done!</span> This is an AND gate.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> This is an AND gate.</p>" // no comma here
+        },{ // Question 3 - Multiple Choice, Single True Answer
+            "q": "What type of gate does this symbol represent? <br/> <img src='https://academo.org/demos/logic-gate-simulator/symbols/not.svg' />",
+            "a": [
+                {"option": "NOT",      "correct": true},
+                {"option": "NOR",     "correct": false},
+                {"option": "NAND",      "correct": false},
+                {"option": "XOR",     "correct": false} // no comma here
+            ],
+            "correct": "<p><span>Correct, well done!</span> This is an NOT gate.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> This is an NOT gate.</p>" // no comma here
+        },{ // Question 4 - Multiple Choice, Single True Answer
+            "q": "What type of gate does this symbol represent? <br/> <img src='https://academo.org/demos/logic-gate-simulator/symbols/nand.svg' />",
+            "a": [
+                {"option": "NOR",     "correct": false},
+                {"option": "NOT",      "correct": false},
+                {"option": "NAND",      "correct": true},
+                {"option": "XOR",     "correct": false} // no comma here
+            ],
+            "correct": "<p><span>Correct, well done!</span> This is an NAND gate.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> This is an NAND gate.</p>" // no comma here
+        },{ // Question 5 - Multiple Choice, Single True Answer
+            "q": "What type of gate does this symbol represent? <br/> <img src='https://academo.org/demos/logic-gate-simulator/symbols/xor.svg' />",
+            "a": [
+                {"option": "NOT",      "correct": false},
+                {"option": "NOR",     "correct": false},
+                {"option": "NAND",      "correct": false},
+                {"option": "XOR",     "correct": true} // no comma here
+            ],
+            "correct": "<p><span>Correct, well done!</span> This is an XOR gate.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> This is an XOR gate.</p>" // no comma here
+        },{ // Question 6 - Multiple Choice, Single True Answer
+            "q": "In the diagram below, will the output indicated by the question mark be 0 or 1? <br/> <img src='./logic-gates-q6.png' />",
+            "a": [
+                {"option": "0",      "correct": false},
+                {"option": "1",     "correct": true}
+            ],
+            "correct": "<p><span>Correct, well done!</span> The output will be 1.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> The output will be 1.</p>" // no comma here
+        },{ // Question 7 - Multiple Choice, Single True Answer
+            "q": "In the diagram below, will the output indicated by the question mark be 0 or 1? <br/> <img src='./logic-gates-q7.png' />",
+            "a": [
+                {"option": "0",      "correct": true},
+                {"option": "1",     "correct": false}
+            ],
+            "correct": "<p><span>Correct, well done!</span> The output will be 0.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> The output will be 0.</p>" // no comma here
+        },{ // Question 8 - Multiple Choice, Single True Answer
+            "q": "In the diagram below, will the output indicated by the question mark be 0 or 1? <br/> <img src='./logic-gates-q8.png' />",
+            "a": [
+                {"option": "0",      "correct": false},
+                {"option": "1",     "correct": true}
+            ],
+            "correct": "<p><span>Correct, well done!</span> The output will be 1.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> The output will be 1.</p>" // no comma here
+        },{ // Question 9 - Multiple Choice, Single True Answer
+            "q": "In the diagram below, will the output indicated by the question mark be 0 or 1? <br/> <img src='./logic-gates-q9.png' />",
+            "a": [
+                {"option": "0",      "correct": false},
+                {"option": "1",     "correct": true}
+            ],
+            "correct": "<p><span>Correct, well done!</span> The output will be 1.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> The output will be 1.</p>" // no comma here
+        },{ // Question 10 - Multiple Choice, Single True Answer
+            "q": "In the diagram below, will the output indicated by the question mark be 0 or 1? <br/> <img src='./logic-gates-q10.png' />",
+            "a": [
+                {"option": "0",      "correct": true},
+                {"option": "1",     "correct": false}
+            ],
+            "correct": "<p><span>Correct, well done!</span> The output will be 0.</p>",
+            "incorrect": "<p><span>Sorry, that's incorrect.</span> The output will be 0.</p>" // no comma here
+        }
+    ]
+};
+</script>
