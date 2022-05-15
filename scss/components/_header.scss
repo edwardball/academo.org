@@ -22,8 +22,10 @@
 
 .logo img {
 	width:40px;
+	height: auto;
 	vertical-align:middle;
 	margin-right:10px;
+	aspect-ratio: 773/697;
 }
 
 .header-lower{
@@ -115,6 +117,7 @@
     .logo img {
     	width:30px;
     	margin-right:5px;
+    	height:auto;
     }
 
     .header a {

@@ -38,6 +38,8 @@
 	border: solid 1px $grey--dark;
 	transition: opacity 0.3s;
 	width:100%;
+	height:auto;
+	aspect-ratio: 260/170;
 
 	&:hover{
 		opacity: 0.85;
