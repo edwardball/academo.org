@@ -119,8 +119,14 @@
 	}
 }
 
+.sidebar--sponsor {
+	clear: both;
+	display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 1020px) {
-	.sidebar{
+	.sidebar:not(.sidebar--sponsor){
 		width:100%;
 		margin:0 0 20px;	
 	}
@@ -133,6 +139,22 @@
 		&:nth-child(3n+1){
 			clear:both;
 		}
+	}
+
+	.sidebar--sponsor {
+		padding: 0;
+		background:transparent;
+	}
+
+}
+
+@media (max-width: 768px) {
+	.sidebar--sponsor {
+		width:100%;
+		clear: both;
+		display: flex;
+    	justify-content: left;
+    	margin:0;
 	}
 }
 
