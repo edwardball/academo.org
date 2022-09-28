@@ -118,31 +118,17 @@ $(document).ready(function(){
 
 
 	var sponsoredLinks = [
-		// '<a href="http://tr.grammarly.com/aff_c?offer_id=97&aff_id=8559" target="_blank"><img src="/img/grammarly-banner.png"></a>',
-		// '<a href="http://www.dpbolvw.net/click-8052599-12207280-1448292209000" target="_top"><img src="https://www.tqlkg.com/image-8052599-12207280-1448292209000" width="194" height="54" alt="ORM, O\'Reilly, Logo, Friends" border="0"/></a>',
-		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=23011826" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(23011826)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>',
-		// '<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=22604650" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(22604650)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>'
-		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=22604638" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(22604638)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>',
-		'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=23085442" target="_BLANK"><img src="'+'https://impus.tradedoubler.com/imp?type(img)g(23085442)a(2877167)' + new String (Math.random()).substring (2, 11)+'" border=0></a>',
-		'<a href="//treehouse.7eer.net/c/318020/243355/3944"><img src="//a.impactradius-go.com/display-ad/3944-243355" border="0" alt="" width="468" height="60"/></a><img height="0" width="0" src="//treehouse.7eer.net/i/318020/243355/3944" style="position:absolute;visibility:hidden;" border="0" />',
-		// '<a href="//treehouse.7eer.net/c/318020/243351/3944"><img src="//a.impactradius-go.com/display-ad/3944-243351" border="0" alt="" width="300" height="120"/></a><img height="0" width="0" src="//treehouse.7eer.net/i/318020/243351/3944" style="position:absolute;visibility:hidden;" border="0" />'
+		
 	];
 
 	// Randomise sponsored link
-	$(".js-sponsor-wrapper").html(shuffle(sponsoredLinks)[0]);
+	// $(".js-sponsor-wrapper").html(shuffle(sponsoredLinks)[0]);
 
 
 	// Sponsored tiles
 		var sponsoredTilesInner = [
-			'<a target="_blank" href="https://treehouse.7eer.net/c/318020/243354/3944"><img src="//a.impactradius-go.com/display-ad/3944-243354" border="0" alt="" width="300" height="250"/></a><img class="no-image-styles" height="0" width="0" src="//treehouse.7eer.net/i/318020/243354/3944" style="position:absolute;visibility:hidden;" border="0" />',
-			'<a target="_blank" href="https://treehouse.7eer.net/c/318020/243369/3944"><img src="//a.impactradius-go.com/display-ad/3944-243369" border="0" alt="" width="300" height="250"/></a><img class="no-image-styles" height="0" width="0" src="//treehouse.7eer.net/i/318020/243369/3944" style="position:absolute;visibility:hidden;" border="0" />',
-			'<a target="_blank" href="https://treehouse.7eer.net/c/318020/243370/3944"><img src="//a.impactradius-go.com/display-ad/3944-243370" border="0" alt="" width="300" height="250"/></a><img class="no-image-styles" height="0" width="0" src="//treehouse.7eer.net/i/318020/243370/3944" style="position:absolute;visibility:hidden;" border="0" />',
-			'<a target="_blank" href="https://treehouse.7eer.net/c/318020/243371/3944"><img src="//a.impactradius-go.com/display-ad/3944-243371" border="0" alt="" width="300" height="250"/></a><img class="no-image-styles" height="0" width="0" src="//treehouse.7eer.net/i/318020/243371/3944" style="position:absolute;visibility:hidden;" border="0" />',
-			'<a target="_blank" href="https://treehouse.7eer.net/c/318020/298427/3944"><img src="//a.impactradius-go.com/display-ad/3944-298427" border="0" alt="" width="300" height="250"/></a><img class="no-image-styles" height="0" width="0" src="//treehouse.7eer.net/i/318020/298427/3944" style="position:absolute;visibility:hidden;" border="0" />',
-			'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=22604624" target="_BLANK"><img src="https://impus.tradedoubler.com/imp?type(img)g(22604624)a(2877167)" border=0></a>',
-			'<a href="https://clkuk.tradedoubler.com/click?p=259740&a=2877167&g=23085438" target="_BLANK"><img src="https://impus.tradedoubler.com/imp?type(img)g(23085438)a(2877167)" border=0></a>'
-
+			
 		]
-		$(".js-sponsored-tile").html(sponsoredTilesInner[Math.floor(Math.random() * sponsoredTilesInner.length) ]);
+		// $(".js-sponsored-tile").html(sponsoredTilesInner[Math.floor(Math.random() * sponsoredTilesInner.length) ] + "<p class='thumbnail-title'>Sponsored Link</p>");
 	
 });
