@@ -220,7 +220,7 @@ function Demo(settings){
 	});
 
 	this.sendEvent = function(category, action, label, value){
-		if (window.location.host == 'academo.org'){
+		if (window.location.host == 'academo.org' && typeof ga === "function"){
 			ga('send', 'event', category, action, label, value);
 		}
 	}
