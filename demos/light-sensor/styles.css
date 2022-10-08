@@ -1,0 +1,59 @@
+@keyframes active-monitor-fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.sensor-intro p {
+    font-size: 14px;
+}
+
+.illuminance-indicator h2 {
+	background: #f9f9f9;
+    padding: 20px;
+    border: solid #ddd 1px;
+    margin-top: 0;
+    width: auto;
+    display: inline-block;
+}
+
+.illuminance-indicator {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.illuminance-indicator h2 {
+	margin: 0;
+}
+
+.actively-monitoring {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.actively-monitoring-indicator {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    margin-right: 5px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 7px #23e56a;
+    /*animation-name: active-monitor-fade;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: linear;*/
+
+
+}
+
+.actively-monitoring-indicator--disabled {
+    background-color: #d2d2d2;
+    box-shadow: 0 0 0;
+}
+
+

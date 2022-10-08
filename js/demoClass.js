@@ -57,7 +57,7 @@ function Demo(settings){
   		    $('#'+prop+'-interface input').change(function(){
 	    		ui[prop].value = parseFloat($('#'+prop+'-interface input').val());
   		        self.sendEvent(ui[prop].title, 'value changed', window.location.pathname);
-  			    // self.update(prop);
+  			    self.update(prop);
 			});
 		} else if (ui[prop].type == "userInputString"){
 			var inputBoxHTML = "";

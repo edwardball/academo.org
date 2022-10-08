@@ -1,0 +1,96 @@
+---
+title: Light sensor
+categories: [Physics]
+subcategories: [Light]
+tags: [Radiation]
+blurb: Use this online light sensor to measure and plot illuminance in units of lux.
+stylesheets: [styles.css]
+scripts: [demo.js]
+cdn: ["https://cdn.plot.ly/plotly-latest.min.js"]
+twitterCard: true
+facebookOG: true
+---
+
+<div class="sensor-intro" style="padding:20px;background:#f9f9f9;">
+<p><strong>Introductory information</strong><br>Please note, this demo uses cutting edge browser technology - the Generic Sensor API - which needs to be manually switched on before using for the first time. To enable the ambient light sensor, in Chrome, type chrome://flags in your address bar and enable the "Generic Sensor Extra Classes" flag, as demonstrated in the video below.</a>
+
+<div style="width: 90%;margin:20px auto;">
+<video controls style="margin: 0 auto;width: 100%;max-width: 500px;display: block;" src="how-to-enable-sensor.mp4"></video>
+</div>
+
+<p>You may notice that the lux values displayed by the tool are always given to the nearest 50. This is an intentional restriction implemented by browser vendors and the reasons why that is necessary can be found on the <a href="https://www.w3.org/TR/ambient-light/#reduce-sensor-accuracy" target="_blank" rel="noreferrer">W3.org website</a>.</p>
+</p>
+</div>
+
+<hr>
+
+<p>
+	On a bright sunny day, think how a device such as a tablet or smartphone will commonly automatically adjust the screen's brightness to its maximum value to help you see the screen in the bright light.</p>
+
+	<p>And conversely, when using a device at night in a dark room, the device's display automatically dims, otherwise it would be too dazzling to the user's eyes.</p>
+
+	<p>How does the device "know" how to do this? The answer lies in a component called an <em>ambient light sensor</em>. This device measures the amount of light (in a unit called lux) hitting the detector and when that value is high, the device increases the brightness of the screen accordingly, and similarly when the value is low, it lowers the brightness of the screen.
+	</p>
+
+	<p><strong>Common lux values</strong></p>
+
+	<table class="table table-bordered">
+		<tr>
+			<th>Illuminance in lux</th>
+			<th>Scenario</th>
+		</tr>
+		<tr>
+			<td>0.00005</td>
+			<td>Starlight</td>
+		</tr>
+		<tr>
+			<td>0.0001</td>
+			<td>Overcast, moonless night sky</td>
+		</tr>
+		<tr>
+			<td>0.01</td>
+			<td>Quarter moon</td>
+		</tr>
+		<tr>
+			<td>0.1</td>
+			<td>Full moon on a clear night</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>Candle at a distance of 30cm</td>
+		</tr>
+		<tr>
+			<td>50</td>
+			<td>Living room in a house</td>
+		</tr>
+		<tr>
+			<td>150</td>
+			<td>Typical office environment</td>
+		</tr>
+		<tr>
+			<td>400</td>
+			<td>Sunrise or sunset</td>
+		</tr>
+		<tr>
+			<td>1,000</td>
+			<td>Shopping mall</td>
+		</tr>
+		<tr>
+			<td>100,000</td>
+			<td>Maximum sunlight at noon</td>
+		</tr>
+	</table>
+
+	<p>The tool above allows you to view the level of lux being recorded at any given moment, indicated by the large "Current illuminance" display. Additionally, these values can be plotted on the chart. If you would like to plot the value once every second, you should set the <em>samples per second</em> value to 1.</p>
+
+
+
+	<h2>Suggested ideas for investigation</h2>
+
+	<p>Try shining a torch into your sensor. Does it make a difference how close to the sensor you get? Do different torches give different values?</p>
+
+	<p> Take your laptop outside on a bright sunny day. Is it different depending on the time of day? </p><p>Do different devices give different readings even if the conditions are the same? </p>
+
+	<hr>
+
+	<p>List of Lux values referenced from: Axis, C., Nilsson, F. (2008). Intelligent Network Video: Understanding Modern Video Surveillance Systems (page 56). United States: Taylor & Francis.</p>
