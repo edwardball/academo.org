@@ -1,0 +1,293 @@
+{% include header.html %}
+
+<a class="flashcards-breadcrumb" href="/flashcards"><span class="material-symbols-outlined">
+keyboard_double_arrow_left
+</span> Back to all Flashcards </a>
+
+
+
+
+
+<div class="preamble">
+	
+	<h1>{{page.title}} flashcards</h1>
+	<hr>
+	<p class="blurb">
+		{{ page.blurb }}
+	</p>
+	<p class="tags">
+		<a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AllFlashcardsModal"><span class="material-symbols-outlined">
+view_list
+</span> <span>View all terms</span></a>
+		<a class="js-shuffle-2"><span class="material-symbols-outlined">
+shuffle
+</span> <span>Shuffle</span></a>
+		<a class="js-flip-all"> <span class="material-symbols-outlined">
+sync
+</span> <span>Flip all cards</span></a>
+		
+<!-- <a class="js-flip-all-to-front"><span class="material-symbols-outlined">
+vertical_align_top
+</span> Flip all to front	</a>
+
+<a class="js-flip-all-to-bottom"><span class="material-symbols-outlined">
+vertical_align_bottom
+</span> Flip all to back</a> -->
+
+
+		<a class="js-reset"><span class="material-symbols-outlined">
+settings_backup_restore
+</span> <span>Reset</span></a>
+
+
+</p>
+    <hr>
+
+		{% include social.html %}
+
+    <hr>
+</div>
+
+
+
+<div id="demo" class="{% if page.noUi == true %} demo--wide {% endif %}">
+	<div class="flashcards-carousel slick-slider" id='slides-template-outer'>
+
+
+    	{% for flashcard in page.flashcards %}
+
+    	<script id="template-list-item" type="text/template">
+  		<div class="slide {$ statusClass $}" data-flashcardid="{$ flashCardID $}">
+      		<div class="flip-container {$ flipClass $}">
+        		<div class="flipper">
+          			<div class="front ">
+          				<div class='flashcard-term'>{{ page.frontTerm }} </div>
+            			{$ front $} 
+            			<div class="front-border"></div>
+          			</div>
+          			<div class="back">
+          				<div class='flashcard-term'>{{ page.backTerm }} </div>
+            				{$ back $} 
+            			<div class="back-border"></div>
+          			</div>
+        		</div>
+      		</div>
+    	</div>
+		</script>
+    	{% endfor %}
+	</div>
+	<span class="current-slide">
+		<span title="Skip to start" class="material-symbols-outlined flash-cards-skip-to js-go-to-start">
+skip_previous
+</span>
+		Current slide: <span class="js-current-slide"></span> / <span class="js-total-slides"></span>
+<span title="Skip to end" class="material-symbols-outlined flash-cards-skip-to js-go-to-end">
+skip_next
+</span>
+	</span>
+</div>
+
+<div id="list"></div>
+<script>
+	var flashcardData = initializeFlashcardData();
+
+ function initializeFlashcardData(reset){
+ 	if (!reset && localStorage.getItem("{{page.name}}")){
+ 		return JSON.parse(localStorage.getItem("{{page.name}}"));
+
+ 	} else {
+ 		var initialFlashcardData = [
+		{% for flashcard in page.flashcards %}
+			{
+				id: {{ forloop.index }},
+				{% if page.frontTemplate %}
+					front: "{{ page.frontTemplate | replace: '*', flashcard.front}}",
+				{% else %}
+					front: "{{ flashcard.front }}",
+				{% endif %}
+				{% if page.backTemplate %}
+					back: "{{ page.backTemplate | replace: '*', flashcard.back}}",
+				{% else %}
+					back: "{{ flashcard.back }}",
+				{% endif %}
+				{% if page.defaultSide %}
+					faceVisible: "{{page.defaultSide}}",
+				{% else %}
+					faceVisible: "front",
+				{% endif %}
+				status: "visible",
+			},
+		{% endfor %}
+		];
+
+		localStorage.setItem("{{page.name}}", JSON.stringify(initialFlashcardData));
+
+		return initialFlashcardData;
+	}
+ }
+
+	// Cache of the template
+var template = document.getElementById("template-list-item");
+// Get the contents of the template
+var templateHtml = template.innerHTML;
+
+	function updateHTML(){
+
+// Final HTML variable as empty string
+var listHtml = "";
+
+// Loop through dataObject, replace placeholder tags
+// with actual data, and generate final HTML
+
+for (var i = 0 ; i < flashcardData.length ; i++) {
+	var statusClass = flashcardData[i].status == "visible" ? "" : "hide-flashcard";
+	var flipClass = flashcardData[i].faceVisible == "front" ? "" : "flip";
+  		listHtml += templateHtml.replace(/{\$ front \$}/g, flashcardData[i].front)
+                          .replace(/{\$ back \$}/g, flashcardData[i].back)
+                          .replace(/{\$ statusClass \$}/g, statusClass)
+                          .replace(/{\$ flashCardID \$}/g, flashcardData[i].id)
+                          .replace(/{\$ flipClass \$}/g, flipClass);
+                          
+}
+
+
+
+
+// Replace the HTML of #list with final HTML
+document.getElementById("slides-template-outer").innerHTML = listHtml;	
+	}
+
+	updateHTML();
+
+
+
+	
+</script>
+
+{% if page.noUi != true %}
+
+<div class="clearfix" id='ui-container'>
+
+</div>
+
+{% endif %}
+
+<!-- <div class="sidebar sidebar--sponsor">
+
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEAICKQY&placement=academoorg" id="_carbonads_js"></script>
+
+</div> -->
+
+
+
+
+<div class="demo-description">
+
+    <hr>
+
+    {{ content }}
+
+    <!-- Modal -->
+<div class="modal fade" id="AllFlashcardsModal" tabindex="-1" aria-labelledby="AllFlashcardsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AllFlashcardsModalLabel">All terms</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	<table class="table table-bordered table-striped table-flashcards">
+      		<tr>
+      			<th>{{ page.frontTerm }}</th>
+      			<th>{{ page.backTerm }}</th>
+      			<th class="toggle-all-visibility js-toggle-all-visibility" data-visible="visible">Visible</th>
+      			<!-- <th>Face</th> -->
+      		</tr>
+        {% for flashcard in page.flashcards %}
+        <tr>
+        	<td>{{ flashcard.front }}</td>
+        	<td>
+        		{% if page.backTemplate %}
+					{{ page.backTemplate | replace: '*', flashcard.back}}
+				{% else %}
+					{{ flashcard.back }}
+				{% endif %}
+			</td>
+        	<td><input type="checkbox" class="flashcard-visibility-toggle" checked data-index='{{ forloop.index }}'></td>
+        	<!-- <td><span class="material-symbols-outlined face-indicator" data-index='{{ forloop.index }}' style="opacity: 0.5;">
+arrow_circle_down
+</span> Down</td> -->
+        </tr>
+        {% endfor %}
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+			
+	{% if page.credits %}
+
+		<hr>
+
+		<h4>Credits</h4>
+
+		<ul class="credits">
+	        {% for credit in page.credits %}
+		        <li>{{ credit }}</li>
+	        {% endfor %}
+        </ul>
+
+    {% endif %}
+
+	{% if site.dev_mode != true %}
+	    <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'academo'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+				this.page.url = 'https://academo.org{{page.url}}';
+				// this.page.identifier = 'a unique identifier for each page where Disqus is present';
+				// this.page.title = 'a unique title for each page where Disqus is present';
+		    };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% endif %}
+    	        
+ </div>
+
+ <div class="sidebar">
+
+	<h3>You might also be interested in</h3>
+ 	<hr>
+ 	<ul class="thumbnails">
+
+ 	</ul>
+ 	<div style="width:160px;margin:10px auto;">
+ 	<!-- <p style='font-size: 11px;margin-bottom: 0;'>Ad</p> -->
+ 		<!-- Academo_S2S_Sidebar_ROS_Pos1 -->
+ 		{% if site.dev_mode != true %}
+		<div id="bsa-zone_1589226262502-0_123456"></div>
+		{% endif %}
+	</div>
+ </div>
+
+
+<!-- Done: reset should clear local storage -->
+<!-- Done: The all toggle should update local storage -->
+<!-- Done: skip to start and front cards -->
+<!-- To do: localstorage should only save id and status, not actual data to save space -->
+<!-- Maybe Add ability to toggle face -->
+<!-- Bug: dblclick doesn't register on touch devices -->
+
+{% include footer.html %}

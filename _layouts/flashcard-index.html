@@ -1,0 +1,34 @@
+{% include header.html %}
+
+<h1>{{page.title}}</h1>
+<hr>
+<div class="subcategory-description">
+	<p>
+		Below is a list of all the flashcards currently available on academo.org, arranged in alphabetical order. We are always adding new flascards, so please check back often to see the latest updates.
+	</p>
+	<!-- <p class="tags">
+		<a href="/engineering/">Engineering</a>
+		<a href="/geography/">Geography</a>
+		<a href="/maths/">Maths</a>
+		<a href="/music/">Music</a> 
+		<a href="/physics/">Physics</a> 
+	</p>-->
+</div>
+<hr>
+
+<ul class="thumbnails">
+	{% assign sorted_pages = site.pages | sort: 'title' %}
+	{% for item in sorted_pages %}
+		{% if item.layout == 'flashcards'%}
+			<li>
+				<a href="{{ item.url }}" class="thumbnail">
+					<img loading="lazy" src="/flashcards/thumbnails/{{ item.thumbnail }}" alt="" width="260" height="170">
+					<p class="thumbnail-title">{{ item.title }}</p>
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+
+{% include footer.html %}

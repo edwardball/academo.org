@@ -1,0 +1,326 @@
+.layout--flashcards {
+  #demo {
+    padding: 100px 0;
+    position: relative;
+    background:#f9f9f9;
+  }
+
+  .flashcards-carousel {
+    max-width: 460px;
+    width: calc(95% - 100px);
+    margin: 0 auto;
+  }
+
+  .slide {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .flip-container {
+    margin: 10px;
+    outline: none;
+    perspective: 1000px;
+  }
+  .flip-container:focus,
+  .slide:focus {
+    outline: 0;
+  }
+
+  .flip-container {
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+  .flipper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .front,
+  .back {
+    cursor: pointer;
+    color: white;
+    box-sizing: border-box;
+    padding: 20px;
+
+    /* For vertical centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #333;
+    border: solid #eee 1px;
+
+    background: white;
+    width: 100%;
+    height: 100%;
+  }
+
+  .front,
+  .back {
+    font-size: 2em;
+    border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .front,
+    .back {
+      font-size: 1.25em;
+    }
+    .flipper .flashcard-term {
+      font-size: 11px !important;
+    }
+  }
+
+  .back-inner,
+  .front-inner {
+    padding: 60px 100px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+  }
+
+  audio {
+    width: 160px;
+    display: block;
+    margin: 20px auto;
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+    position: absolute;
+  }
+
+  .flip-container.flip .flipper {
+    transform: rotateY(-180deg);
+    overflow: visible !important;
+  }
+
+  /* hide back of pane during swap */
+  .front,
+  .back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* front pane, placed above back */
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .back {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+
+  /* custom slick slider styling */
+  .slick-arrow::before {
+    color: #020535;
+  }
+
+  .slick-slide img {
+    height: 100%;
+  }
+
+  @media (min-width: 576px) {
+    /*custom slick styling*/
+    .slick-next:before,
+    .slick-prev:before {
+      font-size: 30px;
+    }
+
+    .slick-prev {
+      left: -35px;
+    }
+  }
+
+  /*.slide-hiding .slide {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }*/
+
+  .slide .front,
+  .slide .back {
+    background: white;
+  }
+
+  .front-border,
+  .back-border {
+    background: rgb(13, 94, 228);
+    background: linear-gradient(
+      45deg,
+      rgba(13, 94, 228, 1) 0%,
+      rgba(7, 171, 198, 1) 50%,
+      rgba(0, 254, 166, 1) 100%
+    );
+    width: 100%;
+    height: 8px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .back-border {
+    background: linear-gradient(
+      45deg,
+      rgba(0, 254, 166, 1) 0%,
+      rgba(7, 171, 198, 1) 50%,
+      rgba(13, 94, 228, 1) 100%
+    );
+  }
+
+  .flipper .flashcard-term {
+    position: top;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    padding: 5px 5px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal-title {
+    margin-top: 0;
+  }
+
+  .tags {
+    cursor: pointer;
+  }
+
+  .current-slide {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #777;
+    padding: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .modal input[type="checkbox"] {
+    visibility: visible;
+    padding: 10px;
+  }
+
+  .modal td {
+    vertical-align: middle;
+  }
+
+  .modal td img {
+    border: solid #f6f6f6 1px;
+  }
+
+  .toggle-all-visibility {
+    cursor: pointer;
+  }
+
+  .table-flashcards td:nth-child(3n),
+  .table-flashcards th:nth-child(3n),
+  .table-flashcards td:nth-child(4n),
+  .table-flashcards th:nth-child(4n) {
+    text-align: center;
+  }
+
+  a.flashcards-breadcrumb {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0.6;
+  }
+
+  .tags .material-symbols-outlined {
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+  }
+
+  // .face-indicator {
+  //   padding: 10px;
+  //   cursor: pointer;
+  //   transition: transform 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  // }
+
+  // .face-indicator-up {
+  //   animation: scale-easeOutElastic 0.8s;  other keywords like "infinite alternate" can be useful here
+  // animation-fill-mode: forwards;
+  //   transform: rotate(0.5turn);
+  // }
+
+  .flash-cards-skip-to {
+    cursor: pointer;
+    top: 4px;
+    position: relative;
+    margin: 0px 10px 0 10px;
+    font-size: 18px;
+  }
+
+  .flash-cards-skip-to:hover {
+    color: #111;
+  }
+
+  .modal td img {
+    border: solid #f6f6f6 1px;
+    max-width: 100px;
+  }
+
+  .flashcards-breadcrumb span.material-symbols-outlined {
+    position: relative;
+    top: 7px;
+  }
+
+  .slick-slider {
+    display: none;
+  }
+
+  .slick-slider.slick-initialized {
+    display: block;
+  }
+
+  @media (max-width: 800px) {
+    .layout--flashcards #demo {
+      padding-top: 20px;
+    }
+
+    .tags a {
+      font-size: 12px;
+      /* line-height: 12px; */
+      vertical-align: mtop;
+    }
+
+    .modal td {
+      font-size: 14px;
+    }
+
+    .flashcards-carousel {
+      width: 90%;
+    }
+
+    .slick-next {
+      top: calc(100% + 20px);
+      right: 20px;
+    }
+
+    .slick-prev {
+      top: calc(100% + 20px);
+      left: 20px;
+    }
+  }
+}
