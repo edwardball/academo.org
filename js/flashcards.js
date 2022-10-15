@@ -64,7 +64,7 @@ function shuffle(array) {
 			initialSlide: currentSlideCache
 		});
 
-		localStorage.setItem("{{page.name}}", JSON.stringify(flashcardData));
+		localStorage.setItem(pageName, JSON.stringify(flashcardData));
 
 		$('.flashcards-carousel').slick('slickFilter',':not(.hide-flashcard)');
 		$(".js-current-slide").html(currentSlideCache + 1);
@@ -123,7 +123,7 @@ function shuffle(array) {
 		}
 
 		// Save to local storage
-		localStorage.setItem("{{page.name}}", JSON.stringify(flashcardData));
+		localStorage.setItem(pageName, JSON.stringify(flashcardData));
 
 
 		updateHTML();
@@ -158,7 +158,7 @@ function shuffle(array) {
 		
 
 		// Save to local storage
-		localStorage.setItem("{{page.name}}", JSON.stringify(flashcardData));
+		localStorage.setItem(pageName, JSON.stringify(flashcardData));
 		
 	})
 
@@ -191,7 +191,7 @@ function shuffle(array) {
 		}
 
 		// Save to local storage
-		localStorage.setItem("{{page.name}}", JSON.stringify(flashcardData)); 
+		localStorage.setItem(pageName, JSON.stringify(flashcardData)); 
 
 		updateHTML();
 
