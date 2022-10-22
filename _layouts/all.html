@@ -31,5 +31,23 @@
 	{% endfor %}
 </ul>
 
+<hr>
+
+<h3>Flashcards</h3>
+
+<ul class="thumbnails">
+	{% assign sorted_pages = site.pages | sort: 'title' %}
+	{% for item in sorted_pages %}
+		{% if item.layout == 'flashcards'%}
+			<li>
+				<a href="{{ item.url }}" class="thumbnail">
+					<img loading="lazy" src="/flashcards/thumbnails/{{ item.thumbnail }}" alt="" width="260" height="170">
+					<p class="thumbnail-title">{{ item.title }}</p>
+				</a>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
 
 {% include footer.html %}
