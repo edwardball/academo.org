@@ -10,9 +10,10 @@ var AudioContext = (window.AudioContext || window.webkitAudioContext || window.m
 
 var ui = {
     inputType: {
-        title: "Type",
-        value: "lissajous",
+        title: "Presets",
+        value: "none",
         values: [
+          ["Choose a preset","none"],
           ["Lissajous","lissajous"],
           ["Hypotrochoid","hypotrochoid"], 
           ["Rhodonea","rhodonea"],
@@ -22,6 +23,10 @@ var ui = {
           ["Jumping Dolphin","dolphin"]
           ],
     },
+    // playPause: {
+    //   title: "Play/Pause preset",
+    //   type: "button",
+    // },
     volume: {
         title: "Volume",
         value: 0.1,
@@ -258,6 +263,14 @@ var current_d = ui.d.value;
 
 function update(el){
 
+  if (el == 'inputType'){
+    startLissajous();
+  }
+
+  if (el == 'inputType' && ui.inputType.value == "none"){
+    disconnectOscs();
+  }
+
   if (el == 'inputType' && ui.inputType.value == 1){
     streaming = true;
       animate();
@@ -330,6 +343,10 @@ function updateUI(){
     $("#a-interface, #b-interface, #d-interface").css("display", "none");
   } else {
     $("#a-interface, #b-interface, #d-interface").css("display", "block");
+  }
+
+  if (ui.inputType.value == "none"){
+    $("#volume-interface, #freq1-interface, #freq2-interface,#a-interface, #b-interface, #d-interface").css("display", "none");
   }
   
 }
@@ -973,4 +990,48 @@ function drawData(){
 }
 
 animate();
-startLissajous();
+// startLissajous();
+
+
+
+// Add audio file input functionality
+
+var audio = new Audio();
+audio.src = 'song-thrush-rspb.mp3';
+audio.controls = true;
+audio.onpause = function(){
+  window.cancelAnimationFrame(animationID);
+}
+
+var fileInput = $("#audio-file");
+$("#ui-container").append($(".audio-file-wrapper"));
+$("#ui-container").append($("audio"));
+fileInput.on("change", function(e) {
+
+  audio.pause();
+  // window.cancelAnimationFrame(animationID);
+
+  //see http://lostechies.com/derickbailey/2013/09/23/getting-audio-file-information-with-htmls-file-api-and-audio-element/
+  var file = e.currentTarget.files[0];
+  var objectUrl = URL.createObjectURL(file);
+
+  audio.src = objectUrl;
+
+
+})
+
+
+audio.onplay = function(){
+    // stop any currectly playing oscs
+    disconnectOscs();
+}
+
+document.body.appendChild(audio);
+$("#ui-container").append($(".audio-file-wrapper"));
+$("#ui-container").append($("audio"));
+
+var input2 = audioContext.createMediaElementSource(audio);
+input2.connect(analyser);
+input2.connect(audioContext.destination);
+
+

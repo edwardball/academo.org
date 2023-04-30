@@ -1,9 +1,10 @@
-.sponsor-wrapper, .sidebar {
-	display: none;
-}
-
 #demo{
   position:relative;
+}
+
+audio,
+#audio-file {
+	width:100%;
 }
 
 canvas{
