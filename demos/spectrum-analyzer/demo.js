@@ -144,10 +144,10 @@ document.body.appendChild(audio);
 
   render: function() {
     //console.log('Render');
-    this.width = window.innerWidth;
-    this.width = $("#demo").width();
-    this.height = window.innerHeight;
-    this.height = Math.round(this.width*0.67);
+    // this.width = window.innerWidth;
+    this.width = Math.round($("#demo").width());
+    // this.height = window.innerHeight;
+    this.height = Math.round(Math.round(this.width*0.67));
 
 
     var didResize = false;
