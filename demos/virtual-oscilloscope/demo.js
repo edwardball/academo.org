@@ -55,9 +55,40 @@ var ui = {
         range:[-100,100],
         resolution:1,
         input: "hidden"
-    }
+    },
+    colourScheme: {
+        title: "Color scheme",
+        value: "default",
+        values: [
+            ["Default", "default"],
+            ["Dark", "dark"],
+            ["Light", "light"],
+        ] 
+    },
 
 };
+
+var colourSchemes = {
+  default: {
+    background: "#5db1a2",
+    gridLines: "#196156",
+    trace: "#befde5",
+    traceHalo: "rgba(174,244,218,0.3)",
+  },
+  dark: {
+    background: "#111",
+    gridLines: "#666",
+    trace: "#fff",
+    traceHalo: "rgba(255,255,255,0.3)",
+  },
+  light: {
+    background: "#fdfdfd",
+    gridLines: "#BBB",
+    trace: "#111",
+    traceHalo: "rgba(0,0,0,0.3)",
+  }
+}
+
 
 $(document).on("uiLoaded", function(){
     if (navigator.mediaDevices){
@@ -118,7 +149,7 @@ c2.width = demo.clientWidth;
 c2.height = document.body.clientHeight;
 c2.height = c.height;
 $("#demo").height(c.height + 20);
-c.style.backgroundColor = "#5db1a2";
+c.style.backgroundColor = colourSchemes[ui.colourScheme.value].background;
 demo.appendChild(c);
 demo.appendChild(c2);
 
@@ -128,12 +159,13 @@ ctx = c.getContext("2d");
 ctx2 = c2.getContext("2d");
 
 function createGrid(ctx){
+    ctx.clearRect(0,0,c.width, c.height);
     ctx.beginPath();
     ctx.moveTo(0, midPoint.y);
     ctx.lineTo(c.width, midPoint.y);
     ctx.moveTo(midPoint.x, 0);
     ctx.lineTo(midPoint.x, c.height);
-    ctx.strokeStyle = "#196156";
+    ctx.strokeStyle = colourSchemes[ui.colourScheme.value].gridLines;
     ctx.lineWidth = '2';
     ctx.globalCompositeOperation = 'source-over';
     ctx.stroke();
@@ -199,6 +231,10 @@ createGrid(ctx);
 var isRunning = false;
 
 function update(el){
+    if (el == 'colourScheme'){
+        c.style.backgroundColor = colourSchemes[ui.colourScheme.value].background;
+        createGrid(ctx);
+    }
 
   if (el == 'inputType' && ui.inputType.value == 1){
     streaming = true;
@@ -348,7 +384,7 @@ function drawData(){
     ctx2.clearRect(0,0,c.width,c.height);
     ctx2.translate(ui.horizOffset.value, ui.vertOffset.value);
     ctx2.beginPath();
-    ctx2.strokeStyle = '#befde5';
+    ctx2.strokeStyle = colourSchemes[ui.colourScheme.value].trace;
     ctx2.lineWidth = 1;
 
     for (var i = -analyser.frequencyBinCount/2; i <= analyser.frequencyBinCount/2; i++) {
@@ -429,10 +465,10 @@ function drawData(){
     }
 
     ctx2.stroke();
-    ctx2.strokeStyle = 'rgba(174,244,218,0.3)';
+    ctx2.strokeStyle = colourSchemes[ui.colourScheme.value].traceHalo;
     ctx2.lineWidth = 3;
     ctx2.stroke();
-    ctx2.strokeStyle = 'rgba(174,244,218,0.3)';
+    ctx2.strokeStyle = colourSchemes[ui.colourScheme.value].traceHalo;
     ctx2.lineWidth = 4;
     ctx2.stroke();
 
