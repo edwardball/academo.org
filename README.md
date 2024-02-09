@@ -43,7 +43,7 @@ blurb: Animated version of Galileo's 400-year-old sunspot drawings # This is a s
 stylesheets: [styles.css] # Array of any stylesheets used
 scripts: [demo.js] # Array of any javascript files required, in order. This should usually always have at last demo.js in it.
 libraries: [] #Array of any javascript libraries required. See /js/lib for available libraries.
-cdn: ["http://maps.googleapis.com/maps/api/js?key=AIzaSyCoFlR16Ohnl6uSCw3Xn6RL8v9pzx3gJDE&sensor=false"] # Array of any CDN files needed
+cdn: ["<URL Here>"] # Array of any CDN files needed
 latex: true # If you want to have mathematical equations on the page, enable Latex support.
 ---
 ```
