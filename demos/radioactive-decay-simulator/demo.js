@@ -7,6 +7,15 @@ var demo = new Demo({
       range: [1, 100],
       resolution: 1
     },
+    showUndecayed: {
+      title: "Plot number of undecayed atoms?",
+      value: true,
+    },
+    showDecayed: {
+      title: "Plot number of decayed atoms?",
+      value: false
+    },
+    
     trendLine: {
       title: "Show trendline",
       value: true
@@ -62,7 +71,7 @@ var demo = new Demo({
     this.numberOfAtoms = this.width * this.height;
     this.originalNumberOfAtoms = this.numberOfAtoms;
 
-    $("#numberOfUndecayed").html("Number of undecayed atoms: <br> " + this.numberOfAtoms);
+    this.updateCounterIndicator();
 
     this.steps = 0;
     // var probabilityOfDecay = 0.5;
@@ -91,17 +100,30 @@ var demo = new Demo({
   update: function (e) {
     if (e == "reset") {
       this.reset();
+    } else if (e == "showUndecayed" || e == "showDecayed") {
+      this.myChart.data.datasets[0].backgroundColor = this.ui.showUndecayed.value ? "rgba(2, 5, 53, 0.2)" : "transparent";
+      this.myChart.data.datasets[0].borderColor = this.ui.showUndecayed.value ? "rgba(2, 5, 53, 0.8)" : "transparent";
+      this.myChart.data.datasets[2].backgroundColor = this.ui.showDecayed.value ? "rgba(255, 99, 132, 0.2)" : "transparent";
+      this.myChart.data.datasets[2].borderColor = this.ui.showDecayed.value ? "rgba(255, 99, 132, 1)" : "transparent";
+
+      this.setupTrendline();
+      this.myChart.data.datasets[1].data = this.trendLine;
+      this.myChart.data.datasets[3].data = this.trendLine2;
+
+      this.myChart.update();
     } else if (e == "halfLife") {
       this.reset();
       this.decayConstant = Math.log(2) / this.ui.halfLife.value;
     } else if (e == "trendLine") {
       this.setupTrendline();
       this.myChart.data.datasets[1].data = this.trendLine;
+      this.myChart.data.datasets[3].data = this.trendLine2;
       this.myChart.update();
     } else if (e == "stepsOnGraph") {
       this.numberOfTimeSteps = this.ui.stepsOnGraph.value;
       this.setupTrendline();
       this.myChart.data.datasets[1].data = this.trendLine;
+      this.myChart.data.datasets[3].data = this.trendLine2;
       this.myChart.options.scales.x = {
         max: this.numberOfTimeSteps
       }
@@ -128,12 +150,17 @@ var demo = new Demo({
     this.steps = 0;
     this.myChart.destroy();
     this.setupChart();
-    $("#numberOfUndecayed").html("Number of undecayed atoms: <br> " + this.numberOfAtoms);
+    this.updateCounterIndicator();
+  },
+
+  updateCounterIndicator: function(){
+    $("#numberOfUndecayed").html("Number of undecayed atoms: <br> " + this.numberOfAtoms + "<br><br>Number of decayed atoms: <br>" + (this.originalNumberOfAtoms - this.numberOfAtoms));
   },
 
   setupTrendline: function () {
     this.trendLine = [];
-    if (this.ui.trendLine.value) {
+    this.trendLine2 = [];
+    if (this.ui.trendLine.value && this.ui.showUndecayed.value) {
       // trendline
       for (k = 0; k <= this.numberOfTimeSteps; k++) {
         // trendLine[k] = {x:k, y: numberOfAtoms * Math.exp(-probabilityOfDecay * k)}
@@ -142,6 +169,18 @@ var demo = new Demo({
           y:
             this.originalNumberOfAtoms *
             Math.pow(2, -k / this.ui.halfLife.value)
+        };
+      }
+    }
+    if (this.ui.trendLine.value && this.ui.showDecayed.value) {
+      // trendline
+      for (k = 0; k <= this.numberOfTimeSteps; k++) {
+        // trendLine[k] = {x:k, y: numberOfAtoms * Math.exp(-probabilityOfDecay * k)}
+        this.trendLine2[k] = {
+          x: k,
+          y:
+            this.originalNumberOfAtoms - (this.originalNumberOfAtoms *
+            Math.pow(2, -k / this.ui.halfLife.value))
         };
       }
     }
@@ -158,8 +197,8 @@ var demo = new Demo({
             type: "scatter",
             // label: "Number of undecayed atoms",
             data: [{ x: this.steps, y: this.numberOfAtoms }],
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
+            backgroundColor: this.ui.showUndecayed.value ? "rgba(2, 5, 53, 0.2)" : "transparent",
+            borderColor: this.ui.showUndecayed.value ? "rgba(2, 5, 53, 0.8)" : "transparent",
             borderWidth: 1,
             radius: 3
             // pointStyle: "crossRot"
@@ -167,6 +206,23 @@ var demo = new Demo({
           {
             type: "scatter",
             data: this.trendLine,
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(0, 0, 0, 0.2)"],
+            borderWidth: 1,
+            pointRadius: 0,
+
+            showLine: true
+          },{
+            type: "scatter",
+            data: [{ x: this.steps, y: 0 }],
+            backgroundColor: this.ui.showDecayed.value ? "rgba(255, 99, 132, 0.2)" : "transparent",
+            borderColor: this.ui.showDecayed.value ? "rgba(255, 99, 132, 1)" : "transparent",
+            borderWidth: 1,
+            radius: 3
+            // pointStyle: "crossRot"
+          },{
+            type: "scatter",
+            data: this.trendLine2,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(0, 0, 0, 0.2)"],
             borderWidth: 1,
@@ -189,7 +245,7 @@ var demo = new Demo({
             max: this.width * this.height,
             title: {
               display: true,
-              text: "Number of undecayed atoms"
+              text: "Number of atoms"
             }
           },
           x: {
@@ -205,8 +261,9 @@ var demo = new Demo({
     });
   },
 
+
   updateTimeStep: function () {
-    this.ctx.fillStyle = "#2BFEA8";
+    this.ctx.fillStyle = "rgb(255, 99, 132)";
     this.steps++;
     for (j = 0; j < this.width; j++) {
       for (i = 0; i < this.height; i++) {
@@ -221,13 +278,17 @@ var demo = new Demo({
           this.numberOfAtoms--;
         }
       }
-      $("#numberOfUndecayed").html("Number of undecayed atoms: <br> " + this.numberOfAtoms);
+      this.updateCounterIndicator();
     }
     //   add this line to avoid rendering chart every time
     if (this.steps % 50 == 0 || true) {
       this.myChart.data.datasets[0].data.push({
         x: this.steps,
         y: this.numberOfAtoms
+      });
+      this.myChart.data.datasets[2].data.push({
+        x: this.steps,
+        y: this.originalNumberOfAtoms - this.numberOfAtoms
       });
       this.myChart.update();
     }
