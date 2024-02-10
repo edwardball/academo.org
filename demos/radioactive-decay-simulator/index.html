@@ -26,7 +26,15 @@ $$ N(t) =  N_{0} e^{\frac{-0.693t}{t_{1/2}}} $$
 
 <p>You can advance the time step one step at a time, which can be useful when the half life is low. Alternatively, if you have a very long half-life, the "start simulation" button will automatically run through timesteps at a fast pace. Every time the time step advances, the chart is updated to show the latest number of undecayed particles.</p>
 
-<p>The chart above can plot either the number of "undecayed atoms", which will decrease as time goes on, or alternatively, it can plot the number of "decayed atoms" which will increase as time goes on. Use the checkboxes in the user interface to adjust the display. If you'd like both to be plotted, both checkboxes can be selected.</p>
+<p>The chart above can plot:<p>
+
+<ul>
+	<li>the number of "undecayed atoms", which will decrease as time goes on</li>
+	<li>the number of "decayed atoms" which will increase as time goes on</li>
+	<li>the "activity", which is the number of atoms that decayed in the previous step, and will decrease as time goes on.</li>
+</ul>
+
+<p>Use the checkboxes in the user interface to adjust the display. If you'd like both to be plotted, both checkboxes can be selected.</p>
 
 <p>There is the option to show or hide a trendline on the graph which shows the expected pattern of decay based on the equation above. However you may notice that as the simulation progresses, the actual data points may lie slightly above or below the line. This is because radioactive decay is a random phenomenon. In a given time frame we only have a probability that an atom will decay - it may or may not, and that comes down to random chance. Think of an analogy of flipping 1600 coins. You may expect 800 to land on heads, but the reality is that sometimes the number will be slightly more or less than 800 exactly.
 

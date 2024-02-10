@@ -16,5 +16,45 @@
     min-width: 
 }
 
-/
+#numberOfUndecayed {
+  float:left;
+}
+
+.radioactive-indicator {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.radioactive-indicator:before {
+    content: "";
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    background: rgba(255,0,0,0.2);
+    border-radius: 50%;
+    border-color: rgba(255,0,0,1);
+    border: 1px solid rgba(255,0,0,1);
+    margin-right: 5px;
+}
+
+.undecayed-count:before {
+  background: rgba(2, 5, 53, 0.2);
+  border-color:rgba(2, 5, 53, 0.8);
+}
+
+.decayed-count:before {
+  background: rgba(43, 254, 168, 0.5);
+  border-color:rgba(43, 254, 168, 1);
+}
+
+.activity-count:before {
+  background: rgba(255, 99, 132, 0.2);
+  border-color:rgba(255, 99, 132, 1);
+}
+
+
+
+
 
