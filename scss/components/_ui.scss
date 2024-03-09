@@ -135,8 +135,9 @@ input[type=checkbox] {
         padding:10px;
         background: #ddd;
         border:none;
-        border-bottom:solid 2px #ccc;
         transition: background 0.3s;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.3);
 
         &:hover{
             background:mix($green, $white, 50%);
