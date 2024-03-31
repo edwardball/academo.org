@@ -41,7 +41,7 @@ var layer = new ol.layer.Tile({
     projection: 'PIXELS',
     tileGrid: mapTileGrid,
     tilePixelRatio: 1.00000000,
-    url: "jwst/{z}/{x}/{y}.png",
+    url: "https://academo-assets.s3-us-west-2.amazonaws.com/demos/james-webb-vs-hubble-telescope-comparison/jwst/{z}/{x}/{y}.png",
   })
 });
 
@@ -50,7 +50,8 @@ var layer2 = new ol.layer.Tile({
     projection: 'PIXELS',
     tileGrid: mapTileGrid,
     tilePixelRatio: 1.00000000,
-    url: "hubble/{z}/{x}/{y}.png",
+    url: "https://academo-assets.s3-us-west-2.amazonaws.com/demos/james-webb-vs-hubble-telescope-comparison/hubble/{z}/{x}/{y}.png",
+
   })
 });
 

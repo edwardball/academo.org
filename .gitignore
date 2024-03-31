@@ -7,3 +7,7 @@ pinterest-acff7.html
 robots.txt
 .sass-cache
 .jekyll-metadata
+
+# Don't include these large media folders in the git repo
+demos/james-webb-vs-hubble-telescope-comparison/_hubble/
+demos/james-webb-vs-hubble-telescope-comparison/_jwst/
