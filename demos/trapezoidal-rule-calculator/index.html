@@ -1,0 +1,107 @@
+---
+title: Trapezoidal Rule Calculator
+categories: [Maths]
+#subcategories: [geometry]
+tags: [Integration]
+blurb: This interactive tool demonstrates how the trapezoidal rule can be used to calculate the area underneath a curve. Enter your own expression and choose the number of trapezoids you want to use.
+#stylesheets: [styles.css]
+cdn: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js", "https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.min.js"]
+scripts: [demo.js]
+latex: true
+twitterCard: true
+facebookOG: true
+---
+
+<div style="padding:20px;margin-bottom: 60px;border: 1px solid #ddd;background:#f9f9f9;">
+	<p><em>This table will automatically update when you adjust the values in the user interface.</em></p>
+	<p>Current Trapezium width: <span class="js-trapezium-width"></span></p>
+<table class="table table-bordered js-trapezium-table" >
+  <thead>
+	<tr>
+  		<th></th>
+  		<th>Calculation</th>
+  		<th>Area</th>
+  	</tr>
+  </thead>
+  <tbody>
+   </tbody>
+</table>
+</div>
+
+<h2>Explanation</h2>
+<div>
+<p>The trapezoidal rule is a method we can use to find the area underneath a curve. The technique works by approximating the curve with a series of trapezoids (or trapeziums as they are called in the UK).</p>
+
+<p>The method is helpful because we can calculate the area of a trapezoid using a simple formula. Looking at the example below:</p>
+
+<img src="img/trapezium-labelled.png" alt="A trapezoid with a horizontal base of 'Width', and heights HeightA and Height B">
+
+<p>The area of this trapezium is:</p>
+
+<p>$$ 0.5 \times (Height_A + Height_B) \times Width $$</p>
+
+
+<p>
+	Now, if you have a curve, say \( y = x^2 +1 \) and you want to find the area that is underneath the curve between \( x = 0 \) and \( x = 2 \), you could create a very rough estimate by drawing a trapezium, which we've given a pink colour, like so:
+</p>
+
+<img src="img/one-trapezium.png" alt="One trapezium drawn between x=0 and x=2 on the curve y = x^2 + 1">
+
+<p>In this particular example, Height<sub>A</sub> is 1, Height<sub>B</sub> is 5 and the width is 2, so the area of the trapezoid is calculated to be:</p>
+
+<p>$$ 0.5 \times (1 + 5) \times 2 = 6 $$</p>
+
+
+<p>Looking at the chart above, we can see that in reality, this is an overestimate, because the trapezoid has a bigger area than the area below the curve. But what if we used a combination of 2 trapezoids instead?</p>
+
+<img src="img/two-trapeziums.png" alt="Two trapeziums drawn between x=0 and x=2 on the curve y = x^2 + 1">
+
+<p>These two trapezoids give a better approximation of the area under the curve. In this case, the area is calculated by adding the areas of the two individual trapezoids.</p>
+
+<p>The first trapezoid has Height<sub>A</sub> = 1, Height<sub>B</sub> = 2 and width = 1, giving an area of 0.5&nbsp;&times;&nbsp;(1&nbsp;+&nbsp;2)&nbsp;&times;&nbsp;1&nbsp;=&nbsp;1.5.</p>
+
+<p>The second trapezoid has Height<sub>A</sub> = 2, Height<sub>B</sub> = 5 and width = 1, giving an area of 0.5&nbsp;&times;&nbsp;(2&nbsp;+&nbsp;5)&nbsp;&times;&nbsp;1&nbsp;=&nbsp;3.5.</p>
+
+<p>So, adding these together gives a total trapezoid area of 1.5 + 3.5 = 5.0.</p>
+
+
+<p>We could improve things even more by including more trapezoids. Here's what the graph looks like with 4.</p>
+
+<img src="img/four-trapeziums.png" alt="Four trapeziums drawn between x=0 and x=2 on the curve y = x^2 + 1">
+
+<p>Here are the calculations for finding the areas of the four trapezoids:</p>
+
+<table class="table table-bordered js-trapezium-table" style="margin-bottom: 60px;">
+  <thead>
+	<tr>
+  		<th></th>
+  		<th>Calculation</th>
+  		<th>Area</th>
+  	</tr>
+  </thead>
+  <tbody><tr><td>Trapezium 1</td><td>0.5 ×  (1.000 + 1.250) × 0.500</td><td>0.563</td></tr><tr><td>Trapezium 2</td><td>0.5 ×  (1.250 + 2.000) × 0.500</td><td>0.813</td></tr><tr><td>Trapezium 3</td><td>0.5 ×  (2.000 + 3.250) × 0.500</td><td>1.313</td></tr><tr><td>Trapezium 4</td><td>0.5 ×  (3.250 + 5.000) × 0.500</td><td>2.063</td></tr><tr><td colspan="2" style="text-align:right;"><strong>Sum of all Trapezium areas</strong></td><td><strong>4.750</strong></td></tr></tbody>
+</table>
+
+<p>These four trapezoids do a pretty good job, but we don't need to stop there. We can add even more to improve our estimation. How about 10? Use the interface at the of the page to change the number of trapezoids, then hit the <em>Update</em> button to run the calculation.</p>
+
+<p>If you are familiar with calculus, you might know that we can use integration to find the exact value of this area. The answer is \( 4 \frac{2}{3} \), or 4.67 to 2 decimal places. If you use the interactive tool above to draw 20 trapezoids, you'll see that the answer that is calculated is also 4.67.</p>
+</div>
+<div>
+<h2>Equation for Trapezoid Rule</h2>
+
+<p>The demo above illustrates how the rule works visually, but there is also an equation you can use without needing to draw the trapezoids. If you look closely at the tables of calculations above, you may notice a pattern. The pattern becomes more clear the more trapezoids are used. Each term of the calculation involves a multiplication by 0.5, as well as a multiplication by the width (the width is the same value for each trapezoid). When adding all ther values up, the very first height (which we will call \( y_0 \) in our equation) and the very last height (which we'll call \(y_n\)) are included once, and all the other heights are included twice.</p>
+
+<p>Putting this all together, the Trapezoid Rule can be condensed into the following formula. Don't let the symbols confuse you, it's exactly the same process as we walked through above.</p>
+
+<p>$$ Area = 0.5 \times width \times (y_0 + 2y_1 + 2y_2 + \dots + 2y_{n-1} + y_n) $$</p>
+
+<p>In the equation the terms \( y_0, y_1 \dots\ y_n \) represent the heights of the sides of the trapezoids. Here is the graph of \( y = x^2 +1 \) with these y values indicated. There are 4 trapezoids, so \( n = 4\).</p>
+
+<img src="img/Labelled-graph.png" alt="The graph of y = x^2 + 1, with the trapezoids and their heights indicated">
+</div>
+<hr>
+
+
+
+
+{% include expression_table.html %}
