@@ -7,6 +7,10 @@
  		resolution:0.01,
  		input: 'hidden'
  	},
+ 	animate: {
+      title: "Animate",
+      value: false
+  	}
  };
 
  var i = 0;
@@ -40,30 +44,46 @@
  }
 
 
-function update(){
-	currentMonth = ui.month.value;
-	opacity = currentMonth % 1;
-	opaque_id = Math.floor(currentMonth);
-	$('#month-interface label').html("Current Month: " + data[opaque_id-1][0]);
-	elements.forEach(function(el){
-		el.style.opacity = 0;
-	})
-	elements[opaque_id-1].style.opacity = 1;
-	if (opaque_id < 13) elements[opaque_id].style.opacity = opacity;
+function update(prop){
+
+
+	if (typeof prop != "undefined" && prop == "animate"){
+	    if (ui.animate.value == true){
+	        animate();
+	    } else {
+	      cancelAnimationFrame(animateID);
+	      animateID = null;
+	  }
+
+	 } else {
+
+		currentMonth = ui.month.value;
+		opacity = currentMonth % 1;
+		opaque_id = Math.floor(currentMonth);
+		$('#month-interface label').html("Current Month: " + data[opaque_id-1][0]);
+		elements.forEach(function(el){
+			el.style.opacity = 0;
+		})
+		elements[opaque_id-1].style.opacity = 1;
+		if (opaque_id < 13) elements[opaque_id].style.opacity = opacity;
+
+		$("#month-interface").val(ui.month.value);
+
+	}
 }
 
 $(document).on("uiLoaded", function(){
 	update();
 })
 
+function animate() {
 
-//Animation, disabled for the time being
-// $("#checkbox1").change(function(){
-// 	if ($(this).prop("checked")){
-// 		animate();
-// 		console.log("start")
-// 	} else {
-// 		cancelRequestAnimFrame(move);
-// 		console.log("stop")
-// 	}
-// });
+    animateID = window.requestAnimationFrame(animate);
+    ui.month.value = ui.month.value*1 + 0.03;
+    if (ui.month.value > 13){
+        ui.month.value = 1;
+    }
+    update();
+    // return animateID;
+}
+
