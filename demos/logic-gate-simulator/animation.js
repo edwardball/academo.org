@@ -439,6 +439,8 @@ function calculateOutputs(){
 
 					if (nodesObject[prop].inputs.length == 2){
 						nodesObject[prop].state = or(nodesObject[nodesObject[prop].inputs[0]].state,nodesObject[nodesObject[prop].inputs[1]].state)
+					} else if (nodesObject[prop].inputs.length == 1){
+						nodesObject[prop].state = nodesObject[nodesObject[prop].inputs[0]].state;
 					} else {
 						nodesObject[prop].state = "off";
 					}
