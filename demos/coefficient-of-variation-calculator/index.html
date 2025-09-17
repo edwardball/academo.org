@@ -1,0 +1,66 @@
+---
+title: Coefficient of Variation Calculator
+categories: [Maths]
+subcategories: [Statistics]
+tags: []
+blurb: An interactive tool to calculate the coefficient of variation of a set of numbers.
+stylesheets: [styles.css]
+scripts: [decimal.min.js, demo.js]
+#cdn: ["//cdn.jsdelivr.net/jstat/1.0.6/jstat.min.js"]
+latex: true
+---
+
+<div id="results">
+	<p>
+		<label>Please enter your numbers, separated by commas, then click the calculate button.</label>
+	</p>
+
+	<textarea></textarea>
+
+	<p>
+		Mean, \( \mu \) <input readonly id="mean"></input>
+	</p>
+
+	<p>
+		Standard deviation, \( \sigma \) <input readonly id="stdev"></input>
+	</p>
+
+	<p>
+		Coefficient of variation, \( CV \) <input readonly id="cv"></input>
+	</p>
+</div>
+
+<p>
+	The coefficient of variation, denoted by the two letters, \( CV \), is the ratio of the standard deviation \( \sigma \) to the mean, \( \mu \).
+</p>
+
+<p>The coefficient of variation is a dimensionless number (i.e. it has no units) and indicates how spread out numbers are in a set of data, relative to the mean. It is particularly useful compared to the standard deviation when comparing the spread of sets which may have different units or different means.</p>
+
+<p>
+	It is calculated using the following equation: 
+</p>
+
+\[ CV = \frac{\sigma}{\mu} \]
+
+<h3>Step 1</h3>
+<p>
+	Firstly, the standard deviation, \( \sigma \), is calculated. You can read more about how standard deviation is calculated on our <a href="/demos/standard-deviation-calculator/">standard deviation calculator</a> page.
+</p>
+
+
+<h3>Step 2</h3>
+<p>	
+	Next, you need to calculate the mean, \( \mu \). This is done by adding up all of the numbers and then dividing by the number of numbers, \( N \). 
+</p>
+
+
+<h3>Step 3</h3>
+
+<p>
+	Finally, you divide the standard deviation by the mean.
+</p>
+
+
+
+
+
