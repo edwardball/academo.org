@@ -63,6 +63,8 @@ var ui = {
             ["Default", "default"],
             ["Dark", "dark"],
             ["Light", "light"],
+            ["Vintage", "vintage"],
+
         ] 
     },
 
@@ -80,6 +82,12 @@ var colourSchemes = {
     gridLines: "#666",
     trace: "#fff",
     traceHalo: "rgba(255,255,255,0.3)",
+  },
+  vintage: {
+    background: "#0d200f",
+    gridLines: "#000",
+    trace: "#dbffdf",
+    traceHalo: "rgb(120, 226, 154)",
   },
   light: {
     background: "#fdfdfd",
